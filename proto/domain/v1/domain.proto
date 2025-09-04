@@ -4,7 +4,7 @@ package domain.v1;
 
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/itsLeonB/billsplittr-protos/domain/v1;billsplittr";
+option go_package = "github.com/itsLeonB/billsplittr-protos/gen/go/domain/v1;domain";
 
 message AuditMetadata {
   string id = 1;

@@ -4,7 +4,7 @@ package groupexpense.v1;
 
 import "groupexpense/v1/group_expense_message.proto";
 
-option go_package = "github.com/itsLeonB/billsplittr-protos/groupexpense/v1;groupexpense";
+option go_package = "github.com/itsLeonB/billsplittr-protos/gen/go/groupexpense/v1;groupexpense";
 
 service GroupExpenseService {
   rpc CreateDraft(CreateDraftRequest) returns (CreateDraftResponse);

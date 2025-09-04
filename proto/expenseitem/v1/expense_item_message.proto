@@ -4,7 +4,7 @@ package expenseitem.v1;
 
 import "domain/v1/expense_item.proto";
 
-option go_package = "github.com/itsLeonB/billsplittr-protos/expenseitem/v1;expenseitem";
+option go_package = "github.com/itsLeonB/billsplittr-protos/gen/go/expenseitem/v1;expenseitem";
 
 message AddRequest {
   string profile_id = 1;

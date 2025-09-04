@@ -5,7 +5,7 @@ package expenseitem.v1;
 import "expenseitem/v1/expense_item_message.proto";
 import "google/protobuf/empty.proto";
 
-option go_package = "github.com/itsLeonB/billsplittr-protos/expenseitem/v1;expenseitem";
+option go_package = "github.com/itsLeonB/billsplittr-protos/gen/go/expenseitem/v1;expenseitem";
 
 service ExpenseItemService {
   rpc Add(AddRequest) returns (AddResponse);

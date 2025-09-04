@@ -1,6 +1,6 @@
 name: Buf Lint
 
-on: 
+on:
   pull_request: # Apply to all pull requests
 
 jobs:

@@ -5,7 +5,7 @@ package domain.v1;
 import "domain/v1/domain.proto";
 import "google/type/money.proto";
 
-option go_package = "github.com/itsLeonB/billsplittr-protos/domain/v1;billsplittr";
+option go_package = "github.com/itsLeonB/billsplittr-protos/gen/go/domain/v1;domain";
 
 enum FeeCalculationMethod {
   FEE_CALCULATION_METHOD_UNSPECIFIED = 0;

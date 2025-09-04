@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package expensebill.v1;
 
-option go_package = "github.com/itsLeonB/billsplittr-protos/expensebill/v1;expensebill";
+option go_package = "github.com/itsLeonB/billsplittr-protos/gen/go/expensebill/v1;expensebill";
 
 message UploadStreamRequest {
   oneof data {

@@ -7,7 +7,7 @@ import "domain/v1/group_expense.proto";
 import "domain/v1/other_fee.proto";
 import "google/type/money.proto";
 
-option go_package = "github.com/itsLeonB/billsplittr-protos/groupexpense/v1;groupexpense";
+option go_package = "github.com/itsLeonB/billsplittr-protos/gen/go/groupexpense/v1;groupexpense";
 
 message CreateDraftRequest {
   string creator_profile_id = 1;
