@@ -31,7 +31,7 @@ const file_expenseitem_v1_expense_item_service_proto_rawDesc = "" +
 	"\n" +
 	"GetDetails\x12!.expenseitem.v1.GetDetailsRequest\x1a\".expenseitem.v1.GetDetailsResponse\x12G\n" +
 	"\x06Update\x12\x1d.expenseitem.v1.UpdateRequest\x1a\x1e.expenseitem.v1.UpdateResponse\x12?\n" +
-	"\x06Remove\x12\x1d.expenseitem.v1.RemoveRequest\x1a\x16.google.protobuf.EmptyBCZAgithub.com/itsLeonB/billsplittr-protos/expenseitem/v1;expenseitemb\x06proto3"
+	"\x06Remove\x12\x1d.expenseitem.v1.RemoveRequest\x1a\x16.google.protobuf.EmptyBJZHgithub.com/itsLeonB/billsplittr-protos/gen/go/expenseitem/v1;expenseitemb\x06proto3"
 
 var file_expenseitem_v1_expense_item_service_proto_goTypes = []any{
 	(*AddRequest)(nil),         // 0: expenseitem.v1.AddRequest

@@ -4,7 +4,7 @@
 // 	protoc        (unknown)
 // source: domain/v1/other_fee.proto
 
-package billsplittr
+package domain
 
 import (
 	money "google.golang.org/genproto/googleapis/type/money"
@@ -336,7 +336,7 @@ const file_domain_v1_other_fee_proto_rawDesc = "" +
 	"\x14FeeCalculationMethod\x12&\n" +
 	"\"FEE_CALCULATION_METHOD_UNSPECIFIED\x10\x00\x12&\n" +
 	"\"FEE_CALCULATION_METHOD_EQUAL_SPLIT\x10\x01\x12)\n" +
-	"%FEE_CALCULATION_METHOD_ITEMIZED_SPLIT\x10\x02B>Z<github.com/itsLeonB/billsplittr-protos/domain/v1;billsplittrb\x06proto3"
+	"%FEE_CALCULATION_METHOD_ITEMIZED_SPLIT\x10\x02B@Z>github.com/itsLeonB/billsplittr-protos/gen/go/domain/v1;domainb\x06proto3"
 
 var (
 	file_domain_v1_other_fee_proto_rawDescOnce sync.Once

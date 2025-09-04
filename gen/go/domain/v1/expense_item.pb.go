@@ -4,7 +4,7 @@
 // 	protoc        (unknown)
 // source: domain/v1/expense_item.proto
 
-package billsplittr
+package domain
 
 import (
 	money "google.golang.org/genproto/googleapis/type/money"
@@ -219,7 +219,7 @@ const file_domain_v1_expense_item_proto_rawDesc = "" +
 	"\x0fItemParticipant\x12\x1d\n" +
 	"\n" +
 	"profile_id\x18\x01 \x01(\tR\tprofileId\x12\x14\n" +
-	"\x05share\x18\x02 \x01(\x02R\x05shareB>Z<github.com/itsLeonB/billsplittr-protos/domain/v1;billsplittrb\x06proto3"
+	"\x05share\x18\x02 \x01(\x02R\x05shareB@Z>github.com/itsLeonB/billsplittr-protos/gen/go/domain/v1;domainb\x06proto3"
 
 var (
 	file_domain_v1_expense_item_proto_rawDescOnce sync.Once

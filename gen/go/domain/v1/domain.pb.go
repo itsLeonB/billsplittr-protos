@@ -4,7 +4,7 @@
 // 	protoc        (unknown)
 // source: domain/v1/domain.proto
 
-package billsplittr
+package domain
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -102,7 +102,7 @@ const file_domain_v1_domain_proto_rawDesc = "" +
 	"\n" +
 	"updated_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
 	"\n" +
-	"deleted_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAtB>Z<github.com/itsLeonB/billsplittr-protos/domain/v1;billsplittrb\x06proto3"
+	"deleted_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAtB@Z>github.com/itsLeonB/billsplittr-protos/gen/go/domain/v1;domainb\x06proto3"
 
 var (
 	file_domain_v1_domain_proto_rawDescOnce sync.Once

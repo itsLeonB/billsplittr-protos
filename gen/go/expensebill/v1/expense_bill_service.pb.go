@@ -25,9 +25,9 @@ var File_expensebill_v1_expense_bill_service_proto protoreflect.FileDescriptor
 
 const file_expensebill_v1_expense_bill_service_proto_rawDesc = "" +
 	"\n" +
-	")expensebill/v1/expense_bill_service.proto\x12\x0eexpensebill.v1\x1a)expensebill/v1/expense_bill_message.proto\x1a\x1bgoogle/protobuf/empty.proto2a\n" +
-	"\x12ExpenseBillService\x12K\n" +
-	"\fUploadStream\x12#.expensebill.v1.UploadStreamRequest\x1a\x16.google.protobuf.EmptyBCZAgithub.com/itsLeonB/billsplittr-protos/expensebill/v1;expensebillb\x06proto3"
+	")expensebill/v1/expense_bill_service.proto\x12\x0eexpensebill.v1\x1a)expensebill/v1/expense_bill_message.proto\x1a\x1bgoogle/protobuf/empty.proto2c\n" +
+	"\x12ExpenseBillService\x12M\n" +
+	"\fUploadStream\x12#.expensebill.v1.UploadStreamRequest\x1a\x16.google.protobuf.Empty(\x01BJZHgithub.com/itsLeonB/billsplittr-protos/gen/go/expensebill/v1;expensebillb\x06proto3"
 
 var file_expensebill_v1_expense_bill_service_proto_goTypes = []any{
 	(*UploadStreamRequest)(nil), // 0: expensebill.v1.UploadStreamRequest

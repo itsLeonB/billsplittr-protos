@@ -30,7 +30,7 @@ const file_groupexpense_v1_group_expense_service_proto_rawDesc = "" +
 	"\rGetAllCreated\x12%.groupexpense.v1.GetAllCreatedRequest\x1a&.groupexpense.v1.GetAllCreatedResponse\x12U\n" +
 	"\n" +
 	"GetDetails\x12\".groupexpense.v1.GetDetailsRequest\x1a#.groupexpense.v1.GetDetailsResponse\x12[\n" +
-	"\fConfirmDraft\x12$.groupexpense.v1.ConfirmDraftRequest\x1a%.groupexpense.v1.ConfirmDraftResponseBEZCgithub.com/itsLeonB/billsplittr-protos/groupexpense/v1;groupexpenseb\x06proto3"
+	"\fConfirmDraft\x12$.groupexpense.v1.ConfirmDraftRequest\x1a%.groupexpense.v1.ConfirmDraftResponseBLZJgithub.com/itsLeonB/billsplittr-protos/gen/go/groupexpense/v1;groupexpenseb\x06proto3"
 
 var file_groupexpense_v1_group_expense_service_proto_goTypes = []any{
 	(*CreateDraftRequest)(nil),    // 0: groupexpense.v1.CreateDraftRequest

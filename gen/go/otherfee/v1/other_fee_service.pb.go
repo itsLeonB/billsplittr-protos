@@ -30,7 +30,7 @@ const file_otherfee_v1_other_fee_service_proto_rawDesc = "" +
 	"\x03Add\x12\x17.otherfee.v1.AddRequest\x1a\x18.otherfee.v1.AddResponse\x12A\n" +
 	"\x06Update\x12\x1a.otherfee.v1.UpdateRequest\x1a\x1b.otherfee.v1.UpdateResponse\x12<\n" +
 	"\x06Remove\x12\x1a.otherfee.v1.RemoveRequest\x1a\x16.google.protobuf.Empty\x12[\n" +
-	"\x15GetCalculationMethods\x12\x16.google.protobuf.Empty\x1a*.otherfee.v1.GetCalculationMethodsResponseB=Z;github.com/itsLeonB/billsplittr-protos/otherfee/v1;otherfeeb\x06proto3"
+	"\x15GetCalculationMethods\x12\x16.google.protobuf.Empty\x1a*.otherfee.v1.GetCalculationMethodsResponseBDZBgithub.com/itsLeonB/billsplittr-protos/gen/go/otherfee/v1;otherfeeb\x06proto3"
 
 var file_otherfee_v1_other_fee_service_proto_goTypes = []any{
 	(*AddRequest)(nil),                    // 0: otherfee.v1.AddRequest

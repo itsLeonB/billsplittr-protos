@@ -7,7 +7,7 @@
 package otherfee
 
 import (
-	v1 "github.com/itsLeonB/billsplittr-protos/domain/v1"
+	v1 "github.com/itsLeonB/billsplittr-protos/gen/go/domain/v1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -369,7 +369,7 @@ const file_otherfee_v1_other_fee_message_proto_rawDesc = "" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12(\n" +
 	"\x10group_expense_id\x18\x03 \x01(\tR\x0egroupExpenseId\"^\n" +
 	"\x1dGetCalculationMethodsResponse\x12=\n" +
-	"\amethods\x18\x01 \x03(\v2#.domain.v1.FeeCalculationMethodInfoR\amethodsB=Z;github.com/itsLeonB/billsplittr-protos/otherfee/v1;otherfeeb\x06proto3"
+	"\amethods\x18\x01 \x03(\v2#.domain.v1.FeeCalculationMethodInfoR\amethodsBDZBgithub.com/itsLeonB/billsplittr-protos/gen/go/otherfee/v1;otherfeeb\x06proto3"
 
 var (
 	file_otherfee_v1_other_fee_message_proto_rawDescOnce sync.Once

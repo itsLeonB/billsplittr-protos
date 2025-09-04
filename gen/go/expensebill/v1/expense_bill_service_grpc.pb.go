@@ -27,7 +27,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ExpenseBillServiceClient interface {
-	UploadStream(ctx context.Context, in *UploadStreamRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	UploadStream(ctx context.Context, opts ...grpc.CallOption) (grpc.ClientStreamingClient[UploadStreamRequest, emptypb.Empty], error)
 }
 
 type expenseBillServiceClient struct {
@@ -38,21 +38,24 @@ func NewExpenseBillServiceClient(cc grpc.ClientConnInterface) ExpenseBillService
 	return &expenseBillServiceClient{cc}
 }
 
-func (c *expenseBillServiceClient) UploadStream(ctx context.Context, in *UploadStreamRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *expenseBillServiceClient) UploadStream(ctx context.Context, opts ...grpc.CallOption) (grpc.ClientStreamingClient[UploadStreamRequest, emptypb.Empty], error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, ExpenseBillService_UploadStream_FullMethodName, in, out, cOpts...)
+	stream, err := c.cc.NewStream(ctx, &ExpenseBillService_ServiceDesc.Streams[0], ExpenseBillService_UploadStream_FullMethodName, cOpts...)
 	if err != nil {
 		return nil, err
 	}
-	return out, nil
+	x := &grpc.GenericClientStream[UploadStreamRequest, emptypb.Empty]{ClientStream: stream}
+	return x, nil
 }
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type ExpenseBillService_UploadStreamClient = grpc.ClientStreamingClient[UploadStreamRequest, emptypb.Empty]
 
 // ExpenseBillServiceServer is the server API for ExpenseBillService service.
 // All implementations must embed UnimplementedExpenseBillServiceServer
 // for forward compatibility.
 type ExpenseBillServiceServer interface {
-	UploadStream(context.Context, *UploadStreamRequest) (*emptypb.Empty, error)
+	UploadStream(grpc.ClientStreamingServer[UploadStreamRequest, emptypb.Empty]) error
 	mustEmbedUnimplementedExpenseBillServiceServer()
 }
 
@@ -63,8 +66,8 @@ type ExpenseBillServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedExpenseBillServiceServer struct{}
 
-func (UnimplementedExpenseBillServiceServer) UploadStream(context.Context, *UploadStreamRequest) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UploadStream not implemented")
+func (UnimplementedExpenseBillServiceServer) UploadStream(grpc.ClientStreamingServer[UploadStreamRequest, emptypb.Empty]) error {
+	return status.Errorf(codes.Unimplemented, "method UploadStream not implemented")
 }
 func (UnimplementedExpenseBillServiceServer) mustEmbedUnimplementedExpenseBillServiceServer() {}
 func (UnimplementedExpenseBillServiceServer) testEmbeddedByValue()                            {}
@@ -87,23 +90,12 @@ func RegisterExpenseBillServiceServer(s grpc.ServiceRegistrar, srv ExpenseBillSe
 	s.RegisterService(&ExpenseBillService_ServiceDesc, srv)
 }
 
-func _ExpenseBillService_UploadStream_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UploadStreamRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ExpenseBillServiceServer).UploadStream(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ExpenseBillService_UploadStream_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ExpenseBillServiceServer).UploadStream(ctx, req.(*UploadStreamRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+func _ExpenseBillService_UploadStream_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(ExpenseBillServiceServer).UploadStream(&grpc.GenericServerStream[UploadStreamRequest, emptypb.Empty]{ServerStream: stream})
 }
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type ExpenseBillService_UploadStreamServer = grpc.ClientStreamingServer[UploadStreamRequest, emptypb.Empty]
 
 // ExpenseBillService_ServiceDesc is the grpc.ServiceDesc for ExpenseBillService service.
 // It's only intended for direct use with grpc.RegisterService,
@@ -111,12 +103,13 @@ func _ExpenseBillService_UploadStream_Handler(srv interface{}, ctx context.Conte
 var ExpenseBillService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "expensebill.v1.ExpenseBillService",
 	HandlerType: (*ExpenseBillServiceServer)(nil),
-	Methods: []grpc.MethodDesc{
+	Methods:     []grpc.MethodDesc{},
+	Streams: []grpc.StreamDesc{
 		{
-			MethodName: "UploadStream",
-			Handler:    _ExpenseBillService_UploadStream_Handler,
+			StreamName:    "UploadStream",
+			Handler:       _ExpenseBillService_UploadStream_Handler,
+			ClientStreams: true,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
 	Metadata: "expensebill/v1/expense_bill_service.proto",
 }

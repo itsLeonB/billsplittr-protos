@@ -7,7 +7,7 @@
 package groupexpense
 
 import (
-	v1 "github.com/itsLeonB/billsplittr-protos/domain/v1"
+	v1 "github.com/itsLeonB/billsplittr-protos/gen/go/domain/v1"
 	money "google.golang.org/genproto/googleapis/type/money"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
@@ -461,7 +461,7 @@ const file_groupexpense_v1_group_expense_message_proto_rawDesc = "" +
 	"\n" +
 	"profile_id\x18\x02 \x01(\tR\tprofileId\"\\\n" +
 	"\x14ConfirmDraftResponse\x12D\n" +
-	"\rgroup_expense\x18\x01 \x01(\v2\x1f.domain.v1.GroupExpenseResponseR\fgroupExpenseBEZCgithub.com/itsLeonB/billsplittr-protos/groupexpense/v1;groupexpenseb\x06proto3"
+	"\rgroup_expense\x18\x01 \x01(\v2\x1f.domain.v1.GroupExpenseResponseR\fgroupExpenseBLZJgithub.com/itsLeonB/billsplittr-protos/gen/go/groupexpense/v1;groupexpenseb\x06proto3"
 
 var (
 	file_groupexpense_v1_group_expense_message_proto_rawDescOnce sync.Once

@@ -7,7 +7,7 @@
 package expenseitem
 
 import (
-	v1 "github.com/itsLeonB/billsplittr-protos/domain/v1"
+	v1 "github.com/itsLeonB/billsplittr-protos/gen/go/domain/v1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -424,7 +424,7 @@ const file_expenseitem_v1_expense_item_message_proto_rawDesc = "" +
 	"\n" +
 	"profile_id\x18\x01 \x01(\tR\tprofileId\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12(\n" +
-	"\x10group_expense_id\x18\x03 \x01(\tR\x0egroupExpenseIdBCZAgithub.com/itsLeonB/billsplittr-protos/expenseitem/v1;expenseitemb\x06proto3"
+	"\x10group_expense_id\x18\x03 \x01(\tR\x0egroupExpenseIdBJZHgithub.com/itsLeonB/billsplittr-protos/gen/go/expenseitem/v1;expenseitemb\x06proto3"
 
 var (
 	file_expenseitem_v1_expense_item_message_proto_rawDescOnce sync.Once

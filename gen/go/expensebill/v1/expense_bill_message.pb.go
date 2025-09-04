@@ -193,7 +193,7 @@ const file_expensebill_v1_expense_bill_message_proto_rawDesc = "" +
 	"\x12creator_profile_id\x18\x02 \x01(\tR\x10creatorProfileId\x12!\n" +
 	"\fcontent_type\x18\x03 \x01(\tR\vcontentType\x12\x1a\n" +
 	"\bfilename\x18\x04 \x01(\tR\bfilename\x12\x1b\n" +
-	"\tfile_size\x18\x05 \x01(\x03R\bfileSizeBCZAgithub.com/itsLeonB/billsplittr-protos/expensebill/v1;expensebillb\x06proto3"
+	"\tfile_size\x18\x05 \x01(\x03R\bfileSizeBJZHgithub.com/itsLeonB/billsplittr-protos/gen/go/expensebill/v1;expensebillb\x06proto3"
 
 var (
 	file_expensebill_v1_expense_bill_message_proto_rawDescOnce sync.Once
