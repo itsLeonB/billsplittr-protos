@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package domain.v1;
+
+import "domain/v1/domain.proto";
+import "google/type/money.proto";
+
+option go_package = "github.com/itsLeonB/billsplittr-protos/domain/v1;billsplittr";
+
+enum FeeCalculationMethod {
+  FEE_CALCULATION_METHOD_UNSPECIFIED = 0;
+  FEE_CALCULATION_METHOD_EQUAL_SPLIT = 1;
+  FEE_CALCULATION_METHOD_ITEMIZED_SPLIT = 2;
+}
+
+message OtherFee {
+  string name = 1;
+  google.type.Money amount = 2;
+  FeeCalculationMethod calculation_method = 3;
+}
+
+message OtherFeeResponse {
+  string group_expense_id = 1;
+  OtherFee other_fee = 2;
+  repeated FeeParticipantResponse participants = 3;
+  AuditMetadata audit_metadata = 4;
+}
+
+message FeeParticipantResponse {
+  string profile_id = 1;
+  google.type.Money share_amount = 2;
+}
+
+message FeeCalculationMethodInfo {
+  FeeCalculationMethod method = 1;
+  string display = 2;
+  string description = 3;
+}

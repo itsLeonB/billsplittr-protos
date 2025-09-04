@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package expensebill.v1;
+
+import "expensebill/v1/expense_bill_message.proto";
+import "google/protobuf/empty.proto";
+
+option go_package = "github.com/itsLeonB/billsplittr-protos/expensebill/v1;expensebill";
+
+service ExpenseBillService {
+  rpc UploadStream(UploadStreamRequest) returns (google.protobuf.Empty);
+}

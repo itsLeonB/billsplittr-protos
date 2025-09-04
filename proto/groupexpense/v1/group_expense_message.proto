@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package groupexpense.v1;
+
+import "domain/v1/expense_item.proto";
+import "domain/v1/group_expense.proto";
+import "domain/v1/other_fee.proto";
+import "google/type/money.proto";
+
+option go_package = "github.com/itsLeonB/billsplittr-protos/groupexpense/v1;groupexpense";
+
+message CreateDraftRequest {
+  string creator_profile_id = 1;
+  string payer_profile_id = 2;
+  google.type.Money total_amount = 3;
+  google.type.Money subtotal = 4;
+  string description = 5;
+  repeated domain.v1.ExpenseItem items = 6;
+  repeated domain.v1.OtherFee other_fees = 7;
+}
+
+message CreateDraftResponse {
+  domain.v1.GroupExpenseResponse group_expense = 1;
+}
+
+message GetAllCreatedRequest {
+  string profile_id = 1;
+}
+
+message GetAllCreatedResponse {
+  repeated domain.v1.GroupExpenseResponse group_expenses = 1;
+}
+
+message GetDetailsRequest {
+  string id = 1;
+}
+
+message GetDetailsResponse {
+  domain.v1.GroupExpenseResponse group_expense = 1;
+}
+
+message ConfirmDraftRequest {
+  string id = 1;
+  string profile_id = 2;
+}
+
+message ConfirmDraftResponse {
+  domain.v1.GroupExpenseResponse group_expense = 1;
+}

@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package otherfee.v1;
+
+import "domain/v1/other_fee.proto";
+
+option go_package = "github.com/itsLeonB/billsplittr-protos/otherfee/v1;otherfee";
+
+message AddRequest {
+  string profile_id = 1;
+  string group_expense_id = 2;
+  domain.v1.OtherFee other_fee = 3;
+}
+
+message AddResponse {
+  domain.v1.OtherFeeResponse other_fee = 1;
+}
+
+message UpdateRequest {
+  string profile_id = 1;
+  string id = 2;
+  string group_expense_id = 3;
+  domain.v1.OtherFee other_fee = 4;
+}
+
+message UpdateResponse {
+  domain.v1.OtherFeeResponse other_fee = 1;
+}
+
+message RemoveRequest {
+  string profile_id = 1;
+  string id = 2;
+  string group_expense_id = 3;
+}
+
+message GetCalculationMethodsResponse {
+  repeated domain.v1.FeeCalculationMethodInfo methods = 1;
+}

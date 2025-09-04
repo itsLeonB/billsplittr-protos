@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package domain.v1;
+
+import "domain/v1/domain.proto";
+import "google/type/money.proto";
+
+option go_package = "github.com/itsLeonB/billsplittr-protos/domain/v1;billsplittr";
+
+message ExpenseItem {
+  string name = 1;
+  google.type.Money amount = 2;
+  int64 quantity = 3;
+  repeated ItemParticipant participants = 4;
+}
+
+message ExpenseItemResponse {
+  string group_expense_id = 1;
+  ExpenseItem expense_item = 2;
+  AuditMetadata audit_metadata = 4;
+}
+
+message ItemParticipant {
+  string profile_id = 1;
+  float share = 2;
+}
