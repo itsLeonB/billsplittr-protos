@@ -179,6 +179,50 @@ func (x *BillMetadata) GetFileSize() int64 {
 	return 0
 }
 
+type UploadStreamResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UploadStreamResponse) Reset() {
+	*x = UploadStreamResponse{}
+	mi := &file_expensebill_v1_expense_bill_message_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UploadStreamResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UploadStreamResponse) ProtoMessage() {}
+
+func (x *UploadStreamResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_expensebill_v1_expense_bill_message_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UploadStreamResponse.ProtoReflect.Descriptor instead.
+func (*UploadStreamResponse) Descriptor() ([]byte, []int) {
+	return file_expensebill_v1_expense_bill_message_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *UploadStreamResponse) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
 var File_expensebill_v1_expense_bill_message_proto protoreflect.FileDescriptor
 
 const file_expensebill_v1_expense_bill_message_proto_rawDesc = "" +
@@ -193,7 +237,9 @@ const file_expensebill_v1_expense_bill_message_proto_rawDesc = "" +
 	"\x12creator_profile_id\x18\x02 \x01(\tR\x10creatorProfileId\x12!\n" +
 	"\fcontent_type\x18\x03 \x01(\tR\vcontentType\x12\x1a\n" +
 	"\bfilename\x18\x04 \x01(\tR\bfilename\x12\x1b\n" +
-	"\tfile_size\x18\x05 \x01(\x03R\bfileSizeBJZHgithub.com/itsLeonB/billsplittr-protos/gen/go/expensebill/v1;expensebillb\x06proto3"
+	"\tfile_size\x18\x05 \x01(\x03R\bfileSize\"&\n" +
+	"\x14UploadStreamResponse\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02idBJZHgithub.com/itsLeonB/billsplittr-protos/gen/go/expensebill/v1;expensebillb\x06proto3"
 
 var (
 	file_expensebill_v1_expense_bill_message_proto_rawDescOnce sync.Once
@@ -207,10 +253,11 @@ func file_expensebill_v1_expense_bill_message_proto_rawDescGZIP() []byte {
 	return file_expensebill_v1_expense_bill_message_proto_rawDescData
 }
 
-var file_expensebill_v1_expense_bill_message_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_expensebill_v1_expense_bill_message_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_expensebill_v1_expense_bill_message_proto_goTypes = []any{
-	(*UploadStreamRequest)(nil), // 0: expensebill.v1.UploadStreamRequest
-	(*BillMetadata)(nil),        // 1: expensebill.v1.BillMetadata
+	(*UploadStreamRequest)(nil),  // 0: expensebill.v1.UploadStreamRequest
+	(*BillMetadata)(nil),         // 1: expensebill.v1.BillMetadata
+	(*UploadStreamResponse)(nil), // 2: expensebill.v1.UploadStreamResponse
 }
 var file_expensebill_v1_expense_bill_message_proto_depIdxs = []int32{
 	1, // 0: expensebill.v1.UploadStreamRequest.bill_metadata:type_name -> expensebill.v1.BillMetadata
@@ -236,7 +283,7 @@ func file_expensebill_v1_expense_bill_message_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_expensebill_v1_expense_bill_message_proto_rawDesc), len(file_expensebill_v1_expense_bill_message_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   3,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

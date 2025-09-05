@@ -18,3 +18,7 @@ message BillMetadata {
   string filename = 4;
   int64 file_size = 5;
 }
+
+message UploadStreamResponse {
+  string id = 1;
+}

@@ -12,14 +12,15 @@ option go_package = "github.com/itsLeonB/billsplittr-protos/gen/go/domain/v1;dom
 message GroupExpenseResponse {
   string payer_profile_id = 1;
   google.type.Money total_amount = 2;
-  string description = 3;
-  string creator_profile_id = 4;
-  bool is_confirmed = 5;
-  bool is_participants_confirmed = 6;
-  repeated ExpenseItemResponse items = 7;
-  repeated OtherFeeResponse other_fees = 8;
-  repeated ExpenseParticipantResponse participants = 9;
-  AuditMetadata audit_metadata = 10;
+  google.type.Money subtotal = 3;
+  string description = 4;
+  string creator_profile_id = 5;
+  bool is_confirmed = 6;
+  bool is_participants_confirmed = 7;
+  repeated ExpenseItemResponse items = 8;
+  repeated OtherFeeResponse other_fees = 9;
+  repeated ExpenseParticipantResponse participants = 10;
+  AuditMetadata audit_metadata = 11;
 }
 
 message ExpenseParticipantResponse {

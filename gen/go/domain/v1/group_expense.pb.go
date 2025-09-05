@@ -26,14 +26,15 @@ type GroupExpenseResponse struct {
 	state                   protoimpl.MessageState        `protogen:"open.v1"`
 	PayerProfileId          string                        `protobuf:"bytes,1,opt,name=payer_profile_id,json=payerProfileId,proto3" json:"payer_profile_id,omitempty"`
 	TotalAmount             *money.Money                  `protobuf:"bytes,2,opt,name=total_amount,json=totalAmount,proto3" json:"total_amount,omitempty"`
-	Description             string                        `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
-	CreatorProfileId        string                        `protobuf:"bytes,4,opt,name=creator_profile_id,json=creatorProfileId,proto3" json:"creator_profile_id,omitempty"`
-	IsConfirmed             bool                          `protobuf:"varint,5,opt,name=is_confirmed,json=isConfirmed,proto3" json:"is_confirmed,omitempty"`
-	IsParticipantsConfirmed bool                          `protobuf:"varint,6,opt,name=is_participants_confirmed,json=isParticipantsConfirmed,proto3" json:"is_participants_confirmed,omitempty"`
-	Items                   []*ExpenseItemResponse        `protobuf:"bytes,7,rep,name=items,proto3" json:"items,omitempty"`
-	OtherFees               []*OtherFeeResponse           `protobuf:"bytes,8,rep,name=other_fees,json=otherFees,proto3" json:"other_fees,omitempty"`
-	Participants            []*ExpenseParticipantResponse `protobuf:"bytes,9,rep,name=participants,proto3" json:"participants,omitempty"`
-	AuditMetadata           *AuditMetadata                `protobuf:"bytes,10,opt,name=audit_metadata,json=auditMetadata,proto3" json:"audit_metadata,omitempty"`
+	Subtotal                *money.Money                  `protobuf:"bytes,3,opt,name=subtotal,proto3" json:"subtotal,omitempty"`
+	Description             string                        `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
+	CreatorProfileId        string                        `protobuf:"bytes,5,opt,name=creator_profile_id,json=creatorProfileId,proto3" json:"creator_profile_id,omitempty"`
+	IsConfirmed             bool                          `protobuf:"varint,6,opt,name=is_confirmed,json=isConfirmed,proto3" json:"is_confirmed,omitempty"`
+	IsParticipantsConfirmed bool                          `protobuf:"varint,7,opt,name=is_participants_confirmed,json=isParticipantsConfirmed,proto3" json:"is_participants_confirmed,omitempty"`
+	Items                   []*ExpenseItemResponse        `protobuf:"bytes,8,rep,name=items,proto3" json:"items,omitempty"`
+	OtherFees               []*OtherFeeResponse           `protobuf:"bytes,9,rep,name=other_fees,json=otherFees,proto3" json:"other_fees,omitempty"`
+	Participants            []*ExpenseParticipantResponse `protobuf:"bytes,10,rep,name=participants,proto3" json:"participants,omitempty"`
+	AuditMetadata           *AuditMetadata                `protobuf:"bytes,11,opt,name=audit_metadata,json=auditMetadata,proto3" json:"audit_metadata,omitempty"`
 	unknownFields           protoimpl.UnknownFields
 	sizeCache               protoimpl.SizeCache
 }
@@ -78,6 +79,13 @@ func (x *GroupExpenseResponse) GetPayerProfileId() string {
 func (x *GroupExpenseResponse) GetTotalAmount() *money.Money {
 	if x != nil {
 		return x.TotalAmount
+	}
+	return nil
+}
+
+func (x *GroupExpenseResponse) GetSubtotal() *money.Money {
+	if x != nil {
+		return x.Subtotal
 	}
 	return nil
 }
@@ -194,20 +202,21 @@ var File_domain_v1_group_expense_proto protoreflect.FileDescriptor
 
 const file_domain_v1_group_expense_proto_rawDesc = "" +
 	"\n" +
-	"\x1ddomain/v1/group_expense.proto\x12\tdomain.v1\x1a\x16domain/v1/domain.proto\x1a\x1cdomain/v1/expense_item.proto\x1a\x19domain/v1/other_fee.proto\x1a\x17google/type/money.proto\"\xa4\x04\n" +
+	"\x1ddomain/v1/group_expense.proto\x12\tdomain.v1\x1a\x16domain/v1/domain.proto\x1a\x1cdomain/v1/expense_item.proto\x1a\x19domain/v1/other_fee.proto\x1a\x17google/type/money.proto\"\xd4\x04\n" +
 	"\x14GroupExpenseResponse\x12(\n" +
 	"\x10payer_profile_id\x18\x01 \x01(\tR\x0epayerProfileId\x125\n" +
-	"\ftotal_amount\x18\x02 \x01(\v2\x12.google.type.MoneyR\vtotalAmount\x12 \n" +
-	"\vdescription\x18\x03 \x01(\tR\vdescription\x12,\n" +
-	"\x12creator_profile_id\x18\x04 \x01(\tR\x10creatorProfileId\x12!\n" +
-	"\fis_confirmed\x18\x05 \x01(\bR\visConfirmed\x12:\n" +
-	"\x19is_participants_confirmed\x18\x06 \x01(\bR\x17isParticipantsConfirmed\x124\n" +
-	"\x05items\x18\a \x03(\v2\x1e.domain.v1.ExpenseItemResponseR\x05items\x12:\n" +
+	"\ftotal_amount\x18\x02 \x01(\v2\x12.google.type.MoneyR\vtotalAmount\x12.\n" +
+	"\bsubtotal\x18\x03 \x01(\v2\x12.google.type.MoneyR\bsubtotal\x12 \n" +
+	"\vdescription\x18\x04 \x01(\tR\vdescription\x12,\n" +
+	"\x12creator_profile_id\x18\x05 \x01(\tR\x10creatorProfileId\x12!\n" +
+	"\fis_confirmed\x18\x06 \x01(\bR\visConfirmed\x12:\n" +
+	"\x19is_participants_confirmed\x18\a \x01(\bR\x17isParticipantsConfirmed\x124\n" +
+	"\x05items\x18\b \x03(\v2\x1e.domain.v1.ExpenseItemResponseR\x05items\x12:\n" +
 	"\n" +
-	"other_fees\x18\b \x03(\v2\x1b.domain.v1.OtherFeeResponseR\totherFees\x12I\n" +
-	"\fparticipants\x18\t \x03(\v2%.domain.v1.ExpenseParticipantResponseR\fparticipants\x12?\n" +
-	"\x0eaudit_metadata\x18\n" +
-	" \x01(\v2\x18.domain.v1.AuditMetadataR\rauditMetadata\"r\n" +
+	"other_fees\x18\t \x03(\v2\x1b.domain.v1.OtherFeeResponseR\totherFees\x12I\n" +
+	"\fparticipants\x18\n" +
+	" \x03(\v2%.domain.v1.ExpenseParticipantResponseR\fparticipants\x12?\n" +
+	"\x0eaudit_metadata\x18\v \x01(\v2\x18.domain.v1.AuditMetadataR\rauditMetadata\"r\n" +
 	"\x1aExpenseParticipantResponse\x12\x1d\n" +
 	"\n" +
 	"profile_id\x18\x01 \x01(\tR\tprofileId\x125\n" +
@@ -236,16 +245,17 @@ var file_domain_v1_group_expense_proto_goTypes = []any{
 }
 var file_domain_v1_group_expense_proto_depIdxs = []int32{
 	2, // 0: domain.v1.GroupExpenseResponse.total_amount:type_name -> google.type.Money
-	3, // 1: domain.v1.GroupExpenseResponse.items:type_name -> domain.v1.ExpenseItemResponse
-	4, // 2: domain.v1.GroupExpenseResponse.other_fees:type_name -> domain.v1.OtherFeeResponse
-	1, // 3: domain.v1.GroupExpenseResponse.participants:type_name -> domain.v1.ExpenseParticipantResponse
-	5, // 4: domain.v1.GroupExpenseResponse.audit_metadata:type_name -> domain.v1.AuditMetadata
-	2, // 5: domain.v1.ExpenseParticipantResponse.share_amount:type_name -> google.type.Money
-	6, // [6:6] is the sub-list for method output_type
-	6, // [6:6] is the sub-list for method input_type
-	6, // [6:6] is the sub-list for extension type_name
-	6, // [6:6] is the sub-list for extension extendee
-	0, // [0:6] is the sub-list for field type_name
+	2, // 1: domain.v1.GroupExpenseResponse.subtotal:type_name -> google.type.Money
+	3, // 2: domain.v1.GroupExpenseResponse.items:type_name -> domain.v1.ExpenseItemResponse
+	4, // 3: domain.v1.GroupExpenseResponse.other_fees:type_name -> domain.v1.OtherFeeResponse
+	1, // 4: domain.v1.GroupExpenseResponse.participants:type_name -> domain.v1.ExpenseParticipantResponse
+	5, // 5: domain.v1.GroupExpenseResponse.audit_metadata:type_name -> domain.v1.AuditMetadata
+	2, // 6: domain.v1.ExpenseParticipantResponse.share_amount:type_name -> google.type.Money
+	7, // [7:7] is the sub-list for method output_type
+	7, // [7:7] is the sub-list for method input_type
+	7, // [7:7] is the sub-list for extension type_name
+	7, // [7:7] is the sub-list for extension extendee
+	0, // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_domain_v1_group_expense_proto_init() }

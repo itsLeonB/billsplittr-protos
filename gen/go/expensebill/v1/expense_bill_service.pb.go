@@ -9,7 +9,6 @@ package expensebill
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	reflect "reflect"
 	unsafe "unsafe"
 )
@@ -25,17 +24,17 @@ var File_expensebill_v1_expense_bill_service_proto protoreflect.FileDescriptor
 
 const file_expensebill_v1_expense_bill_service_proto_rawDesc = "" +
 	"\n" +
-	")expensebill/v1/expense_bill_service.proto\x12\x0eexpensebill.v1\x1a)expensebill/v1/expense_bill_message.proto\x1a\x1bgoogle/protobuf/empty.proto2c\n" +
-	"\x12ExpenseBillService\x12M\n" +
-	"\fUploadStream\x12#.expensebill.v1.UploadStreamRequest\x1a\x16.google.protobuf.Empty(\x01BJZHgithub.com/itsLeonB/billsplittr-protos/gen/go/expensebill/v1;expensebillb\x06proto3"
+	")expensebill/v1/expense_bill_service.proto\x12\x0eexpensebill.v1\x1a)expensebill/v1/expense_bill_message.proto2q\n" +
+	"\x12ExpenseBillService\x12[\n" +
+	"\fUploadStream\x12#.expensebill.v1.UploadStreamRequest\x1a$.expensebill.v1.UploadStreamResponse(\x01BJZHgithub.com/itsLeonB/billsplittr-protos/gen/go/expensebill/v1;expensebillb\x06proto3"
 
 var file_expensebill_v1_expense_bill_service_proto_goTypes = []any{
-	(*UploadStreamRequest)(nil), // 0: expensebill.v1.UploadStreamRequest
-	(*emptypb.Empty)(nil),       // 1: google.protobuf.Empty
+	(*UploadStreamRequest)(nil),  // 0: expensebill.v1.UploadStreamRequest
+	(*UploadStreamResponse)(nil), // 1: expensebill.v1.UploadStreamResponse
 }
 var file_expensebill_v1_expense_bill_service_proto_depIdxs = []int32{
 	0, // 0: expensebill.v1.ExpenseBillService.UploadStream:input_type -> expensebill.v1.UploadStreamRequest
-	1, // 1: expensebill.v1.ExpenseBillService.UploadStream:output_type -> google.protobuf.Empty
+	1, // 1: expensebill.v1.ExpenseBillService.UploadStream:output_type -> expensebill.v1.UploadStreamResponse
 	1, // [1:2] is the sub-list for method output_type
 	0, // [0:1] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name

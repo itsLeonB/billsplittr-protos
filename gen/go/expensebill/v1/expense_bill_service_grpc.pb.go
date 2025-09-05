@@ -11,7 +11,6 @@ import (
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
-	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 // This is a compile-time assertion to ensure that this generated file
@@ -27,7 +26,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ExpenseBillServiceClient interface {
-	UploadStream(ctx context.Context, opts ...grpc.CallOption) (grpc.ClientStreamingClient[UploadStreamRequest, emptypb.Empty], error)
+	UploadStream(ctx context.Context, opts ...grpc.CallOption) (grpc.ClientStreamingClient[UploadStreamRequest, UploadStreamResponse], error)
 }
 
 type expenseBillServiceClient struct {
@@ -38,24 +37,24 @@ func NewExpenseBillServiceClient(cc grpc.ClientConnInterface) ExpenseBillService
 	return &expenseBillServiceClient{cc}
 }
 
-func (c *expenseBillServiceClient) UploadStream(ctx context.Context, opts ...grpc.CallOption) (grpc.ClientStreamingClient[UploadStreamRequest, emptypb.Empty], error) {
+func (c *expenseBillServiceClient) UploadStream(ctx context.Context, opts ...grpc.CallOption) (grpc.ClientStreamingClient[UploadStreamRequest, UploadStreamResponse], error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	stream, err := c.cc.NewStream(ctx, &ExpenseBillService_ServiceDesc.Streams[0], ExpenseBillService_UploadStream_FullMethodName, cOpts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &grpc.GenericClientStream[UploadStreamRequest, emptypb.Empty]{ClientStream: stream}
+	x := &grpc.GenericClientStream[UploadStreamRequest, UploadStreamResponse]{ClientStream: stream}
 	return x, nil
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type ExpenseBillService_UploadStreamClient = grpc.ClientStreamingClient[UploadStreamRequest, emptypb.Empty]
+type ExpenseBillService_UploadStreamClient = grpc.ClientStreamingClient[UploadStreamRequest, UploadStreamResponse]
 
 // ExpenseBillServiceServer is the server API for ExpenseBillService service.
 // All implementations must embed UnimplementedExpenseBillServiceServer
 // for forward compatibility.
 type ExpenseBillServiceServer interface {
-	UploadStream(grpc.ClientStreamingServer[UploadStreamRequest, emptypb.Empty]) error
+	UploadStream(grpc.ClientStreamingServer[UploadStreamRequest, UploadStreamResponse]) error
 	mustEmbedUnimplementedExpenseBillServiceServer()
 }
 
@@ -66,7 +65,7 @@ type ExpenseBillServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedExpenseBillServiceServer struct{}
 
-func (UnimplementedExpenseBillServiceServer) UploadStream(grpc.ClientStreamingServer[UploadStreamRequest, emptypb.Empty]) error {
+func (UnimplementedExpenseBillServiceServer) UploadStream(grpc.ClientStreamingServer[UploadStreamRequest, UploadStreamResponse]) error {
 	return status.Errorf(codes.Unimplemented, "method UploadStream not implemented")
 }
 func (UnimplementedExpenseBillServiceServer) mustEmbedUnimplementedExpenseBillServiceServer() {}
@@ -91,11 +90,11 @@ func RegisterExpenseBillServiceServer(s grpc.ServiceRegistrar, srv ExpenseBillSe
 }
 
 func _ExpenseBillService_UploadStream_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(ExpenseBillServiceServer).UploadStream(&grpc.GenericServerStream[UploadStreamRequest, emptypb.Empty]{ServerStream: stream})
+	return srv.(ExpenseBillServiceServer).UploadStream(&grpc.GenericServerStream[UploadStreamRequest, UploadStreamResponse]{ServerStream: stream})
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type ExpenseBillService_UploadStreamServer = grpc.ClientStreamingServer[UploadStreamRequest, emptypb.Empty]
+type ExpenseBillService_UploadStreamServer = grpc.ClientStreamingServer[UploadStreamRequest, UploadStreamResponse]
 
 // ExpenseBillService_ServiceDesc is the grpc.ServiceDesc for ExpenseBillService service.
 // It's only intended for direct use with grpc.RegisterService,
