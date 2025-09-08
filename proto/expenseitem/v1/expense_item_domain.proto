@@ -17,10 +17,10 @@ message ExpenseItem {
 message ExpenseItemResponse {
   string group_expense_id = 1;
   ExpenseItem expense_item = 2;
-  audit.v1.Metadata audit_metadata = 4;
+  audit.v1.Metadata audit_metadata = 3;
 }
 
 message ItemParticipant {
   string profile_id = 1;
-  float share = 2;
+  double share = 2;
 }

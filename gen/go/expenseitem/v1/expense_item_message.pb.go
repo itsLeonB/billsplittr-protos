@@ -7,7 +7,6 @@
 package expenseitem
 
 import (
-	v1 "github.com/itsLeonB/billsplittr-protos/gen/go/domain/v1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -26,7 +25,7 @@ type AddRequest struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	ProfileId      string                 `protobuf:"bytes,1,opt,name=profile_id,json=profileId,proto3" json:"profile_id,omitempty"`
 	GroupExpenseId string                 `protobuf:"bytes,2,opt,name=group_expense_id,json=groupExpenseId,proto3" json:"group_expense_id,omitempty"`
-	ExpenseItem    *v1.ExpenseItem        `protobuf:"bytes,3,opt,name=expense_item,json=expenseItem,proto3" json:"expense_item,omitempty"`
+	ExpenseItem    *ExpenseItem           `protobuf:"bytes,3,opt,name=expense_item,json=expenseItem,proto3" json:"expense_item,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -75,7 +74,7 @@ func (x *AddRequest) GetGroupExpenseId() string {
 	return ""
 }
 
-func (x *AddRequest) GetExpenseItem() *v1.ExpenseItem {
+func (x *AddRequest) GetExpenseItem() *ExpenseItem {
 	if x != nil {
 		return x.ExpenseItem
 	}
@@ -83,8 +82,8 @@ func (x *AddRequest) GetExpenseItem() *v1.ExpenseItem {
 }
 
 type AddResponse struct {
-	state         protoimpl.MessageState  `protogen:"open.v1"`
-	ExpenseItem   *v1.ExpenseItemResponse `protobuf:"bytes,1,opt,name=expense_item,json=expenseItem,proto3" json:"expense_item,omitempty"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ExpenseItem   *ExpenseItemResponse   `protobuf:"bytes,1,opt,name=expense_item,json=expenseItem,proto3" json:"expense_item,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -119,7 +118,7 @@ func (*AddResponse) Descriptor() ([]byte, []int) {
 	return file_expenseitem_v1_expense_item_message_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *AddResponse) GetExpenseItem() *v1.ExpenseItemResponse {
+func (x *AddResponse) GetExpenseItem() *ExpenseItemResponse {
 	if x != nil {
 		return x.ExpenseItem
 	}
@@ -179,8 +178,8 @@ func (x *GetDetailsRequest) GetGroupExpenseId() string {
 }
 
 type GetDetailsResponse struct {
-	state         protoimpl.MessageState  `protogen:"open.v1"`
-	ExpenseItem   *v1.ExpenseItemResponse `protobuf:"bytes,1,opt,name=expense_item,json=expenseItem,proto3" json:"expense_item,omitempty"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ExpenseItem   *ExpenseItemResponse   `protobuf:"bytes,1,opt,name=expense_item,json=expenseItem,proto3" json:"expense_item,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -215,7 +214,7 @@ func (*GetDetailsResponse) Descriptor() ([]byte, []int) {
 	return file_expenseitem_v1_expense_item_message_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *GetDetailsResponse) GetExpenseItem() *v1.ExpenseItemResponse {
+func (x *GetDetailsResponse) GetExpenseItem() *ExpenseItemResponse {
 	if x != nil {
 		return x.ExpenseItem
 	}
@@ -227,7 +226,7 @@ type UpdateRequest struct {
 	ProfileId      string                 `protobuf:"bytes,1,opt,name=profile_id,json=profileId,proto3" json:"profile_id,omitempty"`
 	Id             string                 `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	GroupExpenseId string                 `protobuf:"bytes,3,opt,name=group_expense_id,json=groupExpenseId,proto3" json:"group_expense_id,omitempty"`
-	ExpenseItem    *v1.ExpenseItem        `protobuf:"bytes,4,opt,name=expense_item,json=expenseItem,proto3" json:"expense_item,omitempty"`
+	ExpenseItem    *ExpenseItem           `protobuf:"bytes,4,opt,name=expense_item,json=expenseItem,proto3" json:"expense_item,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -283,7 +282,7 @@ func (x *UpdateRequest) GetGroupExpenseId() string {
 	return ""
 }
 
-func (x *UpdateRequest) GetExpenseItem() *v1.ExpenseItem {
+func (x *UpdateRequest) GetExpenseItem() *ExpenseItem {
 	if x != nil {
 		return x.ExpenseItem
 	}
@@ -291,8 +290,8 @@ func (x *UpdateRequest) GetExpenseItem() *v1.ExpenseItem {
 }
 
 type UpdateResponse struct {
-	state         protoimpl.MessageState  `protogen:"open.v1"`
-	ExpenseItem   *v1.ExpenseItemResponse `protobuf:"bytes,1,opt,name=expense_item,json=expenseItem,proto3" json:"expense_item,omitempty"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ExpenseItem   *ExpenseItemResponse   `protobuf:"bytes,1,opt,name=expense_item,json=expenseItem,proto3" json:"expense_item,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -327,7 +326,7 @@ func (*UpdateResponse) Descriptor() ([]byte, []int) {
 	return file_expenseitem_v1_expense_item_message_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *UpdateResponse) GetExpenseItem() *v1.ExpenseItemResponse {
+func (x *UpdateResponse) GetExpenseItem() *ExpenseItemResponse {
 	if x != nil {
 		return x.ExpenseItem
 	}
@@ -398,28 +397,28 @@ var File_expenseitem_v1_expense_item_message_proto protoreflect.FileDescriptor
 
 const file_expenseitem_v1_expense_item_message_proto_rawDesc = "" +
 	"\n" +
-	")expenseitem/v1/expense_item_message.proto\x12\x0eexpenseitem.v1\x1a\x1cdomain/v1/expense_item.proto\"\x90\x01\n" +
+	")expenseitem/v1/expense_item_message.proto\x12\x0eexpenseitem.v1\x1a(expenseitem/v1/expense_item_domain.proto\"\x95\x01\n" +
 	"\n" +
 	"AddRequest\x12\x1d\n" +
 	"\n" +
 	"profile_id\x18\x01 \x01(\tR\tprofileId\x12(\n" +
-	"\x10group_expense_id\x18\x02 \x01(\tR\x0egroupExpenseId\x129\n" +
-	"\fexpense_item\x18\x03 \x01(\v2\x16.domain.v1.ExpenseItemR\vexpenseItem\"P\n" +
-	"\vAddResponse\x12A\n" +
-	"\fexpense_item\x18\x01 \x01(\v2\x1e.domain.v1.ExpenseItemResponseR\vexpenseItem\"M\n" +
+	"\x10group_expense_id\x18\x02 \x01(\tR\x0egroupExpenseId\x12>\n" +
+	"\fexpense_item\x18\x03 \x01(\v2\x1b.expenseitem.v1.ExpenseItemR\vexpenseItem\"U\n" +
+	"\vAddResponse\x12F\n" +
+	"\fexpense_item\x18\x01 \x01(\v2#.expenseitem.v1.ExpenseItemResponseR\vexpenseItem\"M\n" +
 	"\x11GetDetailsRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12(\n" +
-	"\x10group_expense_id\x18\x02 \x01(\tR\x0egroupExpenseId\"W\n" +
-	"\x12GetDetailsResponse\x12A\n" +
-	"\fexpense_item\x18\x01 \x01(\v2\x1e.domain.v1.ExpenseItemResponseR\vexpenseItem\"\xa3\x01\n" +
+	"\x10group_expense_id\x18\x02 \x01(\tR\x0egroupExpenseId\"\\\n" +
+	"\x12GetDetailsResponse\x12F\n" +
+	"\fexpense_item\x18\x01 \x01(\v2#.expenseitem.v1.ExpenseItemResponseR\vexpenseItem\"\xa8\x01\n" +
 	"\rUpdateRequest\x12\x1d\n" +
 	"\n" +
 	"profile_id\x18\x01 \x01(\tR\tprofileId\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12(\n" +
-	"\x10group_expense_id\x18\x03 \x01(\tR\x0egroupExpenseId\x129\n" +
-	"\fexpense_item\x18\x04 \x01(\v2\x16.domain.v1.ExpenseItemR\vexpenseItem\"S\n" +
-	"\x0eUpdateResponse\x12A\n" +
-	"\fexpense_item\x18\x01 \x01(\v2\x1e.domain.v1.ExpenseItemResponseR\vexpenseItem\"h\n" +
+	"\x10group_expense_id\x18\x03 \x01(\tR\x0egroupExpenseId\x12>\n" +
+	"\fexpense_item\x18\x04 \x01(\v2\x1b.expenseitem.v1.ExpenseItemR\vexpenseItem\"X\n" +
+	"\x0eUpdateResponse\x12F\n" +
+	"\fexpense_item\x18\x01 \x01(\v2#.expenseitem.v1.ExpenseItemResponseR\vexpenseItem\"h\n" +
 	"\rRemoveRequest\x12\x1d\n" +
 	"\n" +
 	"profile_id\x18\x01 \x01(\tR\tprofileId\x12\x0e\n" +
@@ -440,22 +439,22 @@ func file_expenseitem_v1_expense_item_message_proto_rawDescGZIP() []byte {
 
 var file_expenseitem_v1_expense_item_message_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_expenseitem_v1_expense_item_message_proto_goTypes = []any{
-	(*AddRequest)(nil),             // 0: expenseitem.v1.AddRequest
-	(*AddResponse)(nil),            // 1: expenseitem.v1.AddResponse
-	(*GetDetailsRequest)(nil),      // 2: expenseitem.v1.GetDetailsRequest
-	(*GetDetailsResponse)(nil),     // 3: expenseitem.v1.GetDetailsResponse
-	(*UpdateRequest)(nil),          // 4: expenseitem.v1.UpdateRequest
-	(*UpdateResponse)(nil),         // 5: expenseitem.v1.UpdateResponse
-	(*RemoveRequest)(nil),          // 6: expenseitem.v1.RemoveRequest
-	(*v1.ExpenseItem)(nil),         // 7: domain.v1.ExpenseItem
-	(*v1.ExpenseItemResponse)(nil), // 8: domain.v1.ExpenseItemResponse
+	(*AddRequest)(nil),          // 0: expenseitem.v1.AddRequest
+	(*AddResponse)(nil),         // 1: expenseitem.v1.AddResponse
+	(*GetDetailsRequest)(nil),   // 2: expenseitem.v1.GetDetailsRequest
+	(*GetDetailsResponse)(nil),  // 3: expenseitem.v1.GetDetailsResponse
+	(*UpdateRequest)(nil),       // 4: expenseitem.v1.UpdateRequest
+	(*UpdateResponse)(nil),      // 5: expenseitem.v1.UpdateResponse
+	(*RemoveRequest)(nil),       // 6: expenseitem.v1.RemoveRequest
+	(*ExpenseItem)(nil),         // 7: expenseitem.v1.ExpenseItem
+	(*ExpenseItemResponse)(nil), // 8: expenseitem.v1.ExpenseItemResponse
 }
 var file_expenseitem_v1_expense_item_message_proto_depIdxs = []int32{
-	7, // 0: expenseitem.v1.AddRequest.expense_item:type_name -> domain.v1.ExpenseItem
-	8, // 1: expenseitem.v1.AddResponse.expense_item:type_name -> domain.v1.ExpenseItemResponse
-	8, // 2: expenseitem.v1.GetDetailsResponse.expense_item:type_name -> domain.v1.ExpenseItemResponse
-	7, // 3: expenseitem.v1.UpdateRequest.expense_item:type_name -> domain.v1.ExpenseItem
-	8, // 4: expenseitem.v1.UpdateResponse.expense_item:type_name -> domain.v1.ExpenseItemResponse
+	7, // 0: expenseitem.v1.AddRequest.expense_item:type_name -> expenseitem.v1.ExpenseItem
+	8, // 1: expenseitem.v1.AddResponse.expense_item:type_name -> expenseitem.v1.ExpenseItemResponse
+	8, // 2: expenseitem.v1.GetDetailsResponse.expense_item:type_name -> expenseitem.v1.ExpenseItemResponse
+	7, // 3: expenseitem.v1.UpdateRequest.expense_item:type_name -> expenseitem.v1.ExpenseItem
+	8, // 4: expenseitem.v1.UpdateResponse.expense_item:type_name -> expenseitem.v1.ExpenseItemResponse
 	5, // [5:5] is the sub-list for method output_type
 	5, // [5:5] is the sub-list for method input_type
 	5, // [5:5] is the sub-list for extension type_name
@@ -468,6 +467,7 @@ func file_expenseitem_v1_expense_item_message_proto_init() {
 	if File_expenseitem_v1_expense_item_message_proto != nil {
 		return
 	}
+	file_expenseitem_v1_expense_item_domain_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

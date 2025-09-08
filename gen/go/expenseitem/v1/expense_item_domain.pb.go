@@ -2,11 +2,12 @@
 // versions:
 // 	protoc-gen-go v1.36.8
 // 	protoc        (unknown)
-// source: domain/v1/expense_item.proto
+// source: expenseitem/v1/expense_item_domain.proto
 
-package domain
+package expenseitem
 
 import (
+	v1 "github.com/itsLeonB/audit/gen/go/audit/v1"
 	money "google.golang.org/genproto/googleapis/type/money"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
@@ -34,7 +35,7 @@ type ExpenseItem struct {
 
 func (x *ExpenseItem) Reset() {
 	*x = ExpenseItem{}
-	mi := &file_domain_v1_expense_item_proto_msgTypes[0]
+	mi := &file_expenseitem_v1_expense_item_domain_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -46,7 +47,7 @@ func (x *ExpenseItem) String() string {
 func (*ExpenseItem) ProtoMessage() {}
 
 func (x *ExpenseItem) ProtoReflect() protoreflect.Message {
-	mi := &file_domain_v1_expense_item_proto_msgTypes[0]
+	mi := &file_expenseitem_v1_expense_item_domain_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -59,7 +60,7 @@ func (x *ExpenseItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ExpenseItem.ProtoReflect.Descriptor instead.
 func (*ExpenseItem) Descriptor() ([]byte, []int) {
-	return file_domain_v1_expense_item_proto_rawDescGZIP(), []int{0}
+	return file_expenseitem_v1_expense_item_domain_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *ExpenseItem) GetName() string {
@@ -94,14 +95,14 @@ type ExpenseItemResponse struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	GroupExpenseId string                 `protobuf:"bytes,1,opt,name=group_expense_id,json=groupExpenseId,proto3" json:"group_expense_id,omitempty"`
 	ExpenseItem    *ExpenseItem           `protobuf:"bytes,2,opt,name=expense_item,json=expenseItem,proto3" json:"expense_item,omitempty"`
-	AuditMetadata  *AuditMetadata         `protobuf:"bytes,4,opt,name=audit_metadata,json=auditMetadata,proto3" json:"audit_metadata,omitempty"`
+	AuditMetadata  *v1.Metadata           `protobuf:"bytes,3,opt,name=audit_metadata,json=auditMetadata,proto3" json:"audit_metadata,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
 
 func (x *ExpenseItemResponse) Reset() {
 	*x = ExpenseItemResponse{}
-	mi := &file_domain_v1_expense_item_proto_msgTypes[1]
+	mi := &file_expenseitem_v1_expense_item_domain_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -113,7 +114,7 @@ func (x *ExpenseItemResponse) String() string {
 func (*ExpenseItemResponse) ProtoMessage() {}
 
 func (x *ExpenseItemResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_domain_v1_expense_item_proto_msgTypes[1]
+	mi := &file_expenseitem_v1_expense_item_domain_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -126,7 +127,7 @@ func (x *ExpenseItemResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ExpenseItemResponse.ProtoReflect.Descriptor instead.
 func (*ExpenseItemResponse) Descriptor() ([]byte, []int) {
-	return file_domain_v1_expense_item_proto_rawDescGZIP(), []int{1}
+	return file_expenseitem_v1_expense_item_domain_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *ExpenseItemResponse) GetGroupExpenseId() string {
@@ -143,7 +144,7 @@ func (x *ExpenseItemResponse) GetExpenseItem() *ExpenseItem {
 	return nil
 }
 
-func (x *ExpenseItemResponse) GetAuditMetadata() *AuditMetadata {
+func (x *ExpenseItemResponse) GetAuditMetadata() *v1.Metadata {
 	if x != nil {
 		return x.AuditMetadata
 	}
@@ -153,14 +154,14 @@ func (x *ExpenseItemResponse) GetAuditMetadata() *AuditMetadata {
 type ItemParticipant struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ProfileId     string                 `protobuf:"bytes,1,opt,name=profile_id,json=profileId,proto3" json:"profile_id,omitempty"`
-	Share         float32                `protobuf:"fixed32,2,opt,name=share,proto3" json:"share,omitempty"`
+	Share         float64                `protobuf:"fixed64,2,opt,name=share,proto3" json:"share,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ItemParticipant) Reset() {
 	*x = ItemParticipant{}
-	mi := &file_domain_v1_expense_item_proto_msgTypes[2]
+	mi := &file_expenseitem_v1_expense_item_domain_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -172,7 +173,7 @@ func (x *ItemParticipant) String() string {
 func (*ItemParticipant) ProtoMessage() {}
 
 func (x *ItemParticipant) ProtoReflect() protoreflect.Message {
-	mi := &file_domain_v1_expense_item_proto_msgTypes[2]
+	mi := &file_expenseitem_v1_expense_item_domain_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -185,7 +186,7 @@ func (x *ItemParticipant) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ItemParticipant.ProtoReflect.Descriptor instead.
 func (*ItemParticipant) Descriptor() ([]byte, []int) {
-	return file_domain_v1_expense_item_proto_rawDescGZIP(), []int{2}
+	return file_expenseitem_v1_expense_item_domain_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *ItemParticipant) GetProfileId() string {
@@ -195,57 +196,57 @@ func (x *ItemParticipant) GetProfileId() string {
 	return ""
 }
 
-func (x *ItemParticipant) GetShare() float32 {
+func (x *ItemParticipant) GetShare() float64 {
 	if x != nil {
 		return x.Share
 	}
 	return 0
 }
 
-var File_domain_v1_expense_item_proto protoreflect.FileDescriptor
+var File_expenseitem_v1_expense_item_domain_proto protoreflect.FileDescriptor
 
-const file_domain_v1_expense_item_proto_rawDesc = "" +
+const file_expenseitem_v1_expense_item_domain_proto_rawDesc = "" +
 	"\n" +
-	"\x1cdomain/v1/expense_item.proto\x12\tdomain.v1\x1a\x16domain/v1/domain.proto\x1a\x17google/type/money.proto\"\xa9\x01\n" +
+	"(expenseitem/v1/expense_item_domain.proto\x12\x0eexpenseitem.v1\x1a\x17audit/v1/metadata.proto\x1a\x17google/type/money.proto\"\xae\x01\n" +
 	"\vExpenseItem\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12*\n" +
 	"\x06amount\x18\x02 \x01(\v2\x12.google.type.MoneyR\x06amount\x12\x1a\n" +
-	"\bquantity\x18\x03 \x01(\x03R\bquantity\x12>\n" +
-	"\fparticipants\x18\x04 \x03(\v2\x1a.domain.v1.ItemParticipantR\fparticipants\"\xbb\x01\n" +
+	"\bquantity\x18\x03 \x01(\x03R\bquantity\x12C\n" +
+	"\fparticipants\x18\x04 \x03(\v2\x1f.expenseitem.v1.ItemParticipantR\fparticipants\"\xba\x01\n" +
 	"\x13ExpenseItemResponse\x12(\n" +
-	"\x10group_expense_id\x18\x01 \x01(\tR\x0egroupExpenseId\x129\n" +
-	"\fexpense_item\x18\x02 \x01(\v2\x16.domain.v1.ExpenseItemR\vexpenseItem\x12?\n" +
-	"\x0eaudit_metadata\x18\x04 \x01(\v2\x18.domain.v1.AuditMetadataR\rauditMetadata\"F\n" +
+	"\x10group_expense_id\x18\x01 \x01(\tR\x0egroupExpenseId\x12>\n" +
+	"\fexpense_item\x18\x02 \x01(\v2\x1b.expenseitem.v1.ExpenseItemR\vexpenseItem\x129\n" +
+	"\x0eaudit_metadata\x18\x03 \x01(\v2\x12.audit.v1.MetadataR\rauditMetadata\"F\n" +
 	"\x0fItemParticipant\x12\x1d\n" +
 	"\n" +
 	"profile_id\x18\x01 \x01(\tR\tprofileId\x12\x14\n" +
-	"\x05share\x18\x02 \x01(\x02R\x05shareB@Z>github.com/itsLeonB/billsplittr-protos/gen/go/domain/v1;domainb\x06proto3"
+	"\x05share\x18\x02 \x01(\x01R\x05shareBJZHgithub.com/itsLeonB/billsplittr-protos/gen/go/expenseitem/v1;expenseitemb\x06proto3"
 
 var (
-	file_domain_v1_expense_item_proto_rawDescOnce sync.Once
-	file_domain_v1_expense_item_proto_rawDescData []byte
+	file_expenseitem_v1_expense_item_domain_proto_rawDescOnce sync.Once
+	file_expenseitem_v1_expense_item_domain_proto_rawDescData []byte
 )
 
-func file_domain_v1_expense_item_proto_rawDescGZIP() []byte {
-	file_domain_v1_expense_item_proto_rawDescOnce.Do(func() {
-		file_domain_v1_expense_item_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_domain_v1_expense_item_proto_rawDesc), len(file_domain_v1_expense_item_proto_rawDesc)))
+func file_expenseitem_v1_expense_item_domain_proto_rawDescGZIP() []byte {
+	file_expenseitem_v1_expense_item_domain_proto_rawDescOnce.Do(func() {
+		file_expenseitem_v1_expense_item_domain_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_expenseitem_v1_expense_item_domain_proto_rawDesc), len(file_expenseitem_v1_expense_item_domain_proto_rawDesc)))
 	})
-	return file_domain_v1_expense_item_proto_rawDescData
+	return file_expenseitem_v1_expense_item_domain_proto_rawDescData
 }
 
-var file_domain_v1_expense_item_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
-var file_domain_v1_expense_item_proto_goTypes = []any{
-	(*ExpenseItem)(nil),         // 0: domain.v1.ExpenseItem
-	(*ExpenseItemResponse)(nil), // 1: domain.v1.ExpenseItemResponse
-	(*ItemParticipant)(nil),     // 2: domain.v1.ItemParticipant
+var file_expenseitem_v1_expense_item_domain_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_expenseitem_v1_expense_item_domain_proto_goTypes = []any{
+	(*ExpenseItem)(nil),         // 0: expenseitem.v1.ExpenseItem
+	(*ExpenseItemResponse)(nil), // 1: expenseitem.v1.ExpenseItemResponse
+	(*ItemParticipant)(nil),     // 2: expenseitem.v1.ItemParticipant
 	(*money.Money)(nil),         // 3: google.type.Money
-	(*AuditMetadata)(nil),       // 4: domain.v1.AuditMetadata
+	(*v1.Metadata)(nil),         // 4: audit.v1.Metadata
 }
-var file_domain_v1_expense_item_proto_depIdxs = []int32{
-	3, // 0: domain.v1.ExpenseItem.amount:type_name -> google.type.Money
-	2, // 1: domain.v1.ExpenseItem.participants:type_name -> domain.v1.ItemParticipant
-	0, // 2: domain.v1.ExpenseItemResponse.expense_item:type_name -> domain.v1.ExpenseItem
-	4, // 3: domain.v1.ExpenseItemResponse.audit_metadata:type_name -> domain.v1.AuditMetadata
+var file_expenseitem_v1_expense_item_domain_proto_depIdxs = []int32{
+	3, // 0: expenseitem.v1.ExpenseItem.amount:type_name -> google.type.Money
+	2, // 1: expenseitem.v1.ExpenseItem.participants:type_name -> expenseitem.v1.ItemParticipant
+	0, // 2: expenseitem.v1.ExpenseItemResponse.expense_item:type_name -> expenseitem.v1.ExpenseItem
+	4, // 3: expenseitem.v1.ExpenseItemResponse.audit_metadata:type_name -> audit.v1.Metadata
 	4, // [4:4] is the sub-list for method output_type
 	4, // [4:4] is the sub-list for method input_type
 	4, // [4:4] is the sub-list for extension type_name
@@ -253,27 +254,26 @@ var file_domain_v1_expense_item_proto_depIdxs = []int32{
 	0, // [0:4] is the sub-list for field type_name
 }
 
-func init() { file_domain_v1_expense_item_proto_init() }
-func file_domain_v1_expense_item_proto_init() {
-	if File_domain_v1_expense_item_proto != nil {
+func init() { file_expenseitem_v1_expense_item_domain_proto_init() }
+func file_expenseitem_v1_expense_item_domain_proto_init() {
+	if File_expenseitem_v1_expense_item_domain_proto != nil {
 		return
 	}
-	file_domain_v1_domain_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_domain_v1_expense_item_proto_rawDesc), len(file_domain_v1_expense_item_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_expenseitem_v1_expense_item_domain_proto_rawDesc), len(file_expenseitem_v1_expense_item_domain_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   3,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_domain_v1_expense_item_proto_goTypes,
-		DependencyIndexes: file_domain_v1_expense_item_proto_depIdxs,
-		MessageInfos:      file_domain_v1_expense_item_proto_msgTypes,
+		GoTypes:           file_expenseitem_v1_expense_item_domain_proto_goTypes,
+		DependencyIndexes: file_expenseitem_v1_expense_item_domain_proto_depIdxs,
+		MessageInfos:      file_expenseitem_v1_expense_item_domain_proto_msgTypes,
 	}.Build()
-	File_domain_v1_expense_item_proto = out.File
-	file_domain_v1_expense_item_proto_goTypes = nil
-	file_domain_v1_expense_item_proto_depIdxs = nil
+	File_expenseitem_v1_expense_item_domain_proto = out.File
+	file_expenseitem_v1_expense_item_domain_proto_goTypes = nil
+	file_expenseitem_v1_expense_item_domain_proto_depIdxs = nil
 }

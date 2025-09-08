@@ -3,6 +3,7 @@ module github.com/itsLeonB/billsplittr-protos
 go 1.25.0
 
 require (
+	github.com/itsLeonB/audit v0.1.0
 	google.golang.org/genproto v0.0.0-20250826171959-ef028d996bc1
 	google.golang.org/grpc v1.75.0
 	google.golang.org/protobuf v1.36.8

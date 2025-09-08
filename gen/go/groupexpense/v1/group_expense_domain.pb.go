@@ -2,11 +2,14 @@
 // versions:
 // 	protoc-gen-go v1.36.8
 // 	protoc        (unknown)
-// source: domain/v1/group_expense.proto
+// source: groupexpense/v1/group_expense_domain.proto
 
-package domain
+package groupexpense
 
 import (
+	v12 "github.com/itsLeonB/audit/gen/go/audit/v1"
+	v1 "github.com/itsLeonB/billsplittr-protos/gen/go/expenseitem/v1"
+	v11 "github.com/itsLeonB/billsplittr-protos/gen/go/otherfee/v1"
 	money "google.golang.org/genproto/googleapis/type/money"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
@@ -31,17 +34,17 @@ type GroupExpenseResponse struct {
 	CreatorProfileId        string                        `protobuf:"bytes,5,opt,name=creator_profile_id,json=creatorProfileId,proto3" json:"creator_profile_id,omitempty"`
 	IsConfirmed             bool                          `protobuf:"varint,6,opt,name=is_confirmed,json=isConfirmed,proto3" json:"is_confirmed,omitempty"`
 	IsParticipantsConfirmed bool                          `protobuf:"varint,7,opt,name=is_participants_confirmed,json=isParticipantsConfirmed,proto3" json:"is_participants_confirmed,omitempty"`
-	Items                   []*ExpenseItemResponse        `protobuf:"bytes,8,rep,name=items,proto3" json:"items,omitempty"`
-	OtherFees               []*OtherFeeResponse           `protobuf:"bytes,9,rep,name=other_fees,json=otherFees,proto3" json:"other_fees,omitempty"`
+	Items                   []*v1.ExpenseItemResponse     `protobuf:"bytes,8,rep,name=items,proto3" json:"items,omitempty"`
+	OtherFees               []*v11.OtherFeeResponse       `protobuf:"bytes,9,rep,name=other_fees,json=otherFees,proto3" json:"other_fees,omitempty"`
 	Participants            []*ExpenseParticipantResponse `protobuf:"bytes,10,rep,name=participants,proto3" json:"participants,omitempty"`
-	AuditMetadata           *AuditMetadata                `protobuf:"bytes,11,opt,name=audit_metadata,json=auditMetadata,proto3" json:"audit_metadata,omitempty"`
+	AuditMetadata           *v12.Metadata                 `protobuf:"bytes,11,opt,name=audit_metadata,json=auditMetadata,proto3" json:"audit_metadata,omitempty"`
 	unknownFields           protoimpl.UnknownFields
 	sizeCache               protoimpl.SizeCache
 }
 
 func (x *GroupExpenseResponse) Reset() {
 	*x = GroupExpenseResponse{}
-	mi := &file_domain_v1_group_expense_proto_msgTypes[0]
+	mi := &file_groupexpense_v1_group_expense_domain_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -53,7 +56,7 @@ func (x *GroupExpenseResponse) String() string {
 func (*GroupExpenseResponse) ProtoMessage() {}
 
 func (x *GroupExpenseResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_domain_v1_group_expense_proto_msgTypes[0]
+	mi := &file_groupexpense_v1_group_expense_domain_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -66,7 +69,7 @@ func (x *GroupExpenseResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GroupExpenseResponse.ProtoReflect.Descriptor instead.
 func (*GroupExpenseResponse) Descriptor() ([]byte, []int) {
-	return file_domain_v1_group_expense_proto_rawDescGZIP(), []int{0}
+	return file_groupexpense_v1_group_expense_domain_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *GroupExpenseResponse) GetPayerProfileId() string {
@@ -118,14 +121,14 @@ func (x *GroupExpenseResponse) GetIsParticipantsConfirmed() bool {
 	return false
 }
 
-func (x *GroupExpenseResponse) GetItems() []*ExpenseItemResponse {
+func (x *GroupExpenseResponse) GetItems() []*v1.ExpenseItemResponse {
 	if x != nil {
 		return x.Items
 	}
 	return nil
 }
 
-func (x *GroupExpenseResponse) GetOtherFees() []*OtherFeeResponse {
+func (x *GroupExpenseResponse) GetOtherFees() []*v11.OtherFeeResponse {
 	if x != nil {
 		return x.OtherFees
 	}
@@ -139,7 +142,7 @@ func (x *GroupExpenseResponse) GetParticipants() []*ExpenseParticipantResponse {
 	return nil
 }
 
-func (x *GroupExpenseResponse) GetAuditMetadata() *AuditMetadata {
+func (x *GroupExpenseResponse) GetAuditMetadata() *v12.Metadata {
 	if x != nil {
 		return x.AuditMetadata
 	}
@@ -156,7 +159,7 @@ type ExpenseParticipantResponse struct {
 
 func (x *ExpenseParticipantResponse) Reset() {
 	*x = ExpenseParticipantResponse{}
-	mi := &file_domain_v1_group_expense_proto_msgTypes[1]
+	mi := &file_groupexpense_v1_group_expense_domain_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -168,7 +171,7 @@ func (x *ExpenseParticipantResponse) String() string {
 func (*ExpenseParticipantResponse) ProtoMessage() {}
 
 func (x *ExpenseParticipantResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_domain_v1_group_expense_proto_msgTypes[1]
+	mi := &file_groupexpense_v1_group_expense_domain_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -181,7 +184,7 @@ func (x *ExpenseParticipantResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ExpenseParticipantResponse.ProtoReflect.Descriptor instead.
 func (*ExpenseParticipantResponse) Descriptor() ([]byte, []int) {
-	return file_domain_v1_group_expense_proto_rawDescGZIP(), []int{1}
+	return file_groupexpense_v1_group_expense_domain_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *ExpenseParticipantResponse) GetProfileId() string {
@@ -198,11 +201,11 @@ func (x *ExpenseParticipantResponse) GetShareAmount() *money.Money {
 	return nil
 }
 
-var File_domain_v1_group_expense_proto protoreflect.FileDescriptor
+var File_groupexpense_v1_group_expense_domain_proto protoreflect.FileDescriptor
 
-const file_domain_v1_group_expense_proto_rawDesc = "" +
+const file_groupexpense_v1_group_expense_domain_proto_rawDesc = "" +
 	"\n" +
-	"\x1ddomain/v1/group_expense.proto\x12\tdomain.v1\x1a\x16domain/v1/domain.proto\x1a\x1cdomain/v1/expense_item.proto\x1a\x19domain/v1/other_fee.proto\x1a\x17google/type/money.proto\"\xd4\x04\n" +
+	"*groupexpense/v1/group_expense_domain.proto\x12\x0fgroupexpense.v1\x1a\x17audit/v1/metadata.proto\x1a(expenseitem/v1/expense_item_domain.proto\x1a\x17google/type/money.proto\x1a\"otherfee/v1/other_fee_domain.proto\"\xdb\x04\n" +
 	"\x14GroupExpenseResponse\x12(\n" +
 	"\x10payer_profile_id\x18\x01 \x01(\tR\x0epayerProfileId\x125\n" +
 	"\ftotal_amount\x18\x02 \x01(\v2\x12.google.type.MoneyR\vtotalAmount\x12.\n" +
@@ -210,47 +213,47 @@ const file_domain_v1_group_expense_proto_rawDesc = "" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12,\n" +
 	"\x12creator_profile_id\x18\x05 \x01(\tR\x10creatorProfileId\x12!\n" +
 	"\fis_confirmed\x18\x06 \x01(\bR\visConfirmed\x12:\n" +
-	"\x19is_participants_confirmed\x18\a \x01(\bR\x17isParticipantsConfirmed\x124\n" +
-	"\x05items\x18\b \x03(\v2\x1e.domain.v1.ExpenseItemResponseR\x05items\x12:\n" +
+	"\x19is_participants_confirmed\x18\a \x01(\bR\x17isParticipantsConfirmed\x129\n" +
+	"\x05items\x18\b \x03(\v2#.expenseitem.v1.ExpenseItemResponseR\x05items\x12<\n" +
 	"\n" +
-	"other_fees\x18\t \x03(\v2\x1b.domain.v1.OtherFeeResponseR\totherFees\x12I\n" +
+	"other_fees\x18\t \x03(\v2\x1d.otherfee.v1.OtherFeeResponseR\totherFees\x12O\n" +
 	"\fparticipants\x18\n" +
-	" \x03(\v2%.domain.v1.ExpenseParticipantResponseR\fparticipants\x12?\n" +
-	"\x0eaudit_metadata\x18\v \x01(\v2\x18.domain.v1.AuditMetadataR\rauditMetadata\"r\n" +
+	" \x03(\v2+.groupexpense.v1.ExpenseParticipantResponseR\fparticipants\x129\n" +
+	"\x0eaudit_metadata\x18\v \x01(\v2\x12.audit.v1.MetadataR\rauditMetadata\"r\n" +
 	"\x1aExpenseParticipantResponse\x12\x1d\n" +
 	"\n" +
 	"profile_id\x18\x01 \x01(\tR\tprofileId\x125\n" +
-	"\fshare_amount\x18\x02 \x01(\v2\x12.google.type.MoneyR\vshareAmountB@Z>github.com/itsLeonB/billsplittr-protos/gen/go/domain/v1;domainb\x06proto3"
+	"\fshare_amount\x18\x02 \x01(\v2\x12.google.type.MoneyR\vshareAmountBLZJgithub.com/itsLeonB/billsplittr-protos/gen/go/groupexpense/v1;groupexpenseb\x06proto3"
 
 var (
-	file_domain_v1_group_expense_proto_rawDescOnce sync.Once
-	file_domain_v1_group_expense_proto_rawDescData []byte
+	file_groupexpense_v1_group_expense_domain_proto_rawDescOnce sync.Once
+	file_groupexpense_v1_group_expense_domain_proto_rawDescData []byte
 )
 
-func file_domain_v1_group_expense_proto_rawDescGZIP() []byte {
-	file_domain_v1_group_expense_proto_rawDescOnce.Do(func() {
-		file_domain_v1_group_expense_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_domain_v1_group_expense_proto_rawDesc), len(file_domain_v1_group_expense_proto_rawDesc)))
+func file_groupexpense_v1_group_expense_domain_proto_rawDescGZIP() []byte {
+	file_groupexpense_v1_group_expense_domain_proto_rawDescOnce.Do(func() {
+		file_groupexpense_v1_group_expense_domain_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_groupexpense_v1_group_expense_domain_proto_rawDesc), len(file_groupexpense_v1_group_expense_domain_proto_rawDesc)))
 	})
-	return file_domain_v1_group_expense_proto_rawDescData
+	return file_groupexpense_v1_group_expense_domain_proto_rawDescData
 }
 
-var file_domain_v1_group_expense_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-var file_domain_v1_group_expense_proto_goTypes = []any{
-	(*GroupExpenseResponse)(nil),       // 0: domain.v1.GroupExpenseResponse
-	(*ExpenseParticipantResponse)(nil), // 1: domain.v1.ExpenseParticipantResponse
+var file_groupexpense_v1_group_expense_domain_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_groupexpense_v1_group_expense_domain_proto_goTypes = []any{
+	(*GroupExpenseResponse)(nil),       // 0: groupexpense.v1.GroupExpenseResponse
+	(*ExpenseParticipantResponse)(nil), // 1: groupexpense.v1.ExpenseParticipantResponse
 	(*money.Money)(nil),                // 2: google.type.Money
-	(*ExpenseItemResponse)(nil),        // 3: domain.v1.ExpenseItemResponse
-	(*OtherFeeResponse)(nil),           // 4: domain.v1.OtherFeeResponse
-	(*AuditMetadata)(nil),              // 5: domain.v1.AuditMetadata
+	(*v1.ExpenseItemResponse)(nil),     // 3: expenseitem.v1.ExpenseItemResponse
+	(*v11.OtherFeeResponse)(nil),       // 4: otherfee.v1.OtherFeeResponse
+	(*v12.Metadata)(nil),               // 5: audit.v1.Metadata
 }
-var file_domain_v1_group_expense_proto_depIdxs = []int32{
-	2, // 0: domain.v1.GroupExpenseResponse.total_amount:type_name -> google.type.Money
-	2, // 1: domain.v1.GroupExpenseResponse.subtotal:type_name -> google.type.Money
-	3, // 2: domain.v1.GroupExpenseResponse.items:type_name -> domain.v1.ExpenseItemResponse
-	4, // 3: domain.v1.GroupExpenseResponse.other_fees:type_name -> domain.v1.OtherFeeResponse
-	1, // 4: domain.v1.GroupExpenseResponse.participants:type_name -> domain.v1.ExpenseParticipantResponse
-	5, // 5: domain.v1.GroupExpenseResponse.audit_metadata:type_name -> domain.v1.AuditMetadata
-	2, // 6: domain.v1.ExpenseParticipantResponse.share_amount:type_name -> google.type.Money
+var file_groupexpense_v1_group_expense_domain_proto_depIdxs = []int32{
+	2, // 0: groupexpense.v1.GroupExpenseResponse.total_amount:type_name -> google.type.Money
+	2, // 1: groupexpense.v1.GroupExpenseResponse.subtotal:type_name -> google.type.Money
+	3, // 2: groupexpense.v1.GroupExpenseResponse.items:type_name -> expenseitem.v1.ExpenseItemResponse
+	4, // 3: groupexpense.v1.GroupExpenseResponse.other_fees:type_name -> otherfee.v1.OtherFeeResponse
+	1, // 4: groupexpense.v1.GroupExpenseResponse.participants:type_name -> groupexpense.v1.ExpenseParticipantResponse
+	5, // 5: groupexpense.v1.GroupExpenseResponse.audit_metadata:type_name -> audit.v1.Metadata
+	2, // 6: groupexpense.v1.ExpenseParticipantResponse.share_amount:type_name -> google.type.Money
 	7, // [7:7] is the sub-list for method output_type
 	7, // [7:7] is the sub-list for method input_type
 	7, // [7:7] is the sub-list for extension type_name
@@ -258,29 +261,26 @@ var file_domain_v1_group_expense_proto_depIdxs = []int32{
 	0, // [0:7] is the sub-list for field type_name
 }
 
-func init() { file_domain_v1_group_expense_proto_init() }
-func file_domain_v1_group_expense_proto_init() {
-	if File_domain_v1_group_expense_proto != nil {
+func init() { file_groupexpense_v1_group_expense_domain_proto_init() }
+func file_groupexpense_v1_group_expense_domain_proto_init() {
+	if File_groupexpense_v1_group_expense_domain_proto != nil {
 		return
 	}
-	file_domain_v1_domain_proto_init()
-	file_domain_v1_expense_item_proto_init()
-	file_domain_v1_other_fee_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_domain_v1_group_expense_proto_rawDesc), len(file_domain_v1_group_expense_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_groupexpense_v1_group_expense_domain_proto_rawDesc), len(file_groupexpense_v1_group_expense_domain_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_domain_v1_group_expense_proto_goTypes,
-		DependencyIndexes: file_domain_v1_group_expense_proto_depIdxs,
-		MessageInfos:      file_domain_v1_group_expense_proto_msgTypes,
+		GoTypes:           file_groupexpense_v1_group_expense_domain_proto_goTypes,
+		DependencyIndexes: file_groupexpense_v1_group_expense_domain_proto_depIdxs,
+		MessageInfos:      file_groupexpense_v1_group_expense_domain_proto_msgTypes,
 	}.Build()
-	File_domain_v1_group_expense_proto = out.File
-	file_domain_v1_group_expense_proto_goTypes = nil
-	file_domain_v1_group_expense_proto_depIdxs = nil
+	File_groupexpense_v1_group_expense_domain_proto = out.File
+	file_groupexpense_v1_group_expense_domain_proto_goTypes = nil
+	file_groupexpense_v1_group_expense_domain_proto_depIdxs = nil
 }

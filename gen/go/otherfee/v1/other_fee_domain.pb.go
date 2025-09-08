@@ -2,11 +2,12 @@
 // versions:
 // 	protoc-gen-go v1.36.8
 // 	protoc        (unknown)
-// source: domain/v1/other_fee.proto
+// source: otherfee/v1/other_fee_domain.proto
 
-package domain
+package otherfee
 
 import (
+	v1 "github.com/itsLeonB/audit/gen/go/audit/v1"
 	money "google.golang.org/genproto/googleapis/type/money"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
@@ -55,11 +56,11 @@ func (x FeeCalculationMethod) String() string {
 }
 
 func (FeeCalculationMethod) Descriptor() protoreflect.EnumDescriptor {
-	return file_domain_v1_other_fee_proto_enumTypes[0].Descriptor()
+	return file_otherfee_v1_other_fee_domain_proto_enumTypes[0].Descriptor()
 }
 
 func (FeeCalculationMethod) Type() protoreflect.EnumType {
-	return &file_domain_v1_other_fee_proto_enumTypes[0]
+	return &file_otherfee_v1_other_fee_domain_proto_enumTypes[0]
 }
 
 func (x FeeCalculationMethod) Number() protoreflect.EnumNumber {
@@ -68,21 +69,21 @@ func (x FeeCalculationMethod) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use FeeCalculationMethod.Descriptor instead.
 func (FeeCalculationMethod) EnumDescriptor() ([]byte, []int) {
-	return file_domain_v1_other_fee_proto_rawDescGZIP(), []int{0}
+	return file_otherfee_v1_other_fee_domain_proto_rawDescGZIP(), []int{0}
 }
 
 type OtherFee struct {
 	state             protoimpl.MessageState `protogen:"open.v1"`
 	Name              string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	Amount            *money.Money           `protobuf:"bytes,2,opt,name=amount,proto3" json:"amount,omitempty"`
-	CalculationMethod FeeCalculationMethod   `protobuf:"varint,3,opt,name=calculation_method,json=calculationMethod,proto3,enum=domain.v1.FeeCalculationMethod" json:"calculation_method,omitempty"`
+	CalculationMethod FeeCalculationMethod   `protobuf:"varint,3,opt,name=calculation_method,json=calculationMethod,proto3,enum=otherfee.v1.FeeCalculationMethod" json:"calculation_method,omitempty"`
 	unknownFields     protoimpl.UnknownFields
 	sizeCache         protoimpl.SizeCache
 }
 
 func (x *OtherFee) Reset() {
 	*x = OtherFee{}
-	mi := &file_domain_v1_other_fee_proto_msgTypes[0]
+	mi := &file_otherfee_v1_other_fee_domain_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -94,7 +95,7 @@ func (x *OtherFee) String() string {
 func (*OtherFee) ProtoMessage() {}
 
 func (x *OtherFee) ProtoReflect() protoreflect.Message {
-	mi := &file_domain_v1_other_fee_proto_msgTypes[0]
+	mi := &file_otherfee_v1_other_fee_domain_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -107,7 +108,7 @@ func (x *OtherFee) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OtherFee.ProtoReflect.Descriptor instead.
 func (*OtherFee) Descriptor() ([]byte, []int) {
-	return file_domain_v1_other_fee_proto_rawDescGZIP(), []int{0}
+	return file_otherfee_v1_other_fee_domain_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *OtherFee) GetName() string {
@@ -136,14 +137,14 @@ type OtherFeeResponse struct {
 	GroupExpenseId string                    `protobuf:"bytes,1,opt,name=group_expense_id,json=groupExpenseId,proto3" json:"group_expense_id,omitempty"`
 	OtherFee       *OtherFee                 `protobuf:"bytes,2,opt,name=other_fee,json=otherFee,proto3" json:"other_fee,omitempty"`
 	Participants   []*FeeParticipantResponse `protobuf:"bytes,3,rep,name=participants,proto3" json:"participants,omitempty"`
-	AuditMetadata  *AuditMetadata            `protobuf:"bytes,4,opt,name=audit_metadata,json=auditMetadata,proto3" json:"audit_metadata,omitempty"`
+	AuditMetadata  *v1.Metadata              `protobuf:"bytes,4,opt,name=audit_metadata,json=auditMetadata,proto3" json:"audit_metadata,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
 
 func (x *OtherFeeResponse) Reset() {
 	*x = OtherFeeResponse{}
-	mi := &file_domain_v1_other_fee_proto_msgTypes[1]
+	mi := &file_otherfee_v1_other_fee_domain_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -155,7 +156,7 @@ func (x *OtherFeeResponse) String() string {
 func (*OtherFeeResponse) ProtoMessage() {}
 
 func (x *OtherFeeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_domain_v1_other_fee_proto_msgTypes[1]
+	mi := &file_otherfee_v1_other_fee_domain_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -168,7 +169,7 @@ func (x *OtherFeeResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OtherFeeResponse.ProtoReflect.Descriptor instead.
 func (*OtherFeeResponse) Descriptor() ([]byte, []int) {
-	return file_domain_v1_other_fee_proto_rawDescGZIP(), []int{1}
+	return file_otherfee_v1_other_fee_domain_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *OtherFeeResponse) GetGroupExpenseId() string {
@@ -192,7 +193,7 @@ func (x *OtherFeeResponse) GetParticipants() []*FeeParticipantResponse {
 	return nil
 }
 
-func (x *OtherFeeResponse) GetAuditMetadata() *AuditMetadata {
+func (x *OtherFeeResponse) GetAuditMetadata() *v1.Metadata {
 	if x != nil {
 		return x.AuditMetadata
 	}
@@ -209,7 +210,7 @@ type FeeParticipantResponse struct {
 
 func (x *FeeParticipantResponse) Reset() {
 	*x = FeeParticipantResponse{}
-	mi := &file_domain_v1_other_fee_proto_msgTypes[2]
+	mi := &file_otherfee_v1_other_fee_domain_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -221,7 +222,7 @@ func (x *FeeParticipantResponse) String() string {
 func (*FeeParticipantResponse) ProtoMessage() {}
 
 func (x *FeeParticipantResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_domain_v1_other_fee_proto_msgTypes[2]
+	mi := &file_otherfee_v1_other_fee_domain_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -234,7 +235,7 @@ func (x *FeeParticipantResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FeeParticipantResponse.ProtoReflect.Descriptor instead.
 func (*FeeParticipantResponse) Descriptor() ([]byte, []int) {
-	return file_domain_v1_other_fee_proto_rawDescGZIP(), []int{2}
+	return file_otherfee_v1_other_fee_domain_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *FeeParticipantResponse) GetProfileId() string {
@@ -253,7 +254,7 @@ func (x *FeeParticipantResponse) GetShareAmount() *money.Money {
 
 type FeeCalculationMethodInfo struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Method        FeeCalculationMethod   `protobuf:"varint,1,opt,name=method,proto3,enum=domain.v1.FeeCalculationMethod" json:"method,omitempty"`
+	Method        FeeCalculationMethod   `protobuf:"varint,1,opt,name=method,proto3,enum=otherfee.v1.FeeCalculationMethod" json:"method,omitempty"`
 	Display       string                 `protobuf:"bytes,2,opt,name=display,proto3" json:"display,omitempty"`
 	Description   string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -262,7 +263,7 @@ type FeeCalculationMethodInfo struct {
 
 func (x *FeeCalculationMethodInfo) Reset() {
 	*x = FeeCalculationMethodInfo{}
-	mi := &file_domain_v1_other_fee_proto_msgTypes[3]
+	mi := &file_otherfee_v1_other_fee_domain_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -274,7 +275,7 @@ func (x *FeeCalculationMethodInfo) String() string {
 func (*FeeCalculationMethodInfo) ProtoMessage() {}
 
 func (x *FeeCalculationMethodInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_domain_v1_other_fee_proto_msgTypes[3]
+	mi := &file_otherfee_v1_other_fee_domain_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -287,7 +288,7 @@ func (x *FeeCalculationMethodInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FeeCalculationMethodInfo.ProtoReflect.Descriptor instead.
 func (*FeeCalculationMethodInfo) Descriptor() ([]byte, []int) {
-	return file_domain_v1_other_fee_proto_rawDescGZIP(), []int{3}
+	return file_otherfee_v1_other_fee_domain_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *FeeCalculationMethodInfo) GetMethod() FeeCalculationMethod {
@@ -311,64 +312,64 @@ func (x *FeeCalculationMethodInfo) GetDescription() string {
 	return ""
 }
 
-var File_domain_v1_other_fee_proto protoreflect.FileDescriptor
+var File_otherfee_v1_other_fee_domain_proto protoreflect.FileDescriptor
 
-const file_domain_v1_other_fee_proto_rawDesc = "" +
+const file_otherfee_v1_other_fee_domain_proto_rawDesc = "" +
 	"\n" +
-	"\x19domain/v1/other_fee.proto\x12\tdomain.v1\x1a\x16domain/v1/domain.proto\x1a\x17google/type/money.proto\"\x9a\x01\n" +
+	"\"otherfee/v1/other_fee_domain.proto\x12\votherfee.v1\x1a\x17audit/v1/metadata.proto\x1a\x17google/type/money.proto\"\x9c\x01\n" +
 	"\bOtherFee\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12*\n" +
-	"\x06amount\x18\x02 \x01(\v2\x12.google.type.MoneyR\x06amount\x12N\n" +
-	"\x12calculation_method\x18\x03 \x01(\x0e2\x1f.domain.v1.FeeCalculationMethodR\x11calculationMethod\"\xf6\x01\n" +
+	"\x06amount\x18\x02 \x01(\v2\x12.google.type.MoneyR\x06amount\x12P\n" +
+	"\x12calculation_method\x18\x03 \x01(\x0e2!.otherfee.v1.FeeCalculationMethodR\x11calculationMethod\"\xf4\x01\n" +
 	"\x10OtherFeeResponse\x12(\n" +
-	"\x10group_expense_id\x18\x01 \x01(\tR\x0egroupExpenseId\x120\n" +
-	"\tother_fee\x18\x02 \x01(\v2\x13.domain.v1.OtherFeeR\botherFee\x12E\n" +
-	"\fparticipants\x18\x03 \x03(\v2!.domain.v1.FeeParticipantResponseR\fparticipants\x12?\n" +
-	"\x0eaudit_metadata\x18\x04 \x01(\v2\x18.domain.v1.AuditMetadataR\rauditMetadata\"n\n" +
+	"\x10group_expense_id\x18\x01 \x01(\tR\x0egroupExpenseId\x122\n" +
+	"\tother_fee\x18\x02 \x01(\v2\x15.otherfee.v1.OtherFeeR\botherFee\x12G\n" +
+	"\fparticipants\x18\x03 \x03(\v2#.otherfee.v1.FeeParticipantResponseR\fparticipants\x129\n" +
+	"\x0eaudit_metadata\x18\x04 \x01(\v2\x12.audit.v1.MetadataR\rauditMetadata\"n\n" +
 	"\x16FeeParticipantResponse\x12\x1d\n" +
 	"\n" +
 	"profile_id\x18\x01 \x01(\tR\tprofileId\x125\n" +
-	"\fshare_amount\x18\x02 \x01(\v2\x12.google.type.MoneyR\vshareAmount\"\x8f\x01\n" +
-	"\x18FeeCalculationMethodInfo\x127\n" +
-	"\x06method\x18\x01 \x01(\x0e2\x1f.domain.v1.FeeCalculationMethodR\x06method\x12\x18\n" +
+	"\fshare_amount\x18\x02 \x01(\v2\x12.google.type.MoneyR\vshareAmount\"\x91\x01\n" +
+	"\x18FeeCalculationMethodInfo\x129\n" +
+	"\x06method\x18\x01 \x01(\x0e2!.otherfee.v1.FeeCalculationMethodR\x06method\x12\x18\n" +
 	"\adisplay\x18\x02 \x01(\tR\adisplay\x12 \n" +
 	"\vdescription\x18\x03 \x01(\tR\vdescription*\x91\x01\n" +
 	"\x14FeeCalculationMethod\x12&\n" +
 	"\"FEE_CALCULATION_METHOD_UNSPECIFIED\x10\x00\x12&\n" +
 	"\"FEE_CALCULATION_METHOD_EQUAL_SPLIT\x10\x01\x12)\n" +
-	"%FEE_CALCULATION_METHOD_ITEMIZED_SPLIT\x10\x02B@Z>github.com/itsLeonB/billsplittr-protos/gen/go/domain/v1;domainb\x06proto3"
+	"%FEE_CALCULATION_METHOD_ITEMIZED_SPLIT\x10\x02BDZBgithub.com/itsLeonB/billsplittr-protos/gen/go/otherfee/v1;otherfeeb\x06proto3"
 
 var (
-	file_domain_v1_other_fee_proto_rawDescOnce sync.Once
-	file_domain_v1_other_fee_proto_rawDescData []byte
+	file_otherfee_v1_other_fee_domain_proto_rawDescOnce sync.Once
+	file_otherfee_v1_other_fee_domain_proto_rawDescData []byte
 )
 
-func file_domain_v1_other_fee_proto_rawDescGZIP() []byte {
-	file_domain_v1_other_fee_proto_rawDescOnce.Do(func() {
-		file_domain_v1_other_fee_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_domain_v1_other_fee_proto_rawDesc), len(file_domain_v1_other_fee_proto_rawDesc)))
+func file_otherfee_v1_other_fee_domain_proto_rawDescGZIP() []byte {
+	file_otherfee_v1_other_fee_domain_proto_rawDescOnce.Do(func() {
+		file_otherfee_v1_other_fee_domain_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_otherfee_v1_other_fee_domain_proto_rawDesc), len(file_otherfee_v1_other_fee_domain_proto_rawDesc)))
 	})
-	return file_domain_v1_other_fee_proto_rawDescData
+	return file_otherfee_v1_other_fee_domain_proto_rawDescData
 }
 
-var file_domain_v1_other_fee_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_domain_v1_other_fee_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
-var file_domain_v1_other_fee_proto_goTypes = []any{
-	(FeeCalculationMethod)(0),        // 0: domain.v1.FeeCalculationMethod
-	(*OtherFee)(nil),                 // 1: domain.v1.OtherFee
-	(*OtherFeeResponse)(nil),         // 2: domain.v1.OtherFeeResponse
-	(*FeeParticipantResponse)(nil),   // 3: domain.v1.FeeParticipantResponse
-	(*FeeCalculationMethodInfo)(nil), // 4: domain.v1.FeeCalculationMethodInfo
+var file_otherfee_v1_other_fee_domain_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_otherfee_v1_other_fee_domain_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_otherfee_v1_other_fee_domain_proto_goTypes = []any{
+	(FeeCalculationMethod)(0),        // 0: otherfee.v1.FeeCalculationMethod
+	(*OtherFee)(nil),                 // 1: otherfee.v1.OtherFee
+	(*OtherFeeResponse)(nil),         // 2: otherfee.v1.OtherFeeResponse
+	(*FeeParticipantResponse)(nil),   // 3: otherfee.v1.FeeParticipantResponse
+	(*FeeCalculationMethodInfo)(nil), // 4: otherfee.v1.FeeCalculationMethodInfo
 	(*money.Money)(nil),              // 5: google.type.Money
-	(*AuditMetadata)(nil),            // 6: domain.v1.AuditMetadata
+	(*v1.Metadata)(nil),              // 6: audit.v1.Metadata
 }
-var file_domain_v1_other_fee_proto_depIdxs = []int32{
-	5, // 0: domain.v1.OtherFee.amount:type_name -> google.type.Money
-	0, // 1: domain.v1.OtherFee.calculation_method:type_name -> domain.v1.FeeCalculationMethod
-	1, // 2: domain.v1.OtherFeeResponse.other_fee:type_name -> domain.v1.OtherFee
-	3, // 3: domain.v1.OtherFeeResponse.participants:type_name -> domain.v1.FeeParticipantResponse
-	6, // 4: domain.v1.OtherFeeResponse.audit_metadata:type_name -> domain.v1.AuditMetadata
-	5, // 5: domain.v1.FeeParticipantResponse.share_amount:type_name -> google.type.Money
-	0, // 6: domain.v1.FeeCalculationMethodInfo.method:type_name -> domain.v1.FeeCalculationMethod
+var file_otherfee_v1_other_fee_domain_proto_depIdxs = []int32{
+	5, // 0: otherfee.v1.OtherFee.amount:type_name -> google.type.Money
+	0, // 1: otherfee.v1.OtherFee.calculation_method:type_name -> otherfee.v1.FeeCalculationMethod
+	1, // 2: otherfee.v1.OtherFeeResponse.other_fee:type_name -> otherfee.v1.OtherFee
+	3, // 3: otherfee.v1.OtherFeeResponse.participants:type_name -> otherfee.v1.FeeParticipantResponse
+	6, // 4: otherfee.v1.OtherFeeResponse.audit_metadata:type_name -> audit.v1.Metadata
+	5, // 5: otherfee.v1.FeeParticipantResponse.share_amount:type_name -> google.type.Money
+	0, // 6: otherfee.v1.FeeCalculationMethodInfo.method:type_name -> otherfee.v1.FeeCalculationMethod
 	7, // [7:7] is the sub-list for method output_type
 	7, // [7:7] is the sub-list for method input_type
 	7, // [7:7] is the sub-list for extension type_name
@@ -376,28 +377,27 @@ var file_domain_v1_other_fee_proto_depIdxs = []int32{
 	0, // [0:7] is the sub-list for field type_name
 }
 
-func init() { file_domain_v1_other_fee_proto_init() }
-func file_domain_v1_other_fee_proto_init() {
-	if File_domain_v1_other_fee_proto != nil {
+func init() { file_otherfee_v1_other_fee_domain_proto_init() }
+func file_otherfee_v1_other_fee_domain_proto_init() {
+	if File_otherfee_v1_other_fee_domain_proto != nil {
 		return
 	}
-	file_domain_v1_domain_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_domain_v1_other_fee_proto_rawDesc), len(file_domain_v1_other_fee_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_otherfee_v1_other_fee_domain_proto_rawDesc), len(file_otherfee_v1_other_fee_domain_proto_rawDesc)),
 			NumEnums:      1,
 			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_domain_v1_other_fee_proto_goTypes,
-		DependencyIndexes: file_domain_v1_other_fee_proto_depIdxs,
-		EnumInfos:         file_domain_v1_other_fee_proto_enumTypes,
-		MessageInfos:      file_domain_v1_other_fee_proto_msgTypes,
+		GoTypes:           file_otherfee_v1_other_fee_domain_proto_goTypes,
+		DependencyIndexes: file_otherfee_v1_other_fee_domain_proto_depIdxs,
+		EnumInfos:         file_otherfee_v1_other_fee_domain_proto_enumTypes,
+		MessageInfos:      file_otherfee_v1_other_fee_domain_proto_msgTypes,
 	}.Build()
-	File_domain_v1_other_fee_proto = out.File
-	file_domain_v1_other_fee_proto_goTypes = nil
-	file_domain_v1_other_fee_proto_depIdxs = nil
+	File_otherfee_v1_other_fee_domain_proto = out.File
+	file_otherfee_v1_other_fee_domain_proto_goTypes = nil
+	file_otherfee_v1_other_fee_domain_proto_depIdxs = nil
 }
