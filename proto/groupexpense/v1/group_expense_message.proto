@@ -2,10 +2,10 @@ syntax = "proto3";
 
 package groupexpense.v1;
 
-import "domain/v1/expense_item.proto";
-import "domain/v1/group_expense.proto";
-import "domain/v1/other_fee.proto";
+import "expenseitem/v1/expense_item_domain.proto";
 import "google/type/money.proto";
+import "groupexpense/v1/group_expense_domain.proto";
+import "otherfee/v1/other_fee_domain.proto";
 
 option go_package = "github.com/itsLeonB/billsplittr-protos/gen/go/groupexpense/v1;groupexpense";
 
@@ -15,12 +15,12 @@ message CreateDraftRequest {
   google.type.Money total_amount = 3;
   google.type.Money subtotal = 4;
   string description = 5;
-  repeated domain.v1.ExpenseItem items = 6;
-  repeated domain.v1.OtherFee other_fees = 7;
+  repeated expenseitem.v1.ExpenseItem items = 6;
+  repeated otherfee.v1.OtherFee other_fees = 7;
 }
 
 message CreateDraftResponse {
-  domain.v1.GroupExpenseResponse group_expense = 1;
+  GroupExpenseResponse group_expense = 1;
 }
 
 message GetAllCreatedRequest {
@@ -28,7 +28,7 @@ message GetAllCreatedRequest {
 }
 
 message GetAllCreatedResponse {
-  repeated domain.v1.GroupExpenseResponse group_expenses = 1;
+  repeated GroupExpenseResponse group_expenses = 1;
 }
 
 message GetDetailsRequest {
@@ -36,7 +36,7 @@ message GetDetailsRequest {
 }
 
 message GetDetailsResponse {
-  domain.v1.GroupExpenseResponse group_expense = 1;
+  GroupExpenseResponse group_expense = 1;
 }
 
 message ConfirmDraftRequest {
@@ -45,5 +45,5 @@ message ConfirmDraftRequest {
 }
 
 message ConfirmDraftResponse {
-  domain.v1.GroupExpenseResponse group_expense = 1;
+  GroupExpenseResponse group_expense = 1;
 }

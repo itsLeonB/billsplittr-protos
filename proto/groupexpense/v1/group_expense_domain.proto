@@ -1,13 +1,13 @@
 syntax = "proto3";
 
-package domain.v1;
+package groupexpense.v1;
 
-import "domain/v1/domain.proto";
-import "domain/v1/expense_item.proto";
-import "domain/v1/other_fee.proto";
+import "audit/v1/metadata.proto";
+import "expenseitem/v1/expense_item_domain.proto";
 import "google/type/money.proto";
+import "otherfee/v1/other_fee_domain.proto";
 
-option go_package = "github.com/itsLeonB/billsplittr-protos/gen/go/domain/v1;domain";
+option go_package = "github.com/itsLeonB/billsplittr-protos/gen/go/groupexpense/v1;groupexpense";
 
 message GroupExpenseResponse {
   string payer_profile_id = 1;
@@ -17,10 +17,10 @@ message GroupExpenseResponse {
   string creator_profile_id = 5;
   bool is_confirmed = 6;
   bool is_participants_confirmed = 7;
-  repeated ExpenseItemResponse items = 8;
-  repeated OtherFeeResponse other_fees = 9;
+  repeated expenseitem.v1.ExpenseItemResponse items = 8;
+  repeated otherfee.v1.OtherFeeResponse other_fees = 9;
   repeated ExpenseParticipantResponse participants = 10;
-  AuditMetadata audit_metadata = 11;
+  audit.v1.Metadata audit_metadata = 11;
 }
 
 message ExpenseParticipantResponse {

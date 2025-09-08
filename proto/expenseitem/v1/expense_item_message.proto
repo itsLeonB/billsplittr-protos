@@ -2,18 +2,18 @@ syntax = "proto3";
 
 package expenseitem.v1;
 
-import "domain/v1/expense_item.proto";
+import "expenseitem/v1/expense_item_domain.proto";
 
 option go_package = "github.com/itsLeonB/billsplittr-protos/gen/go/expenseitem/v1;expenseitem";
 
 message AddRequest {
   string profile_id = 1;
   string group_expense_id = 2;
-  domain.v1.ExpenseItem expense_item = 3;
+  ExpenseItem expense_item = 3;
 }
 
 message AddResponse {
-  domain.v1.ExpenseItemResponse expense_item = 1;
+  ExpenseItemResponse expense_item = 1;
 }
 
 message GetDetailsRequest {
@@ -22,18 +22,18 @@ message GetDetailsRequest {
 }
 
 message GetDetailsResponse {
-  domain.v1.ExpenseItemResponse expense_item = 1;
+  ExpenseItemResponse expense_item = 1;
 }
 
 message UpdateRequest {
   string profile_id = 1;
   string id = 2;
   string group_expense_id = 3;
-  domain.v1.ExpenseItem expense_item = 4;
+  ExpenseItem expense_item = 4;
 }
 
 message UpdateResponse {
-  domain.v1.ExpenseItemResponse expense_item = 1;
+  ExpenseItemResponse expense_item = 1;
 }
 
 message RemoveRequest {
