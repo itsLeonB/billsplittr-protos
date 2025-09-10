@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package expenseitem.v1;
+
+import "audit/v1/metadata.proto";
+import "google/type/money.proto";
+
+option go_package = "github.com/itsLeonB/billsplittr-protos/gen/go/expenseitem/v1;expenseitem";
+
+message ExpenseItem {
+  string name = 1;
+  google.type.Money amount = 2;
+  int64 quantity = 3;
+  repeated ItemParticipant participants = 4;
+}
+
+message ExpenseItemResponse {
+  string group_expense_id = 1;
+  ExpenseItem expense_item = 2;
+  audit.v1.Metadata audit_metadata = 3;
+}
+
+message ItemParticipant {
+  string profile_id = 1;
+  double share = 2;
+}

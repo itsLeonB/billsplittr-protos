@@ -1,0 +1,22 @@
+version: v1
+
+deps:
+- buf.build/googleapis/googleapis
+- buf.build/rleonb/audit
+
+lint:
+  use:
+  - STANDARD
+  ignore_only:
+    RPC_RESPONSE_STANDARD_NAME:
+    - expenseitem/v1/expense_item_service.proto
+    - otherfee/v1/other_fee_service.proto
+    RPC_REQUEST_STANDARD_NAME:
+    - otherfee/v1/other_fee_service.proto
+    RPC_REQUEST_RESPONSE_UNIQUE:
+    - expenseitem/v1/expense_item_service.proto
+    - otherfee/v1/other_fee_service.proto
+
+breaking:
+  use:
+  - FILE

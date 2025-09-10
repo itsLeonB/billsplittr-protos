@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package otherfee.v1;
+
+import "google/protobuf/empty.proto";
+import "otherfee/v1/other_fee_message.proto";
+
+option go_package = "github.com/itsLeonB/billsplittr-protos/gen/go/otherfee/v1;otherfee";
+
+service OtherFeeService {
+  rpc Add(AddRequest) returns (AddResponse);
+  rpc Update(UpdateRequest) returns (UpdateResponse);
+  rpc Remove(RemoveRequest) returns (google.protobuf.Empty);
+  rpc GetCalculationMethods(google.protobuf.Empty) returns (GetCalculationMethodsResponse);
+}

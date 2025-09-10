@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package expenseitem.v1;
+
+import "expenseitem/v1/expense_item_domain.proto";
+
+option go_package = "github.com/itsLeonB/billsplittr-protos/gen/go/expenseitem/v1;expenseitem";
+
+message AddRequest {
+  string profile_id = 1;
+  string group_expense_id = 2;
+  ExpenseItem expense_item = 3;
+}
+
+message AddResponse {
+  ExpenseItemResponse expense_item = 1;
+}
+
+message GetDetailsRequest {
+  string id = 1;
+  string group_expense_id = 2;
+}
+
+message GetDetailsResponse {
+  ExpenseItemResponse expense_item = 1;
+}
+
+message UpdateRequest {
+  string profile_id = 1;
+  string id = 2;
+  string group_expense_id = 3;
+  ExpenseItem expense_item = 4;
+}
+
+message UpdateResponse {
+  ExpenseItemResponse expense_item = 1;
+}
+
+message RemoveRequest {
+  string profile_id = 1;
+  string id = 2;
+  string group_expense_id = 3;
+}
