@@ -31,5 +31,6 @@ message GetResponse {
 }
 
 message DeleteRequest {
-  string id = 1;
+  string profile_id = 1;
+  string id = 2;
 }

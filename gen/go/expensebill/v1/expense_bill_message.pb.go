@@ -287,7 +287,8 @@ func (x *GetResponse) GetExpenseBill() *ExpenseBillResponse {
 
 type DeleteRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	ProfileId     string                 `protobuf:"bytes,1,opt,name=profile_id,json=profileId,proto3" json:"profile_id,omitempty"`
+	Id            string                 `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -322,6 +323,13 @@ func (*DeleteRequest) Descriptor() ([]byte, []int) {
 	return file_expensebill_v1_expense_bill_message_proto_rawDescGZIP(), []int{6}
 }
 
+func (x *DeleteRequest) GetProfileId() string {
+	if x != nil {
+		return x.ProfileId
+	}
+	return ""
+}
+
 func (x *DeleteRequest) GetId() string {
 	if x != nil {
 		return x.Id
@@ -346,9 +354,11 @@ const file_expensebill_v1_expense_bill_message_proto_rawDesc = "" +
 	"GetRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"U\n" +
 	"\vGetResponse\x12F\n" +
-	"\fexpense_bill\x18\x01 \x01(\v2#.expensebill.v1.ExpenseBillResponseR\vexpenseBill\"\x1f\n" +
-	"\rDeleteRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02idBJZHgithub.com/itsLeonB/billsplittr-protos/gen/go/expensebill/v1;expensebillb\x06proto3"
+	"\fexpense_bill\x18\x01 \x01(\v2#.expensebill.v1.ExpenseBillResponseR\vexpenseBill\">\n" +
+	"\rDeleteRequest\x12\x1d\n" +
+	"\n" +
+	"profile_id\x18\x01 \x01(\tR\tprofileId\x12\x0e\n" +
+	"\x02id\x18\x02 \x01(\tR\x02idBJZHgithub.com/itsLeonB/billsplittr-protos/gen/go/expensebill/v1;expensebillb\x06proto3"
 
 var (
 	file_expensebill_v1_expense_bill_message_proto_rawDescOnce sync.Once
