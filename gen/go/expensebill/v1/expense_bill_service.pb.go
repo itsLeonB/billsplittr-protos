@@ -25,9 +25,9 @@ var File_expensebill_v1_expense_bill_service_proto protoreflect.FileDescriptor
 
 const file_expensebill_v1_expense_bill_service_proto_rawDesc = "" +
 	"\n" +
-	")expensebill/v1/expense_bill_service.proto\x12\x0eexpensebill.v1\x1a)expensebill/v1/expense_bill_message.proto\x1a\x1bgoogle/protobuf/empty.proto2\xb8\x02\n" +
-	"\x12ExpenseBillService\x12C\n" +
-	"\x04Save\x12\x1b.expensebill.v1.SaveRequest\x1a\x1c.expensebill.v1.SaveResponse(\x01\x12\\\n" +
+	")expensebill/v1/expense_bill_service.proto\x12\x0eexpensebill.v1\x1a)expensebill/v1/expense_bill_message.proto\x1a\x1bgoogle/protobuf/empty.proto2\xb6\x02\n" +
+	"\x12ExpenseBillService\x12A\n" +
+	"\x04Save\x12\x1b.expensebill.v1.SaveRequest\x1a\x1c.expensebill.v1.SaveResponse\x12\\\n" +
 	"\rGetAllCreated\x12$.expensebill.v1.GetAllCreatedRequest\x1a%.expensebill.v1.GetAllCreatedResponse\x12>\n" +
 	"\x03Get\x12\x1a.expensebill.v1.GetRequest\x1a\x1b.expensebill.v1.GetResponse\x12?\n" +
 	"\x06Delete\x12\x1d.expensebill.v1.DeleteRequest\x1a\x16.google.protobuf.EmptyBJZHgithub.com/itsLeonB/billsplittr-protos/gen/go/expensebill/v1;expensebillb\x06proto3"

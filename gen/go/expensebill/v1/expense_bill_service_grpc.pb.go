@@ -30,7 +30,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ExpenseBillServiceClient interface {
-	Save(ctx context.Context, opts ...grpc.CallOption) (grpc.ClientStreamingClient[SaveRequest, SaveResponse], error)
+	Save(ctx context.Context, in *SaveRequest, opts ...grpc.CallOption) (*SaveResponse, error)
 	GetAllCreated(ctx context.Context, in *GetAllCreatedRequest, opts ...grpc.CallOption) (*GetAllCreatedResponse, error)
 	Get(ctx context.Context, in *GetRequest, opts ...grpc.CallOption) (*GetResponse, error)
 	Delete(ctx context.Context, in *DeleteRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
@@ -44,18 +44,15 @@ func NewExpenseBillServiceClient(cc grpc.ClientConnInterface) ExpenseBillService
 	return &expenseBillServiceClient{cc}
 }
 
-func (c *expenseBillServiceClient) Save(ctx context.Context, opts ...grpc.CallOption) (grpc.ClientStreamingClient[SaveRequest, SaveResponse], error) {
+func (c *expenseBillServiceClient) Save(ctx context.Context, in *SaveRequest, opts ...grpc.CallOption) (*SaveResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	stream, err := c.cc.NewStream(ctx, &ExpenseBillService_ServiceDesc.Streams[0], ExpenseBillService_Save_FullMethodName, cOpts...)
+	out := new(SaveResponse)
+	err := c.cc.Invoke(ctx, ExpenseBillService_Save_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &grpc.GenericClientStream[SaveRequest, SaveResponse]{ClientStream: stream}
-	return x, nil
+	return out, nil
 }
-
-// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type ExpenseBillService_SaveClient = grpc.ClientStreamingClient[SaveRequest, SaveResponse]
 
 func (c *expenseBillServiceClient) GetAllCreated(ctx context.Context, in *GetAllCreatedRequest, opts ...grpc.CallOption) (*GetAllCreatedResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
@@ -91,7 +88,7 @@ func (c *expenseBillServiceClient) Delete(ctx context.Context, in *DeleteRequest
 // All implementations must embed UnimplementedExpenseBillServiceServer
 // for forward compatibility.
 type ExpenseBillServiceServer interface {
-	Save(grpc.ClientStreamingServer[SaveRequest, SaveResponse]) error
+	Save(context.Context, *SaveRequest) (*SaveResponse, error)
 	GetAllCreated(context.Context, *GetAllCreatedRequest) (*GetAllCreatedResponse, error)
 	Get(context.Context, *GetRequest) (*GetResponse, error)
 	Delete(context.Context, *DeleteRequest) (*emptypb.Empty, error)
@@ -105,8 +102,8 @@ type ExpenseBillServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedExpenseBillServiceServer struct{}
 
-func (UnimplementedExpenseBillServiceServer) Save(grpc.ClientStreamingServer[SaveRequest, SaveResponse]) error {
-	return status.Errorf(codes.Unimplemented, "method Save not implemented")
+func (UnimplementedExpenseBillServiceServer) Save(context.Context, *SaveRequest) (*SaveResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Save not implemented")
 }
 func (UnimplementedExpenseBillServiceServer) GetAllCreated(context.Context, *GetAllCreatedRequest) (*GetAllCreatedResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAllCreated not implemented")
@@ -138,12 +135,23 @@ func RegisterExpenseBillServiceServer(s grpc.ServiceRegistrar, srv ExpenseBillSe
 	s.RegisterService(&ExpenseBillService_ServiceDesc, srv)
 }
 
-func _ExpenseBillService_Save_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(ExpenseBillServiceServer).Save(&grpc.GenericServerStream[SaveRequest, SaveResponse]{ServerStream: stream})
+func _ExpenseBillService_Save_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SaveRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ExpenseBillServiceServer).Save(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ExpenseBillService_Save_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ExpenseBillServiceServer).Save(ctx, req.(*SaveRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
-
-// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type ExpenseBillService_SaveServer = grpc.ClientStreamingServer[SaveRequest, SaveResponse]
 
 func _ExpenseBillService_GetAllCreated_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetAllCreatedRequest)
@@ -207,6 +215,10 @@ var ExpenseBillService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*ExpenseBillServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
+			MethodName: "Save",
+			Handler:    _ExpenseBillService_Save_Handler,
+		},
+		{
 			MethodName: "GetAllCreated",
 			Handler:    _ExpenseBillService_GetAllCreated_Handler,
 		},
@@ -219,12 +231,6 @@ var ExpenseBillService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _ExpenseBillService_Delete_Handler,
 		},
 	},
-	Streams: []grpc.StreamDesc{
-		{
-			StreamName:    "Save",
-			Handler:       _ExpenseBillService_Save_Handler,
-			ClientStreams: true,
-		},
-	},
+	Streams:  []grpc.StreamDesc{},
 	Metadata: "expensebill/v1/expense_bill_service.proto",
 }
