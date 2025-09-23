@@ -2,23 +2,35 @@ syntax = "proto3";
 
 package expensebill.v1;
 
+import "expensebill/v1/expense_bill_domain.proto";
+
 option go_package = "github.com/itsLeonB/billsplittr-protos/gen/go/expensebill/v1;expensebill";
 
-message UploadStreamRequest {
-  oneof data {
-    BillMetadata bill_metadata = 1;
-    bytes chunk = 2;
-  }
+message SaveRequest {
+  ExpenseBill expense_bill = 1;
 }
 
-message BillMetadata {
-  string payer_profile_id = 1;
-  string creator_profile_id = 2;
-  string content_type = 3;
-  string filename = 4;
-  int64 file_size = 5;
+message SaveResponse {
+  ExpenseBillResponse expense_bill = 1;
 }
 
-message UploadStreamResponse {
+message GetAllCreatedRequest {
+  string creator_profile_id = 1;
+}
+
+message GetAllCreatedResponse {
+  repeated ExpenseBillResponse expense_bills = 1;
+}
+
+message GetRequest {
   string id = 1;
+}
+
+message GetResponse {
+  ExpenseBillResponse expense_bill = 1;
+}
+
+message DeleteRequest {
+  string profile_id = 1;
+  string id = 2;
 }

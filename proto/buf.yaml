@@ -9,11 +9,13 @@ lint:
   - STANDARD
   ignore_only:
     RPC_RESPONSE_STANDARD_NAME:
+    - expensebill/v1/expense_bill_service.proto
     - expenseitem/v1/expense_item_service.proto
     - otherfee/v1/other_fee_service.proto
     RPC_REQUEST_STANDARD_NAME:
     - otherfee/v1/other_fee_service.proto
     RPC_REQUEST_RESPONSE_UNIQUE:
+    - expensebill/v1/expense_bill_service.proto
     - expenseitem/v1/expense_item_service.proto
     - otherfee/v1/other_fee_service.proto
 

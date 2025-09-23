@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package expensebill.v1;
+
+import "audit/v1/metadata.proto";
+
+option go_package = "github.com/itsLeonB/billsplittr-protos/gen/go/expensebill/v1;expensebill";
+
+message ExpenseBill {
+  string creator_profile_id = 1;
+  string payer_profile_id = 2;
+  string object_key = 3;
+}
+
+message ExpenseBillResponse {
+  ExpenseBill expense_bill = 1;
+  audit.v1.Metadata audit_metadata = 2;
+}
