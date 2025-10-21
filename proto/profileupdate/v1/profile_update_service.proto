@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package profileupdate.v1;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "github.com/itsLeonB/billsplittr-protos/gen/go/profileupdate/v1;profileupdate";
+
+message UpdateProfileIdRequest {
+  string old_profile_id = 1;
+  string new_profile_id = 2;
+}
+
+service ProfileUpdateService {
+  rpc UpdateProfileId(UpdateProfileIdRequest) returns (google.protobuf.Empty);
+}
