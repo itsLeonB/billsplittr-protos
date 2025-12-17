@@ -432,6 +432,58 @@ func (x *ConfirmDraftResponse) GetGroupExpense() *GroupExpenseResponse {
 	return nil
 }
 
+type DeleteRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	ProfileId     string                 `protobuf:"bytes,2,opt,name=profile_id,json=profileId,proto3" json:"profile_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteRequest) Reset() {
+	*x = DeleteRequest{}
+	mi := &file_groupexpense_v1_group_expense_message_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteRequest) ProtoMessage() {}
+
+func (x *DeleteRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_groupexpense_v1_group_expense_message_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteRequest.ProtoReflect.Descriptor instead.
+func (*DeleteRequest) Descriptor() ([]byte, []int) {
+	return file_groupexpense_v1_group_expense_message_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *DeleteRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *DeleteRequest) GetProfileId() string {
+	if x != nil {
+		return x.ProfileId
+	}
+	return ""
+}
+
 var File_groupexpense_v1_group_expense_message_proto protoreflect.FileDescriptor
 
 const file_groupexpense_v1_group_expense_message_proto_rawDesc = "" +
@@ -462,7 +514,11 @@ const file_groupexpense_v1_group_expense_message_proto_rawDesc = "" +
 	"\n" +
 	"profile_id\x18\x02 \x01(\tR\tprofileId\"b\n" +
 	"\x14ConfirmDraftResponse\x12J\n" +
-	"\rgroup_expense\x18\x01 \x01(\v2%.groupexpense.v1.GroupExpenseResponseR\fgroupExpenseBLZJgithub.com/itsLeonB/billsplittr-protos/gen/go/groupexpense/v1;groupexpenseb\x06proto3"
+	"\rgroup_expense\x18\x01 \x01(\v2%.groupexpense.v1.GroupExpenseResponseR\fgroupExpense\">\n" +
+	"\rDeleteRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1d\n" +
+	"\n" +
+	"profile_id\x18\x02 \x01(\tR\tprofileIdBLZJgithub.com/itsLeonB/billsplittr-protos/gen/go/groupexpense/v1;groupexpenseb\x06proto3"
 
 var (
 	file_groupexpense_v1_group_expense_message_proto_rawDescOnce sync.Once
@@ -476,7 +532,7 @@ func file_groupexpense_v1_group_expense_message_proto_rawDescGZIP() []byte {
 	return file_groupexpense_v1_group_expense_message_proto_rawDescData
 }
 
-var file_groupexpense_v1_group_expense_message_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_groupexpense_v1_group_expense_message_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_groupexpense_v1_group_expense_message_proto_goTypes = []any{
 	(*CreateDraftRequest)(nil),    // 0: groupexpense.v1.CreateDraftRequest
 	(*CreateDraftResponse)(nil),   // 1: groupexpense.v1.CreateDraftResponse
@@ -486,20 +542,21 @@ var file_groupexpense_v1_group_expense_message_proto_goTypes = []any{
 	(*GetDetailsResponse)(nil),    // 5: groupexpense.v1.GetDetailsResponse
 	(*ConfirmDraftRequest)(nil),   // 6: groupexpense.v1.ConfirmDraftRequest
 	(*ConfirmDraftResponse)(nil),  // 7: groupexpense.v1.ConfirmDraftResponse
-	(*money.Money)(nil),           // 8: google.type.Money
-	(*v1.ExpenseItem)(nil),        // 9: expenseitem.v1.ExpenseItem
-	(*v11.OtherFee)(nil),          // 10: otherfee.v1.OtherFee
-	(*GroupExpenseResponse)(nil),  // 11: groupexpense.v1.GroupExpenseResponse
+	(*DeleteRequest)(nil),         // 8: groupexpense.v1.DeleteRequest
+	(*money.Money)(nil),           // 9: google.type.Money
+	(*v1.ExpenseItem)(nil),        // 10: expenseitem.v1.ExpenseItem
+	(*v11.OtherFee)(nil),          // 11: otherfee.v1.OtherFee
+	(*GroupExpenseResponse)(nil),  // 12: groupexpense.v1.GroupExpenseResponse
 }
 var file_groupexpense_v1_group_expense_message_proto_depIdxs = []int32{
-	8,  // 0: groupexpense.v1.CreateDraftRequest.total_amount:type_name -> google.type.Money
-	8,  // 1: groupexpense.v1.CreateDraftRequest.subtotal:type_name -> google.type.Money
-	9,  // 2: groupexpense.v1.CreateDraftRequest.items:type_name -> expenseitem.v1.ExpenseItem
-	10, // 3: groupexpense.v1.CreateDraftRequest.other_fees:type_name -> otherfee.v1.OtherFee
-	11, // 4: groupexpense.v1.CreateDraftResponse.group_expense:type_name -> groupexpense.v1.GroupExpenseResponse
-	11, // 5: groupexpense.v1.GetAllCreatedResponse.group_expenses:type_name -> groupexpense.v1.GroupExpenseResponse
-	11, // 6: groupexpense.v1.GetDetailsResponse.group_expense:type_name -> groupexpense.v1.GroupExpenseResponse
-	11, // 7: groupexpense.v1.ConfirmDraftResponse.group_expense:type_name -> groupexpense.v1.GroupExpenseResponse
+	9,  // 0: groupexpense.v1.CreateDraftRequest.total_amount:type_name -> google.type.Money
+	9,  // 1: groupexpense.v1.CreateDraftRequest.subtotal:type_name -> google.type.Money
+	10, // 2: groupexpense.v1.CreateDraftRequest.items:type_name -> expenseitem.v1.ExpenseItem
+	11, // 3: groupexpense.v1.CreateDraftRequest.other_fees:type_name -> otherfee.v1.OtherFee
+	12, // 4: groupexpense.v1.CreateDraftResponse.group_expense:type_name -> groupexpense.v1.GroupExpenseResponse
+	12, // 5: groupexpense.v1.GetAllCreatedResponse.group_expenses:type_name -> groupexpense.v1.GroupExpenseResponse
+	12, // 6: groupexpense.v1.GetDetailsResponse.group_expense:type_name -> groupexpense.v1.GroupExpenseResponse
+	12, // 7: groupexpense.v1.ConfirmDraftResponse.group_expense:type_name -> groupexpense.v1.GroupExpenseResponse
 	8,  // [8:8] is the sub-list for method output_type
 	8,  // [8:8] is the sub-list for method input_type
 	8,  // [8:8] is the sub-list for extension type_name
@@ -519,7 +576,7 @@ func file_groupexpense_v1_group_expense_message_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_groupexpense_v1_group_expense_message_proto_rawDesc), len(file_groupexpense_v1_group_expense_message_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

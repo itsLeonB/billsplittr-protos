@@ -9,6 +9,7 @@ package groupexpense
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	reflect "reflect"
 	unsafe "unsafe"
 )
@@ -24,35 +25,40 @@ var File_groupexpense_v1_group_expense_service_proto protoreflect.FileDescriptor
 
 const file_groupexpense_v1_group_expense_service_proto_rawDesc = "" +
 	"\n" +
-	"+groupexpense/v1/group_expense_service.proto\x12\x0fgroupexpense.v1\x1a+groupexpense/v1/group_expense_message.proto2\x83\x03\n" +
+	"+groupexpense/v1/group_expense_service.proto\x12\x0fgroupexpense.v1\x1a\x1bgoogle/protobuf/empty.proto\x1a+groupexpense/v1/group_expense_message.proto2\xc5\x03\n" +
 	"\x13GroupExpenseService\x12X\n" +
 	"\vCreateDraft\x12#.groupexpense.v1.CreateDraftRequest\x1a$.groupexpense.v1.CreateDraftResponse\x12^\n" +
 	"\rGetAllCreated\x12%.groupexpense.v1.GetAllCreatedRequest\x1a&.groupexpense.v1.GetAllCreatedResponse\x12U\n" +
 	"\n" +
 	"GetDetails\x12\".groupexpense.v1.GetDetailsRequest\x1a#.groupexpense.v1.GetDetailsResponse\x12[\n" +
-	"\fConfirmDraft\x12$.groupexpense.v1.ConfirmDraftRequest\x1a%.groupexpense.v1.ConfirmDraftResponseBLZJgithub.com/itsLeonB/billsplittr-protos/gen/go/groupexpense/v1;groupexpenseb\x06proto3"
+	"\fConfirmDraft\x12$.groupexpense.v1.ConfirmDraftRequest\x1a%.groupexpense.v1.ConfirmDraftResponse\x12@\n" +
+	"\x06Delete\x12\x1e.groupexpense.v1.DeleteRequest\x1a\x16.google.protobuf.EmptyBLZJgithub.com/itsLeonB/billsplittr-protos/gen/go/groupexpense/v1;groupexpenseb\x06proto3"
 
 var file_groupexpense_v1_group_expense_service_proto_goTypes = []any{
 	(*CreateDraftRequest)(nil),    // 0: groupexpense.v1.CreateDraftRequest
 	(*GetAllCreatedRequest)(nil),  // 1: groupexpense.v1.GetAllCreatedRequest
 	(*GetDetailsRequest)(nil),     // 2: groupexpense.v1.GetDetailsRequest
 	(*ConfirmDraftRequest)(nil),   // 3: groupexpense.v1.ConfirmDraftRequest
-	(*CreateDraftResponse)(nil),   // 4: groupexpense.v1.CreateDraftResponse
-	(*GetAllCreatedResponse)(nil), // 5: groupexpense.v1.GetAllCreatedResponse
-	(*GetDetailsResponse)(nil),    // 6: groupexpense.v1.GetDetailsResponse
-	(*ConfirmDraftResponse)(nil),  // 7: groupexpense.v1.ConfirmDraftResponse
+	(*DeleteRequest)(nil),         // 4: groupexpense.v1.DeleteRequest
+	(*CreateDraftResponse)(nil),   // 5: groupexpense.v1.CreateDraftResponse
+	(*GetAllCreatedResponse)(nil), // 6: groupexpense.v1.GetAllCreatedResponse
+	(*GetDetailsResponse)(nil),    // 7: groupexpense.v1.GetDetailsResponse
+	(*ConfirmDraftResponse)(nil),  // 8: groupexpense.v1.ConfirmDraftResponse
+	(*emptypb.Empty)(nil),         // 9: google.protobuf.Empty
 }
 var file_groupexpense_v1_group_expense_service_proto_depIdxs = []int32{
 	0, // 0: groupexpense.v1.GroupExpenseService.CreateDraft:input_type -> groupexpense.v1.CreateDraftRequest
 	1, // 1: groupexpense.v1.GroupExpenseService.GetAllCreated:input_type -> groupexpense.v1.GetAllCreatedRequest
 	2, // 2: groupexpense.v1.GroupExpenseService.GetDetails:input_type -> groupexpense.v1.GetDetailsRequest
 	3, // 3: groupexpense.v1.GroupExpenseService.ConfirmDraft:input_type -> groupexpense.v1.ConfirmDraftRequest
-	4, // 4: groupexpense.v1.GroupExpenseService.CreateDraft:output_type -> groupexpense.v1.CreateDraftResponse
-	5, // 5: groupexpense.v1.GroupExpenseService.GetAllCreated:output_type -> groupexpense.v1.GetAllCreatedResponse
-	6, // 6: groupexpense.v1.GroupExpenseService.GetDetails:output_type -> groupexpense.v1.GetDetailsResponse
-	7, // 7: groupexpense.v1.GroupExpenseService.ConfirmDraft:output_type -> groupexpense.v1.ConfirmDraftResponse
-	4, // [4:8] is the sub-list for method output_type
-	0, // [0:4] is the sub-list for method input_type
+	4, // 4: groupexpense.v1.GroupExpenseService.Delete:input_type -> groupexpense.v1.DeleteRequest
+	5, // 5: groupexpense.v1.GroupExpenseService.CreateDraft:output_type -> groupexpense.v1.CreateDraftResponse
+	6, // 6: groupexpense.v1.GroupExpenseService.GetAllCreated:output_type -> groupexpense.v1.GetAllCreatedResponse
+	7, // 7: groupexpense.v1.GroupExpenseService.GetDetails:output_type -> groupexpense.v1.GetDetailsResponse
+	8, // 8: groupexpense.v1.GroupExpenseService.ConfirmDraft:output_type -> groupexpense.v1.ConfirmDraftResponse
+	9, // 9: groupexpense.v1.GroupExpenseService.Delete:output_type -> google.protobuf.Empty
+	5, // [5:10] is the sub-list for method output_type
+	0, // [0:5] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
