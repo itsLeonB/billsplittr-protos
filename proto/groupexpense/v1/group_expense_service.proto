@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package groupexpense.v1;
 
+import "google/protobuf/empty.proto";
 import "groupexpense/v1/group_expense_message.proto";
 
 option go_package = "github.com/itsLeonB/billsplittr-protos/gen/go/groupexpense/v1;groupexpense";
@@ -11,4 +12,5 @@ service GroupExpenseService {
   rpc GetAllCreated(GetAllCreatedRequest) returns (GetAllCreatedResponse);
   rpc GetDetails(GetDetailsRequest) returns (GetDetailsResponse);
   rpc ConfirmDraft(ConfirmDraftRequest) returns (ConfirmDraftResponse);
+  rpc Delete(DeleteRequest) returns (google.protobuf.Empty);
 }

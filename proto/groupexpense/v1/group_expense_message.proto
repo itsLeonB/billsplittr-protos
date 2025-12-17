@@ -47,3 +47,8 @@ message ConfirmDraftRequest {
 message ConfirmDraftResponse {
   GroupExpenseResponse group_expense = 1;
 }
+
+message DeleteRequest {
+  string id = 1;
+  string profile_id = 2;
+}
