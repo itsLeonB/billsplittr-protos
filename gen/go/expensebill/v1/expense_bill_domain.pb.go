@@ -27,6 +27,7 @@ type ExpenseBill struct {
 	CreatorProfileId string                 `protobuf:"bytes,1,opt,name=creator_profile_id,json=creatorProfileId,proto3" json:"creator_profile_id,omitempty"`
 	PayerProfileId   string                 `protobuf:"bytes,2,opt,name=payer_profile_id,json=payerProfileId,proto3" json:"payer_profile_id,omitempty"`
 	ObjectKey        string                 `protobuf:"bytes,3,opt,name=object_key,json=objectKey,proto3" json:"object_key,omitempty"`
+	GroupExpenseId   string                 `protobuf:"bytes,4,opt,name=group_expense_id,json=groupExpenseId,proto3" json:"group_expense_id,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
 }
@@ -78,6 +79,13 @@ func (x *ExpenseBill) GetPayerProfileId() string {
 func (x *ExpenseBill) GetObjectKey() string {
 	if x != nil {
 		return x.ObjectKey
+	}
+	return ""
+}
+
+func (x *ExpenseBill) GetGroupExpenseId() string {
+	if x != nil {
+		return x.GroupExpenseId
 	}
 	return ""
 }
@@ -138,12 +146,13 @@ var File_expensebill_v1_expense_bill_domain_proto protoreflect.FileDescriptor
 
 const file_expensebill_v1_expense_bill_domain_proto_rawDesc = "" +
 	"\n" +
-	"(expensebill/v1/expense_bill_domain.proto\x12\x0eexpensebill.v1\x1a\x17audit/v1/metadata.proto\"\x84\x01\n" +
+	"(expensebill/v1/expense_bill_domain.proto\x12\x0eexpensebill.v1\x1a\x17audit/v1/metadata.proto\"\xae\x01\n" +
 	"\vExpenseBill\x12,\n" +
 	"\x12creator_profile_id\x18\x01 \x01(\tR\x10creatorProfileId\x12(\n" +
 	"\x10payer_profile_id\x18\x02 \x01(\tR\x0epayerProfileId\x12\x1d\n" +
 	"\n" +
-	"object_key\x18\x03 \x01(\tR\tobjectKey\"\x90\x01\n" +
+	"object_key\x18\x03 \x01(\tR\tobjectKey\x12(\n" +
+	"\x10group_expense_id\x18\x04 \x01(\tR\x0egroupExpenseId\"\x90\x01\n" +
 	"\x13ExpenseBillResponse\x12>\n" +
 	"\fexpense_bill\x18\x01 \x01(\v2\x1b.expensebill.v1.ExpenseBillR\vexpenseBill\x129\n" +
 	"\x0eaudit_metadata\x18\x02 \x01(\v2\x12.audit.v1.MetadataR\rauditMetadataBJZHgithub.com/itsLeonB/billsplittr-protos/gen/go/expensebill/v1;expensebillb\x06proto3"

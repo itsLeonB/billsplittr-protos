@@ -10,6 +10,7 @@ message ExpenseBill {
   string creator_profile_id = 1;
   string payer_profile_id = 2;
   string object_key = 3;
+  string group_expense_id = 4;
 }
 
 message ExpenseBillResponse {
