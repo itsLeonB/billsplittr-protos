@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package groupexpense.v2;
+
+import "groupexpense/v1/group_expense_domain.proto";
+
+option go_package = "github.com/itsLeonB/billsplittr-protos/gen/go/groupexpense/v2;groupexpense";
+
+message CreateDraftRequest {
+  string creator_profile_id = 1;
+  string description = 2;
+}
+
+message CreateDraftResponse {
+  groupexpense.v1.GroupExpenseResponse group_expense = 1;
+}

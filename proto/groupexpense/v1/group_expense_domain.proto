@@ -10,17 +10,28 @@ import "otherfee/v1/other_fee_domain.proto";
 option go_package = "github.com/itsLeonB/billsplittr-protos/gen/go/groupexpense/v1;groupexpense";
 
 message GroupExpenseResponse {
+  enum ExpenseStatus {
+    EXPENSE_STATUS_UNSPECIFIED = 0;
+    EXPENSE_STATUS_DRAFT = 1;
+    EXPENSE_STATUS_PROCESSING_BILL = 2;
+    EXPENSE_STATUS_READY = 3;
+    EXPENSE_STATUS_CONFIRMED = 4;
+  }
+
   string payer_profile_id = 1;
   google.type.Money total_amount = 2;
-  google.type.Money subtotal = 3;
+  google.type.Money subtotal = 3 [deprecated = true];
   string description = 4;
   string creator_profile_id = 5;
-  bool is_confirmed = 6;
-  bool is_participants_confirmed = 7;
+  bool is_confirmed = 6 [deprecated = true];
+  bool is_participants_confirmed = 7 [deprecated = true];
   repeated expenseitem.v1.ExpenseItemResponse items = 8;
   repeated otherfee.v1.OtherFeeResponse other_fees = 9;
   repeated ExpenseParticipantResponse participants = 10;
   audit.v1.Metadata audit_metadata = 11;
+  google.type.Money items_total = 12;
+  google.type.Money fees_total = 13;
+  ExpenseStatus status = 14;
 }
 
 message ExpenseParticipantResponse {

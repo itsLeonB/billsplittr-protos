@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package groupexpense.v2;
+
+import "groupexpense/v2/group_expense_message.proto";
+
+option go_package = "github.com/itsLeonB/billsplittr-protos/gen/go/groupexpense/v2;groupexpense";
+
+service GroupExpenseService {
+  rpc CreateDraft(CreateDraftRequest) returns (CreateDraftResponse);
+}
