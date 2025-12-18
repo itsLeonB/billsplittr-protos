@@ -25,10 +25,13 @@ const (
 type ExpenseBill_Status int32
 
 const (
-	ExpenseBill_STATUS_UNSPECIFIED ExpenseBill_Status = 0
-	ExpenseBill_STATUS_PENDING     ExpenseBill_Status = 1
-	ExpenseBill_STATUS_PARSED      ExpenseBill_Status = 2
-	ExpenseBill_STATUS_FAILED      ExpenseBill_Status = 3
+	ExpenseBill_STATUS_UNSPECIFIED       ExpenseBill_Status = 0
+	ExpenseBill_STATUS_PENDING           ExpenseBill_Status = 1
+	ExpenseBill_STATUS_EXTRACTED         ExpenseBill_Status = 2
+	ExpenseBill_STATUS_FAILED_EXTRACTING ExpenseBill_Status = 3
+	ExpenseBill_STATUS_PARSED            ExpenseBill_Status = 4
+	ExpenseBill_STATUS_FAILED_PARSING    ExpenseBill_Status = 5
+	ExpenseBill_STATUS_NOT_DETECTED      ExpenseBill_Status = 6
 )
 
 // Enum value maps for ExpenseBill_Status.
@@ -36,14 +39,20 @@ var (
 	ExpenseBill_Status_name = map[int32]string{
 		0: "STATUS_UNSPECIFIED",
 		1: "STATUS_PENDING",
-		2: "STATUS_PARSED",
-		3: "STATUS_FAILED",
+		2: "STATUS_EXTRACTED",
+		3: "STATUS_FAILED_EXTRACTING",
+		4: "STATUS_PARSED",
+		5: "STATUS_FAILED_PARSING",
+		6: "STATUS_NOT_DETECTED",
 	}
 	ExpenseBill_Status_value = map[string]int32{
-		"STATUS_UNSPECIFIED": 0,
-		"STATUS_PENDING":     1,
-		"STATUS_PARSED":      2,
-		"STATUS_FAILED":      3,
+		"STATUS_UNSPECIFIED":       0,
+		"STATUS_PENDING":           1,
+		"STATUS_EXTRACTED":         2,
+		"STATUS_FAILED_EXTRACTING": 3,
+		"STATUS_PARSED":            4,
+		"STATUS_FAILED_PARSING":    5,
+		"STATUS_NOT_DETECTED":      6,
 	}
 )
 
@@ -206,19 +215,22 @@ var File_expensebill_v1_expense_bill_domain_proto protoreflect.FileDescriptor
 
 const file_expensebill_v1_expense_bill_domain_proto_rawDesc = "" +
 	"\n" +
-	"(expensebill/v1/expense_bill_domain.proto\x12\x0eexpensebill.v1\x1a\x17audit/v1/metadata.proto\"\xc6\x02\n" +
+	"(expensebill/v1/expense_bill_domain.proto\x12\x0eexpensebill.v1\x1a\x17audit/v1/metadata.proto\"\x9c\x03\n" +
 	"\vExpenseBill\x12,\n" +
 	"\x12creator_profile_id\x18\x01 \x01(\tR\x10creatorProfileId\x12(\n" +
 	"\x10payer_profile_id\x18\x02 \x01(\tR\x0epayerProfileId\x12\x1d\n" +
 	"\n" +
 	"object_key\x18\x03 \x01(\tR\tobjectKey\x12(\n" +
 	"\x10group_expense_id\x18\x04 \x01(\tR\x0egroupExpenseId\x12:\n" +
-	"\x06status\x18\x05 \x01(\x0e2\".expensebill.v1.ExpenseBill.StatusR\x06status\"Z\n" +
+	"\x06status\x18\x05 \x01(\x0e2\".expensebill.v1.ExpenseBill.StatusR\x06status\"\xaf\x01\n" +
 	"\x06Status\x12\x16\n" +
 	"\x12STATUS_UNSPECIFIED\x10\x00\x12\x12\n" +
-	"\x0eSTATUS_PENDING\x10\x01\x12\x11\n" +
-	"\rSTATUS_PARSED\x10\x02\x12\x11\n" +
-	"\rSTATUS_FAILED\x10\x03\"\x90\x01\n" +
+	"\x0eSTATUS_PENDING\x10\x01\x12\x14\n" +
+	"\x10STATUS_EXTRACTED\x10\x02\x12\x1c\n" +
+	"\x18STATUS_FAILED_EXTRACTING\x10\x03\x12\x11\n" +
+	"\rSTATUS_PARSED\x10\x04\x12\x19\n" +
+	"\x15STATUS_FAILED_PARSING\x10\x05\x12\x17\n" +
+	"\x13STATUS_NOT_DETECTED\x10\x06\"\x90\x01\n" +
 	"\x13ExpenseBillResponse\x12>\n" +
 	"\fexpense_bill\x18\x01 \x01(\v2\x1b.expensebill.v1.ExpenseBillR\vexpenseBill\x129\n" +
 	"\x0eaudit_metadata\x18\x02 \x01(\v2\x12.audit.v1.MetadataR\rauditMetadataBJZHgithub.com/itsLeonB/billsplittr-protos/gen/go/expensebill/v1;expensebillb\x06proto3"

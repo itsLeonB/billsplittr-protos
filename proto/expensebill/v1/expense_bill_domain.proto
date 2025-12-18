@@ -10,8 +10,11 @@ message ExpenseBill {
   enum Status {
     STATUS_UNSPECIFIED = 0;
     STATUS_PENDING = 1;
-    STATUS_PARSED = 2;
-    STATUS_FAILED = 3;
+    STATUS_EXTRACTED = 2;
+    STATUS_FAILED_EXTRACTING = 3;
+    STATUS_PARSED = 4;
+    STATUS_FAILED_PARSING = 5;
+    STATUS_NOT_DETECTED = 6;
   }
 
   string creator_profile_id = 1;
