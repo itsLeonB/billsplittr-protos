@@ -3,6 +3,7 @@ syntax = "proto3";
 package groupexpense.v1;
 
 import "audit/v1/metadata.proto";
+import "expensebill/v1/expense_bill_domain.proto";
 import "expenseitem/v1/expense_item_domain.proto";
 import "google/type/money.proto";
 import "otherfee/v1/other_fee_domain.proto";
@@ -10,12 +11,11 @@ import "otherfee/v1/other_fee_domain.proto";
 option go_package = "github.com/itsLeonB/billsplittr-protos/gen/go/groupexpense/v1;groupexpense";
 
 message GroupExpenseResponse {
-  enum ExpenseStatus {
-    EXPENSE_STATUS_UNSPECIFIED = 0;
-    EXPENSE_STATUS_DRAFT = 1;
-    EXPENSE_STATUS_PROCESSING_BILL = 2;
-    EXPENSE_STATUS_READY = 3;
-    EXPENSE_STATUS_CONFIRMED = 4;
+  enum Status {
+    STATUS_UNSPECIFIED = 0;
+    STATUS_DRAFT = 1;
+    STATUS_READY = 2;
+    STATUS_CONFIRMED = 3;
   }
 
   string payer_profile_id = 1;
@@ -31,7 +31,8 @@ message GroupExpenseResponse {
   audit.v1.Metadata audit_metadata = 11;
   google.type.Money items_total = 12;
   google.type.Money fees_total = 13;
-  ExpenseStatus status = 14;
+  Status status = 14;
+  expensebill.v1.ExpenseBillResponse expense_bill = 15;
 }
 
 message ExpenseParticipantResponse {

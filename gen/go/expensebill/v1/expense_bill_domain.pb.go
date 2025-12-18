@@ -22,12 +22,65 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type ExpenseBill_Status int32
+
+const (
+	ExpenseBill_STATUS_UNSPECIFIED ExpenseBill_Status = 0
+	ExpenseBill_STATUS_PENDING     ExpenseBill_Status = 1
+	ExpenseBill_STATUS_PARSED      ExpenseBill_Status = 2
+	ExpenseBill_STATUS_FAILED      ExpenseBill_Status = 3
+)
+
+// Enum value maps for ExpenseBill_Status.
+var (
+	ExpenseBill_Status_name = map[int32]string{
+		0: "STATUS_UNSPECIFIED",
+		1: "STATUS_PENDING",
+		2: "STATUS_PARSED",
+		3: "STATUS_FAILED",
+	}
+	ExpenseBill_Status_value = map[string]int32{
+		"STATUS_UNSPECIFIED": 0,
+		"STATUS_PENDING":     1,
+		"STATUS_PARSED":      2,
+		"STATUS_FAILED":      3,
+	}
+)
+
+func (x ExpenseBill_Status) Enum() *ExpenseBill_Status {
+	p := new(ExpenseBill_Status)
+	*p = x
+	return p
+}
+
+func (x ExpenseBill_Status) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (ExpenseBill_Status) Descriptor() protoreflect.EnumDescriptor {
+	return file_expensebill_v1_expense_bill_domain_proto_enumTypes[0].Descriptor()
+}
+
+func (ExpenseBill_Status) Type() protoreflect.EnumType {
+	return &file_expensebill_v1_expense_bill_domain_proto_enumTypes[0]
+}
+
+func (x ExpenseBill_Status) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use ExpenseBill_Status.Descriptor instead.
+func (ExpenseBill_Status) EnumDescriptor() ([]byte, []int) {
+	return file_expensebill_v1_expense_bill_domain_proto_rawDescGZIP(), []int{0, 0}
+}
+
 type ExpenseBill struct {
 	state            protoimpl.MessageState `protogen:"open.v1"`
 	CreatorProfileId string                 `protobuf:"bytes,1,opt,name=creator_profile_id,json=creatorProfileId,proto3" json:"creator_profile_id,omitempty"`
 	PayerProfileId   string                 `protobuf:"bytes,2,opt,name=payer_profile_id,json=payerProfileId,proto3" json:"payer_profile_id,omitempty"`
 	ObjectKey        string                 `protobuf:"bytes,3,opt,name=object_key,json=objectKey,proto3" json:"object_key,omitempty"`
 	GroupExpenseId   string                 `protobuf:"bytes,4,opt,name=group_expense_id,json=groupExpenseId,proto3" json:"group_expense_id,omitempty"`
+	Status           ExpenseBill_Status     `protobuf:"varint,5,opt,name=status,proto3,enum=expensebill.v1.ExpenseBill_Status" json:"status,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
 }
@@ -90,6 +143,13 @@ func (x *ExpenseBill) GetGroupExpenseId() string {
 	return ""
 }
 
+func (x *ExpenseBill) GetStatus() ExpenseBill_Status {
+	if x != nil {
+		return x.Status
+	}
+	return ExpenseBill_STATUS_UNSPECIFIED
+}
+
 type ExpenseBillResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ExpenseBill   *ExpenseBill           `protobuf:"bytes,1,opt,name=expense_bill,json=expenseBill,proto3" json:"expense_bill,omitempty"`
@@ -146,13 +206,19 @@ var File_expensebill_v1_expense_bill_domain_proto protoreflect.FileDescriptor
 
 const file_expensebill_v1_expense_bill_domain_proto_rawDesc = "" +
 	"\n" +
-	"(expensebill/v1/expense_bill_domain.proto\x12\x0eexpensebill.v1\x1a\x17audit/v1/metadata.proto\"\xae\x01\n" +
+	"(expensebill/v1/expense_bill_domain.proto\x12\x0eexpensebill.v1\x1a\x17audit/v1/metadata.proto\"\xc6\x02\n" +
 	"\vExpenseBill\x12,\n" +
 	"\x12creator_profile_id\x18\x01 \x01(\tR\x10creatorProfileId\x12(\n" +
 	"\x10payer_profile_id\x18\x02 \x01(\tR\x0epayerProfileId\x12\x1d\n" +
 	"\n" +
 	"object_key\x18\x03 \x01(\tR\tobjectKey\x12(\n" +
-	"\x10group_expense_id\x18\x04 \x01(\tR\x0egroupExpenseId\"\x90\x01\n" +
+	"\x10group_expense_id\x18\x04 \x01(\tR\x0egroupExpenseId\x12:\n" +
+	"\x06status\x18\x05 \x01(\x0e2\".expensebill.v1.ExpenseBill.StatusR\x06status\"Z\n" +
+	"\x06Status\x12\x16\n" +
+	"\x12STATUS_UNSPECIFIED\x10\x00\x12\x12\n" +
+	"\x0eSTATUS_PENDING\x10\x01\x12\x11\n" +
+	"\rSTATUS_PARSED\x10\x02\x12\x11\n" +
+	"\rSTATUS_FAILED\x10\x03\"\x90\x01\n" +
 	"\x13ExpenseBillResponse\x12>\n" +
 	"\fexpense_bill\x18\x01 \x01(\v2\x1b.expensebill.v1.ExpenseBillR\vexpenseBill\x129\n" +
 	"\x0eaudit_metadata\x18\x02 \x01(\v2\x12.audit.v1.MetadataR\rauditMetadataBJZHgithub.com/itsLeonB/billsplittr-protos/gen/go/expensebill/v1;expensebillb\x06proto3"
@@ -169,20 +235,23 @@ func file_expensebill_v1_expense_bill_domain_proto_rawDescGZIP() []byte {
 	return file_expensebill_v1_expense_bill_domain_proto_rawDescData
 }
 
+var file_expensebill_v1_expense_bill_domain_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_expensebill_v1_expense_bill_domain_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_expensebill_v1_expense_bill_domain_proto_goTypes = []any{
-	(*ExpenseBill)(nil),         // 0: expensebill.v1.ExpenseBill
-	(*ExpenseBillResponse)(nil), // 1: expensebill.v1.ExpenseBillResponse
-	(*v1.Metadata)(nil),         // 2: audit.v1.Metadata
+	(ExpenseBill_Status)(0),     // 0: expensebill.v1.ExpenseBill.Status
+	(*ExpenseBill)(nil),         // 1: expensebill.v1.ExpenseBill
+	(*ExpenseBillResponse)(nil), // 2: expensebill.v1.ExpenseBillResponse
+	(*v1.Metadata)(nil),         // 3: audit.v1.Metadata
 }
 var file_expensebill_v1_expense_bill_domain_proto_depIdxs = []int32{
-	0, // 0: expensebill.v1.ExpenseBillResponse.expense_bill:type_name -> expensebill.v1.ExpenseBill
-	2, // 1: expensebill.v1.ExpenseBillResponse.audit_metadata:type_name -> audit.v1.Metadata
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	0, // 0: expensebill.v1.ExpenseBill.status:type_name -> expensebill.v1.ExpenseBill.Status
+	1, // 1: expensebill.v1.ExpenseBillResponse.expense_bill:type_name -> expensebill.v1.ExpenseBill
+	3, // 2: expensebill.v1.ExpenseBillResponse.audit_metadata:type_name -> audit.v1.Metadata
+	3, // [3:3] is the sub-list for method output_type
+	3, // [3:3] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_expensebill_v1_expense_bill_domain_proto_init() }
@@ -195,13 +264,14 @@ func file_expensebill_v1_expense_bill_domain_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_expensebill_v1_expense_bill_domain_proto_rawDesc), len(file_expensebill_v1_expense_bill_domain_proto_rawDesc)),
-			NumEnums:      0,
+			NumEnums:      1,
 			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
 		GoTypes:           file_expensebill_v1_expense_bill_domain_proto_goTypes,
 		DependencyIndexes: file_expensebill_v1_expense_bill_domain_proto_depIdxs,
+		EnumInfos:         file_expensebill_v1_expense_bill_domain_proto_enumTypes,
 		MessageInfos:      file_expensebill_v1_expense_bill_domain_proto_msgTypes,
 	}.Build()
 	File_expensebill_v1_expense_bill_domain_proto = out.File

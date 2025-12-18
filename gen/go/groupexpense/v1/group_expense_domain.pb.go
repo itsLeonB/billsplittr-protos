@@ -8,6 +8,7 @@ package groupexpense
 
 import (
 	v12 "github.com/itsLeonB/audit/gen/go/audit/v1"
+	v13 "github.com/itsLeonB/billsplittr-protos/gen/go/expensebill/v1"
 	v1 "github.com/itsLeonB/billsplittr-protos/gen/go/expenseitem/v1"
 	v11 "github.com/itsLeonB/billsplittr-protos/gen/go/otherfee/v1"
 	money "google.golang.org/genproto/googleapis/type/money"
@@ -25,58 +26,55 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type GroupExpenseResponse_ExpenseStatus int32
+type GroupExpenseResponse_Status int32
 
 const (
-	GroupExpenseResponse_EXPENSE_STATUS_UNSPECIFIED     GroupExpenseResponse_ExpenseStatus = 0
-	GroupExpenseResponse_EXPENSE_STATUS_DRAFT           GroupExpenseResponse_ExpenseStatus = 1
-	GroupExpenseResponse_EXPENSE_STATUS_PROCESSING_BILL GroupExpenseResponse_ExpenseStatus = 2
-	GroupExpenseResponse_EXPENSE_STATUS_READY           GroupExpenseResponse_ExpenseStatus = 3
-	GroupExpenseResponse_EXPENSE_STATUS_CONFIRMED       GroupExpenseResponse_ExpenseStatus = 4
+	GroupExpenseResponse_STATUS_UNSPECIFIED GroupExpenseResponse_Status = 0
+	GroupExpenseResponse_STATUS_DRAFT       GroupExpenseResponse_Status = 1
+	GroupExpenseResponse_STATUS_READY       GroupExpenseResponse_Status = 2
+	GroupExpenseResponse_STATUS_CONFIRMED   GroupExpenseResponse_Status = 3
 )
 
-// Enum value maps for GroupExpenseResponse_ExpenseStatus.
+// Enum value maps for GroupExpenseResponse_Status.
 var (
-	GroupExpenseResponse_ExpenseStatus_name = map[int32]string{
-		0: "EXPENSE_STATUS_UNSPECIFIED",
-		1: "EXPENSE_STATUS_DRAFT",
-		2: "EXPENSE_STATUS_PROCESSING_BILL",
-		3: "EXPENSE_STATUS_READY",
-		4: "EXPENSE_STATUS_CONFIRMED",
+	GroupExpenseResponse_Status_name = map[int32]string{
+		0: "STATUS_UNSPECIFIED",
+		1: "STATUS_DRAFT",
+		2: "STATUS_READY",
+		3: "STATUS_CONFIRMED",
 	}
-	GroupExpenseResponse_ExpenseStatus_value = map[string]int32{
-		"EXPENSE_STATUS_UNSPECIFIED":     0,
-		"EXPENSE_STATUS_DRAFT":           1,
-		"EXPENSE_STATUS_PROCESSING_BILL": 2,
-		"EXPENSE_STATUS_READY":           3,
-		"EXPENSE_STATUS_CONFIRMED":       4,
+	GroupExpenseResponse_Status_value = map[string]int32{
+		"STATUS_UNSPECIFIED": 0,
+		"STATUS_DRAFT":       1,
+		"STATUS_READY":       2,
+		"STATUS_CONFIRMED":   3,
 	}
 )
 
-func (x GroupExpenseResponse_ExpenseStatus) Enum() *GroupExpenseResponse_ExpenseStatus {
-	p := new(GroupExpenseResponse_ExpenseStatus)
+func (x GroupExpenseResponse_Status) Enum() *GroupExpenseResponse_Status {
+	p := new(GroupExpenseResponse_Status)
 	*p = x
 	return p
 }
 
-func (x GroupExpenseResponse_ExpenseStatus) String() string {
+func (x GroupExpenseResponse_Status) String() string {
 	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
 }
 
-func (GroupExpenseResponse_ExpenseStatus) Descriptor() protoreflect.EnumDescriptor {
+func (GroupExpenseResponse_Status) Descriptor() protoreflect.EnumDescriptor {
 	return file_groupexpense_v1_group_expense_domain_proto_enumTypes[0].Descriptor()
 }
 
-func (GroupExpenseResponse_ExpenseStatus) Type() protoreflect.EnumType {
+func (GroupExpenseResponse_Status) Type() protoreflect.EnumType {
 	return &file_groupexpense_v1_group_expense_domain_proto_enumTypes[0]
 }
 
-func (x GroupExpenseResponse_ExpenseStatus) Number() protoreflect.EnumNumber {
+func (x GroupExpenseResponse_Status) Number() protoreflect.EnumNumber {
 	return protoreflect.EnumNumber(x)
 }
 
-// Deprecated: Use GroupExpenseResponse_ExpenseStatus.Descriptor instead.
-func (GroupExpenseResponse_ExpenseStatus) EnumDescriptor() ([]byte, []int) {
+// Deprecated: Use GroupExpenseResponse_Status.Descriptor instead.
+func (GroupExpenseResponse_Status) EnumDescriptor() ([]byte, []int) {
 	return file_groupexpense_v1_group_expense_domain_proto_rawDescGZIP(), []int{0, 0}
 }
 
@@ -91,14 +89,15 @@ type GroupExpenseResponse struct {
 	// Deprecated: Marked as deprecated in groupexpense/v1/group_expense_domain.proto.
 	IsConfirmed bool `protobuf:"varint,6,opt,name=is_confirmed,json=isConfirmed,proto3" json:"is_confirmed,omitempty"`
 	// Deprecated: Marked as deprecated in groupexpense/v1/group_expense_domain.proto.
-	IsParticipantsConfirmed bool                               `protobuf:"varint,7,opt,name=is_participants_confirmed,json=isParticipantsConfirmed,proto3" json:"is_participants_confirmed,omitempty"`
-	Items                   []*v1.ExpenseItemResponse          `protobuf:"bytes,8,rep,name=items,proto3" json:"items,omitempty"`
-	OtherFees               []*v11.OtherFeeResponse            `protobuf:"bytes,9,rep,name=other_fees,json=otherFees,proto3" json:"other_fees,omitempty"`
-	Participants            []*ExpenseParticipantResponse      `protobuf:"bytes,10,rep,name=participants,proto3" json:"participants,omitempty"`
-	AuditMetadata           *v12.Metadata                      `protobuf:"bytes,11,opt,name=audit_metadata,json=auditMetadata,proto3" json:"audit_metadata,omitempty"`
-	ItemsTotal              *money.Money                       `protobuf:"bytes,12,opt,name=items_total,json=itemsTotal,proto3" json:"items_total,omitempty"`
-	FeesTotal               *money.Money                       `protobuf:"bytes,13,opt,name=fees_total,json=feesTotal,proto3" json:"fees_total,omitempty"`
-	Status                  GroupExpenseResponse_ExpenseStatus `protobuf:"varint,14,opt,name=status,proto3,enum=groupexpense.v1.GroupExpenseResponse_ExpenseStatus" json:"status,omitempty"`
+	IsParticipantsConfirmed bool                          `protobuf:"varint,7,opt,name=is_participants_confirmed,json=isParticipantsConfirmed,proto3" json:"is_participants_confirmed,omitempty"`
+	Items                   []*v1.ExpenseItemResponse     `protobuf:"bytes,8,rep,name=items,proto3" json:"items,omitempty"`
+	OtherFees               []*v11.OtherFeeResponse       `protobuf:"bytes,9,rep,name=other_fees,json=otherFees,proto3" json:"other_fees,omitempty"`
+	Participants            []*ExpenseParticipantResponse `protobuf:"bytes,10,rep,name=participants,proto3" json:"participants,omitempty"`
+	AuditMetadata           *v12.Metadata                 `protobuf:"bytes,11,opt,name=audit_metadata,json=auditMetadata,proto3" json:"audit_metadata,omitempty"`
+	ItemsTotal              *money.Money                  `protobuf:"bytes,12,opt,name=items_total,json=itemsTotal,proto3" json:"items_total,omitempty"`
+	FeesTotal               *money.Money                  `protobuf:"bytes,13,opt,name=fees_total,json=feesTotal,proto3" json:"fees_total,omitempty"`
+	Status                  GroupExpenseResponse_Status   `protobuf:"varint,14,opt,name=status,proto3,enum=groupexpense.v1.GroupExpenseResponse_Status" json:"status,omitempty"`
+	ExpenseBill             *v13.ExpenseBillResponse      `protobuf:"bytes,15,opt,name=expense_bill,json=expenseBill,proto3" json:"expense_bill,omitempty"`
 	unknownFields           protoimpl.UnknownFields
 	sizeCache               protoimpl.SizeCache
 }
@@ -227,11 +226,18 @@ func (x *GroupExpenseResponse) GetFeesTotal() *money.Money {
 	return nil
 }
 
-func (x *GroupExpenseResponse) GetStatus() GroupExpenseResponse_ExpenseStatus {
+func (x *GroupExpenseResponse) GetStatus() GroupExpenseResponse_Status {
 	if x != nil {
 		return x.Status
 	}
-	return GroupExpenseResponse_EXPENSE_STATUS_UNSPECIFIED
+	return GroupExpenseResponse_STATUS_UNSPECIFIED
+}
+
+func (x *GroupExpenseResponse) GetExpenseBill() *v13.ExpenseBillResponse {
+	if x != nil {
+		return x.ExpenseBill
+	}
+	return nil
 }
 
 type ExpenseParticipantResponse struct {
@@ -290,7 +296,7 @@ var File_groupexpense_v1_group_expense_domain_proto protoreflect.FileDescriptor
 
 const file_groupexpense_v1_group_expense_domain_proto_rawDesc = "" +
 	"\n" +
-	"*groupexpense/v1/group_expense_domain.proto\x12\x0fgroupexpense.v1\x1a\x17audit/v1/metadata.proto\x1a(expenseitem/v1/expense_item_domain.proto\x1a\x17google/type/money.proto\x1a\"otherfee/v1/other_fee_domain.proto\"\xc4\a\n" +
+	"*groupexpense/v1/group_expense_domain.proto\x12\x0fgroupexpense.v1\x1a\x17audit/v1/metadata.proto\x1a(expensebill/v1/expense_bill_domain.proto\x1a(expenseitem/v1/expense_item_domain.proto\x1a\x17google/type/money.proto\x1a\"otherfee/v1/other_fee_domain.proto\"\xb9\a\n" +
 	"\x14GroupExpenseResponse\x12(\n" +
 	"\x10payer_profile_id\x18\x01 \x01(\tR\x0epayerProfileId\x125\n" +
 	"\ftotal_amount\x18\x02 \x01(\v2\x12.google.type.MoneyR\vtotalAmount\x122\n" +
@@ -308,14 +314,14 @@ const file_groupexpense_v1_group_expense_domain_proto_rawDesc = "" +
 	"\vitems_total\x18\f \x01(\v2\x12.google.type.MoneyR\n" +
 	"itemsTotal\x121\n" +
 	"\n" +
-	"fees_total\x18\r \x01(\v2\x12.google.type.MoneyR\tfeesTotal\x12K\n" +
-	"\x06status\x18\x0e \x01(\x0e23.groupexpense.v1.GroupExpenseResponse.ExpenseStatusR\x06status\"\xa5\x01\n" +
-	"\rExpenseStatus\x12\x1e\n" +
-	"\x1aEXPENSE_STATUS_UNSPECIFIED\x10\x00\x12\x18\n" +
-	"\x14EXPENSE_STATUS_DRAFT\x10\x01\x12\"\n" +
-	"\x1eEXPENSE_STATUS_PROCESSING_BILL\x10\x02\x12\x18\n" +
-	"\x14EXPENSE_STATUS_READY\x10\x03\x12\x1c\n" +
-	"\x18EXPENSE_STATUS_CONFIRMED\x10\x04\"r\n" +
+	"fees_total\x18\r \x01(\v2\x12.google.type.MoneyR\tfeesTotal\x12D\n" +
+	"\x06status\x18\x0e \x01(\x0e2,.groupexpense.v1.GroupExpenseResponse.StatusR\x06status\x12F\n" +
+	"\fexpense_bill\x18\x0f \x01(\v2#.expensebill.v1.ExpenseBillResponseR\vexpenseBill\"Z\n" +
+	"\x06Status\x12\x16\n" +
+	"\x12STATUS_UNSPECIFIED\x10\x00\x12\x10\n" +
+	"\fSTATUS_DRAFT\x10\x01\x12\x10\n" +
+	"\fSTATUS_READY\x10\x02\x12\x14\n" +
+	"\x10STATUS_CONFIRMED\x10\x03\"r\n" +
 	"\x1aExpenseParticipantResponse\x12\x1d\n" +
 	"\n" +
 	"profile_id\x18\x01 \x01(\tR\tprofileId\x125\n" +
@@ -336,13 +342,14 @@ func file_groupexpense_v1_group_expense_domain_proto_rawDescGZIP() []byte {
 var file_groupexpense_v1_group_expense_domain_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_groupexpense_v1_group_expense_domain_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_groupexpense_v1_group_expense_domain_proto_goTypes = []any{
-	(GroupExpenseResponse_ExpenseStatus)(0), // 0: groupexpense.v1.GroupExpenseResponse.ExpenseStatus
-	(*GroupExpenseResponse)(nil),            // 1: groupexpense.v1.GroupExpenseResponse
-	(*ExpenseParticipantResponse)(nil),      // 2: groupexpense.v1.ExpenseParticipantResponse
-	(*money.Money)(nil),                     // 3: google.type.Money
-	(*v1.ExpenseItemResponse)(nil),          // 4: expenseitem.v1.ExpenseItemResponse
-	(*v11.OtherFeeResponse)(nil),            // 5: otherfee.v1.OtherFeeResponse
-	(*v12.Metadata)(nil),                    // 6: audit.v1.Metadata
+	(GroupExpenseResponse_Status)(0),   // 0: groupexpense.v1.GroupExpenseResponse.Status
+	(*GroupExpenseResponse)(nil),       // 1: groupexpense.v1.GroupExpenseResponse
+	(*ExpenseParticipantResponse)(nil), // 2: groupexpense.v1.ExpenseParticipantResponse
+	(*money.Money)(nil),                // 3: google.type.Money
+	(*v1.ExpenseItemResponse)(nil),     // 4: expenseitem.v1.ExpenseItemResponse
+	(*v11.OtherFeeResponse)(nil),       // 5: otherfee.v1.OtherFeeResponse
+	(*v12.Metadata)(nil),               // 6: audit.v1.Metadata
+	(*v13.ExpenseBillResponse)(nil),    // 7: expensebill.v1.ExpenseBillResponse
 }
 var file_groupexpense_v1_group_expense_domain_proto_depIdxs = []int32{
 	3,  // 0: groupexpense.v1.GroupExpenseResponse.total_amount:type_name -> google.type.Money
@@ -353,13 +360,14 @@ var file_groupexpense_v1_group_expense_domain_proto_depIdxs = []int32{
 	6,  // 5: groupexpense.v1.GroupExpenseResponse.audit_metadata:type_name -> audit.v1.Metadata
 	3,  // 6: groupexpense.v1.GroupExpenseResponse.items_total:type_name -> google.type.Money
 	3,  // 7: groupexpense.v1.GroupExpenseResponse.fees_total:type_name -> google.type.Money
-	0,  // 8: groupexpense.v1.GroupExpenseResponse.status:type_name -> groupexpense.v1.GroupExpenseResponse.ExpenseStatus
-	3,  // 9: groupexpense.v1.ExpenseParticipantResponse.share_amount:type_name -> google.type.Money
-	10, // [10:10] is the sub-list for method output_type
-	10, // [10:10] is the sub-list for method input_type
-	10, // [10:10] is the sub-list for extension type_name
-	10, // [10:10] is the sub-list for extension extendee
-	0,  // [0:10] is the sub-list for field type_name
+	0,  // 8: groupexpense.v1.GroupExpenseResponse.status:type_name -> groupexpense.v1.GroupExpenseResponse.Status
+	7,  // 9: groupexpense.v1.GroupExpenseResponse.expense_bill:type_name -> expensebill.v1.ExpenseBillResponse
+	3,  // 10: groupexpense.v1.ExpenseParticipantResponse.share_amount:type_name -> google.type.Money
+	11, // [11:11] is the sub-list for method output_type
+	11, // [11:11] is the sub-list for method input_type
+	11, // [11:11] is the sub-list for extension type_name
+	11, // [11:11] is the sub-list for extension extendee
+	0,  // [0:11] is the sub-list for field type_name
 }
 
 func init() { file_groupexpense_v1_group_expense_domain_proto_init() }
