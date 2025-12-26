@@ -484,6 +484,74 @@ func (x *DeleteRequest) GetProfileId() string {
 	return ""
 }
 
+type SyncParticipantsRequest struct {
+	state                 protoimpl.MessageState `protogen:"open.v1"`
+	ParticipantProfileIds []string               `protobuf:"bytes,1,rep,name=participant_profile_ids,json=participantProfileIds,proto3" json:"participant_profile_ids,omitempty"`
+	PayerProfileId        string                 `protobuf:"bytes,2,opt,name=payer_profile_id,json=payerProfileId,proto3" json:"payer_profile_id,omitempty"`
+	UserProfileId         string                 `protobuf:"bytes,3,opt,name=user_profile_id,json=userProfileId,proto3" json:"user_profile_id,omitempty"`
+	GroupExpenseId        string                 `protobuf:"bytes,4,opt,name=group_expense_id,json=groupExpenseId,proto3" json:"group_expense_id,omitempty"`
+	unknownFields         protoimpl.UnknownFields
+	sizeCache             protoimpl.SizeCache
+}
+
+func (x *SyncParticipantsRequest) Reset() {
+	*x = SyncParticipantsRequest{}
+	mi := &file_groupexpense_v1_group_expense_message_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SyncParticipantsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SyncParticipantsRequest) ProtoMessage() {}
+
+func (x *SyncParticipantsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_groupexpense_v1_group_expense_message_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SyncParticipantsRequest.ProtoReflect.Descriptor instead.
+func (*SyncParticipantsRequest) Descriptor() ([]byte, []int) {
+	return file_groupexpense_v1_group_expense_message_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *SyncParticipantsRequest) GetParticipantProfileIds() []string {
+	if x != nil {
+		return x.ParticipantProfileIds
+	}
+	return nil
+}
+
+func (x *SyncParticipantsRequest) GetPayerProfileId() string {
+	if x != nil {
+		return x.PayerProfileId
+	}
+	return ""
+}
+
+func (x *SyncParticipantsRequest) GetUserProfileId() string {
+	if x != nil {
+		return x.UserProfileId
+	}
+	return ""
+}
+
+func (x *SyncParticipantsRequest) GetGroupExpenseId() string {
+	if x != nil {
+		return x.GroupExpenseId
+	}
+	return ""
+}
+
 var File_groupexpense_v1_group_expense_message_proto protoreflect.FileDescriptor
 
 const file_groupexpense_v1_group_expense_message_proto_rawDesc = "" +
@@ -518,7 +586,12 @@ const file_groupexpense_v1_group_expense_message_proto_rawDesc = "" +
 	"\rDeleteRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1d\n" +
 	"\n" +
-	"profile_id\x18\x02 \x01(\tR\tprofileIdBLZJgithub.com/itsLeonB/billsplittr-protos/gen/go/groupexpense/v1;groupexpenseb\x06proto3"
+	"profile_id\x18\x02 \x01(\tR\tprofileId\"\xcd\x01\n" +
+	"\x17SyncParticipantsRequest\x126\n" +
+	"\x17participant_profile_ids\x18\x01 \x03(\tR\x15participantProfileIds\x12(\n" +
+	"\x10payer_profile_id\x18\x02 \x01(\tR\x0epayerProfileId\x12&\n" +
+	"\x0fuser_profile_id\x18\x03 \x01(\tR\ruserProfileId\x12(\n" +
+	"\x10group_expense_id\x18\x04 \x01(\tR\x0egroupExpenseIdBLZJgithub.com/itsLeonB/billsplittr-protos/gen/go/groupexpense/v1;groupexpenseb\x06proto3"
 
 var (
 	file_groupexpense_v1_group_expense_message_proto_rawDescOnce sync.Once
@@ -532,31 +605,32 @@ func file_groupexpense_v1_group_expense_message_proto_rawDescGZIP() []byte {
 	return file_groupexpense_v1_group_expense_message_proto_rawDescData
 }
 
-var file_groupexpense_v1_group_expense_message_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_groupexpense_v1_group_expense_message_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_groupexpense_v1_group_expense_message_proto_goTypes = []any{
-	(*CreateDraftRequest)(nil),    // 0: groupexpense.v1.CreateDraftRequest
-	(*CreateDraftResponse)(nil),   // 1: groupexpense.v1.CreateDraftResponse
-	(*GetAllCreatedRequest)(nil),  // 2: groupexpense.v1.GetAllCreatedRequest
-	(*GetAllCreatedResponse)(nil), // 3: groupexpense.v1.GetAllCreatedResponse
-	(*GetDetailsRequest)(nil),     // 4: groupexpense.v1.GetDetailsRequest
-	(*GetDetailsResponse)(nil),    // 5: groupexpense.v1.GetDetailsResponse
-	(*ConfirmDraftRequest)(nil),   // 6: groupexpense.v1.ConfirmDraftRequest
-	(*ConfirmDraftResponse)(nil),  // 7: groupexpense.v1.ConfirmDraftResponse
-	(*DeleteRequest)(nil),         // 8: groupexpense.v1.DeleteRequest
-	(*money.Money)(nil),           // 9: google.type.Money
-	(*v1.ExpenseItem)(nil),        // 10: expenseitem.v1.ExpenseItem
-	(*v11.OtherFee)(nil),          // 11: otherfee.v1.OtherFee
-	(*GroupExpenseResponse)(nil),  // 12: groupexpense.v1.GroupExpenseResponse
+	(*CreateDraftRequest)(nil),      // 0: groupexpense.v1.CreateDraftRequest
+	(*CreateDraftResponse)(nil),     // 1: groupexpense.v1.CreateDraftResponse
+	(*GetAllCreatedRequest)(nil),    // 2: groupexpense.v1.GetAllCreatedRequest
+	(*GetAllCreatedResponse)(nil),   // 3: groupexpense.v1.GetAllCreatedResponse
+	(*GetDetailsRequest)(nil),       // 4: groupexpense.v1.GetDetailsRequest
+	(*GetDetailsResponse)(nil),      // 5: groupexpense.v1.GetDetailsResponse
+	(*ConfirmDraftRequest)(nil),     // 6: groupexpense.v1.ConfirmDraftRequest
+	(*ConfirmDraftResponse)(nil),    // 7: groupexpense.v1.ConfirmDraftResponse
+	(*DeleteRequest)(nil),           // 8: groupexpense.v1.DeleteRequest
+	(*SyncParticipantsRequest)(nil), // 9: groupexpense.v1.SyncParticipantsRequest
+	(*money.Money)(nil),             // 10: google.type.Money
+	(*v1.ExpenseItem)(nil),          // 11: expenseitem.v1.ExpenseItem
+	(*v11.OtherFee)(nil),            // 12: otherfee.v1.OtherFee
+	(*GroupExpenseResponse)(nil),    // 13: groupexpense.v1.GroupExpenseResponse
 }
 var file_groupexpense_v1_group_expense_message_proto_depIdxs = []int32{
-	9,  // 0: groupexpense.v1.CreateDraftRequest.total_amount:type_name -> google.type.Money
-	9,  // 1: groupexpense.v1.CreateDraftRequest.subtotal:type_name -> google.type.Money
-	10, // 2: groupexpense.v1.CreateDraftRequest.items:type_name -> expenseitem.v1.ExpenseItem
-	11, // 3: groupexpense.v1.CreateDraftRequest.other_fees:type_name -> otherfee.v1.OtherFee
-	12, // 4: groupexpense.v1.CreateDraftResponse.group_expense:type_name -> groupexpense.v1.GroupExpenseResponse
-	12, // 5: groupexpense.v1.GetAllCreatedResponse.group_expenses:type_name -> groupexpense.v1.GroupExpenseResponse
-	12, // 6: groupexpense.v1.GetDetailsResponse.group_expense:type_name -> groupexpense.v1.GroupExpenseResponse
-	12, // 7: groupexpense.v1.ConfirmDraftResponse.group_expense:type_name -> groupexpense.v1.GroupExpenseResponse
+	10, // 0: groupexpense.v1.CreateDraftRequest.total_amount:type_name -> google.type.Money
+	10, // 1: groupexpense.v1.CreateDraftRequest.subtotal:type_name -> google.type.Money
+	11, // 2: groupexpense.v1.CreateDraftRequest.items:type_name -> expenseitem.v1.ExpenseItem
+	12, // 3: groupexpense.v1.CreateDraftRequest.other_fees:type_name -> otherfee.v1.OtherFee
+	13, // 4: groupexpense.v1.CreateDraftResponse.group_expense:type_name -> groupexpense.v1.GroupExpenseResponse
+	13, // 5: groupexpense.v1.GetAllCreatedResponse.group_expenses:type_name -> groupexpense.v1.GroupExpenseResponse
+	13, // 6: groupexpense.v1.GetDetailsResponse.group_expense:type_name -> groupexpense.v1.GroupExpenseResponse
+	13, // 7: groupexpense.v1.ConfirmDraftResponse.group_expense:type_name -> groupexpense.v1.GroupExpenseResponse
 	8,  // [8:8] is the sub-list for method output_type
 	8,  // [8:8] is the sub-list for method input_type
 	8,  // [8:8] is the sub-list for extension type_name
@@ -576,7 +650,7 @@ func file_groupexpense_v1_group_expense_message_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_groupexpense_v1_group_expense_message_proto_rawDesc), len(file_groupexpense_v1_group_expense_message_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

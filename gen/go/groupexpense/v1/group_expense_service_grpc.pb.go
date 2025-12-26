@@ -20,11 +20,12 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	GroupExpenseService_CreateDraft_FullMethodName   = "/groupexpense.v1.GroupExpenseService/CreateDraft"
-	GroupExpenseService_GetAllCreated_FullMethodName = "/groupexpense.v1.GroupExpenseService/GetAllCreated"
-	GroupExpenseService_GetDetails_FullMethodName    = "/groupexpense.v1.GroupExpenseService/GetDetails"
-	GroupExpenseService_ConfirmDraft_FullMethodName  = "/groupexpense.v1.GroupExpenseService/ConfirmDraft"
-	GroupExpenseService_Delete_FullMethodName        = "/groupexpense.v1.GroupExpenseService/Delete"
+	GroupExpenseService_CreateDraft_FullMethodName      = "/groupexpense.v1.GroupExpenseService/CreateDraft"
+	GroupExpenseService_GetAllCreated_FullMethodName    = "/groupexpense.v1.GroupExpenseService/GetAllCreated"
+	GroupExpenseService_GetDetails_FullMethodName       = "/groupexpense.v1.GroupExpenseService/GetDetails"
+	GroupExpenseService_ConfirmDraft_FullMethodName     = "/groupexpense.v1.GroupExpenseService/ConfirmDraft"
+	GroupExpenseService_Delete_FullMethodName           = "/groupexpense.v1.GroupExpenseService/Delete"
+	GroupExpenseService_SyncParticipants_FullMethodName = "/groupexpense.v1.GroupExpenseService/SyncParticipants"
 )
 
 // GroupExpenseServiceClient is the client API for GroupExpenseService service.
@@ -36,6 +37,7 @@ type GroupExpenseServiceClient interface {
 	GetDetails(ctx context.Context, in *GetDetailsRequest, opts ...grpc.CallOption) (*GetDetailsResponse, error)
 	ConfirmDraft(ctx context.Context, in *ConfirmDraftRequest, opts ...grpc.CallOption) (*ConfirmDraftResponse, error)
 	Delete(ctx context.Context, in *DeleteRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	SyncParticipants(ctx context.Context, in *SyncParticipantsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type groupExpenseServiceClient struct {
@@ -96,6 +98,16 @@ func (c *groupExpenseServiceClient) Delete(ctx context.Context, in *DeleteReques
 	return out, nil
 }
 
+func (c *groupExpenseServiceClient) SyncParticipants(ctx context.Context, in *SyncParticipantsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, GroupExpenseService_SyncParticipants_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // GroupExpenseServiceServer is the server API for GroupExpenseService service.
 // All implementations must embed UnimplementedGroupExpenseServiceServer
 // for forward compatibility.
@@ -105,6 +117,7 @@ type GroupExpenseServiceServer interface {
 	GetDetails(context.Context, *GetDetailsRequest) (*GetDetailsResponse, error)
 	ConfirmDraft(context.Context, *ConfirmDraftRequest) (*ConfirmDraftResponse, error)
 	Delete(context.Context, *DeleteRequest) (*emptypb.Empty, error)
+	SyncParticipants(context.Context, *SyncParticipantsRequest) (*emptypb.Empty, error)
 	mustEmbedUnimplementedGroupExpenseServiceServer()
 }
 
@@ -129,6 +142,9 @@ func (UnimplementedGroupExpenseServiceServer) ConfirmDraft(context.Context, *Con
 }
 func (UnimplementedGroupExpenseServiceServer) Delete(context.Context, *DeleteRequest) (*emptypb.Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method Delete not implemented")
+}
+func (UnimplementedGroupExpenseServiceServer) SyncParticipants(context.Context, *SyncParticipantsRequest) (*emptypb.Empty, error) {
+	return nil, status.Error(codes.Unimplemented, "method SyncParticipants not implemented")
 }
 func (UnimplementedGroupExpenseServiceServer) mustEmbedUnimplementedGroupExpenseServiceServer() {}
 func (UnimplementedGroupExpenseServiceServer) testEmbeddedByValue()                             {}
@@ -241,6 +257,24 @@ func _GroupExpenseService_Delete_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _GroupExpenseService_SyncParticipants_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SyncParticipantsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(GroupExpenseServiceServer).SyncParticipants(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: GroupExpenseService_SyncParticipants_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(GroupExpenseServiceServer).SyncParticipants(ctx, req.(*SyncParticipantsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // GroupExpenseService_ServiceDesc is the grpc.ServiceDesc for GroupExpenseService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -267,6 +301,10 @@ var GroupExpenseService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Delete",
 			Handler:    _GroupExpenseService_Delete_Handler,
+		},
+		{
+			MethodName: "SyncParticipants",
+			Handler:    _GroupExpenseService_SyncParticipants_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

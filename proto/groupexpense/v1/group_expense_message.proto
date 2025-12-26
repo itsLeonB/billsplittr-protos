@@ -52,3 +52,10 @@ message DeleteRequest {
   string id = 1;
   string profile_id = 2;
 }
+
+message SyncParticipantsRequest {
+  repeated string participant_profile_ids = 1;
+  string payer_profile_id = 2;
+  string user_profile_id = 3;
+  string group_expense_id = 4;
+}

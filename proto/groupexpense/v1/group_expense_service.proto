@@ -13,4 +13,5 @@ service GroupExpenseService {
   rpc GetDetails(GetDetailsRequest) returns (GetDetailsResponse);
   rpc ConfirmDraft(ConfirmDraftRequest) returns (ConfirmDraftResponse);
   rpc Delete(DeleteRequest) returns (google.protobuf.Empty);
+  rpc SyncParticipants(SyncParticipantsRequest) returns (google.protobuf.Empty);
 }
