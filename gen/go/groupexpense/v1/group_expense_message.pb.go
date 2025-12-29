@@ -340,6 +340,7 @@ type ConfirmDraftRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	ProfileId     string                 `protobuf:"bytes,2,opt,name=profile_id,json=profileId,proto3" json:"profile_id,omitempty"`
+	DryRun        bool                   `protobuf:"varint,3,opt,name=dry_run,json=dryRun,proto3" json:"dry_run,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -386,6 +387,13 @@ func (x *ConfirmDraftRequest) GetProfileId() string {
 		return x.ProfileId
 	}
 	return ""
+}
+
+func (x *ConfirmDraftRequest) GetDryRun() bool {
+	if x != nil {
+		return x.DryRun
+	}
+	return false
 }
 
 type ConfirmDraftResponse struct {
@@ -576,11 +584,12 @@ const file_groupexpense_v1_group_expense_message_proto_rawDesc = "" +
 	"\x11GetDetailsRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"`\n" +
 	"\x12GetDetailsResponse\x12J\n" +
-	"\rgroup_expense\x18\x01 \x01(\v2%.groupexpense.v1.GroupExpenseResponseR\fgroupExpense\"D\n" +
+	"\rgroup_expense\x18\x01 \x01(\v2%.groupexpense.v1.GroupExpenseResponseR\fgroupExpense\"]\n" +
 	"\x13ConfirmDraftRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1d\n" +
 	"\n" +
-	"profile_id\x18\x02 \x01(\tR\tprofileId\"b\n" +
+	"profile_id\x18\x02 \x01(\tR\tprofileId\x12\x17\n" +
+	"\adry_run\x18\x03 \x01(\bR\x06dryRun\"b\n" +
 	"\x14ConfirmDraftResponse\x12J\n" +
 	"\rgroup_expense\x18\x01 \x01(\v2%.groupexpense.v1.GroupExpenseResponseR\fgroupExpense\">\n" +
 	"\rDeleteRequest\x12\x0e\n" +

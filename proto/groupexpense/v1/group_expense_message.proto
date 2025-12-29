@@ -42,6 +42,7 @@ message GetDetailsResponse {
 message ConfirmDraftRequest {
   string id = 1;
   string profile_id = 2;
+  bool dry_run = 3;
 }
 
 message ConfirmDraftResponse {
