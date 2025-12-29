@@ -12,4 +12,5 @@ service ExpenseItemService {
   rpc GetDetails(GetDetailsRequest) returns (GetDetailsResponse);
   rpc Update(UpdateRequest) returns (UpdateResponse);
   rpc Remove(RemoveRequest) returns (google.protobuf.Empty);
+  rpc SyncParticipants(SyncParticipantsRequest) returns (google.protobuf.Empty);
 }

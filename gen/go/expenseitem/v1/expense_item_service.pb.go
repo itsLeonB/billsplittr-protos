@@ -25,35 +25,39 @@ var File_expenseitem_v1_expense_item_service_proto protoreflect.FileDescriptor
 
 const file_expenseitem_v1_expense_item_service_proto_rawDesc = "" +
 	"\n" +
-	")expenseitem/v1/expense_item_service.proto\x12\x0eexpenseitem.v1\x1a)expenseitem/v1/expense_item_message.proto\x1a\x1bgoogle/protobuf/empty.proto2\xb3\x02\n" +
+	")expenseitem/v1/expense_item_service.proto\x12\x0eexpenseitem.v1\x1a)expenseitem/v1/expense_item_message.proto\x1a\x1bgoogle/protobuf/empty.proto2\x88\x03\n" +
 	"\x12ExpenseItemService\x12>\n" +
 	"\x03Add\x12\x1a.expenseitem.v1.AddRequest\x1a\x1b.expenseitem.v1.AddResponse\x12S\n" +
 	"\n" +
 	"GetDetails\x12!.expenseitem.v1.GetDetailsRequest\x1a\".expenseitem.v1.GetDetailsResponse\x12G\n" +
 	"\x06Update\x12\x1d.expenseitem.v1.UpdateRequest\x1a\x1e.expenseitem.v1.UpdateResponse\x12?\n" +
-	"\x06Remove\x12\x1d.expenseitem.v1.RemoveRequest\x1a\x16.google.protobuf.EmptyBJZHgithub.com/itsLeonB/billsplittr-protos/gen/go/expenseitem/v1;expenseitemb\x06proto3"
+	"\x06Remove\x12\x1d.expenseitem.v1.RemoveRequest\x1a\x16.google.protobuf.Empty\x12S\n" +
+	"\x10SyncParticipants\x12'.expenseitem.v1.SyncParticipantsRequest\x1a\x16.google.protobuf.EmptyBJZHgithub.com/itsLeonB/billsplittr-protos/gen/go/expenseitem/v1;expenseitemb\x06proto3"
 
 var file_expenseitem_v1_expense_item_service_proto_goTypes = []any{
-	(*AddRequest)(nil),         // 0: expenseitem.v1.AddRequest
-	(*GetDetailsRequest)(nil),  // 1: expenseitem.v1.GetDetailsRequest
-	(*UpdateRequest)(nil),      // 2: expenseitem.v1.UpdateRequest
-	(*RemoveRequest)(nil),      // 3: expenseitem.v1.RemoveRequest
-	(*AddResponse)(nil),        // 4: expenseitem.v1.AddResponse
-	(*GetDetailsResponse)(nil), // 5: expenseitem.v1.GetDetailsResponse
-	(*UpdateResponse)(nil),     // 6: expenseitem.v1.UpdateResponse
-	(*emptypb.Empty)(nil),      // 7: google.protobuf.Empty
+	(*AddRequest)(nil),              // 0: expenseitem.v1.AddRequest
+	(*GetDetailsRequest)(nil),       // 1: expenseitem.v1.GetDetailsRequest
+	(*UpdateRequest)(nil),           // 2: expenseitem.v1.UpdateRequest
+	(*RemoveRequest)(nil),           // 3: expenseitem.v1.RemoveRequest
+	(*SyncParticipantsRequest)(nil), // 4: expenseitem.v1.SyncParticipantsRequest
+	(*AddResponse)(nil),             // 5: expenseitem.v1.AddResponse
+	(*GetDetailsResponse)(nil),      // 6: expenseitem.v1.GetDetailsResponse
+	(*UpdateResponse)(nil),          // 7: expenseitem.v1.UpdateResponse
+	(*emptypb.Empty)(nil),           // 8: google.protobuf.Empty
 }
 var file_expenseitem_v1_expense_item_service_proto_depIdxs = []int32{
 	0, // 0: expenseitem.v1.ExpenseItemService.Add:input_type -> expenseitem.v1.AddRequest
 	1, // 1: expenseitem.v1.ExpenseItemService.GetDetails:input_type -> expenseitem.v1.GetDetailsRequest
 	2, // 2: expenseitem.v1.ExpenseItemService.Update:input_type -> expenseitem.v1.UpdateRequest
 	3, // 3: expenseitem.v1.ExpenseItemService.Remove:input_type -> expenseitem.v1.RemoveRequest
-	4, // 4: expenseitem.v1.ExpenseItemService.Add:output_type -> expenseitem.v1.AddResponse
-	5, // 5: expenseitem.v1.ExpenseItemService.GetDetails:output_type -> expenseitem.v1.GetDetailsResponse
-	6, // 6: expenseitem.v1.ExpenseItemService.Update:output_type -> expenseitem.v1.UpdateResponse
-	7, // 7: expenseitem.v1.ExpenseItemService.Remove:output_type -> google.protobuf.Empty
-	4, // [4:8] is the sub-list for method output_type
-	0, // [0:4] is the sub-list for method input_type
+	4, // 4: expenseitem.v1.ExpenseItemService.SyncParticipants:input_type -> expenseitem.v1.SyncParticipantsRequest
+	5, // 5: expenseitem.v1.ExpenseItemService.Add:output_type -> expenseitem.v1.AddResponse
+	6, // 6: expenseitem.v1.ExpenseItemService.GetDetails:output_type -> expenseitem.v1.GetDetailsResponse
+	7, // 7: expenseitem.v1.ExpenseItemService.Update:output_type -> expenseitem.v1.UpdateResponse
+	8, // 8: expenseitem.v1.ExpenseItemService.Remove:output_type -> google.protobuf.Empty
+	8, // 9: expenseitem.v1.ExpenseItemService.SyncParticipants:output_type -> google.protobuf.Empty
+	5, // [5:10] is the sub-list for method output_type
+	0, // [0:5] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name

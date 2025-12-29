@@ -20,10 +20,11 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ExpenseItemService_Add_FullMethodName        = "/expenseitem.v1.ExpenseItemService/Add"
-	ExpenseItemService_GetDetails_FullMethodName = "/expenseitem.v1.ExpenseItemService/GetDetails"
-	ExpenseItemService_Update_FullMethodName     = "/expenseitem.v1.ExpenseItemService/Update"
-	ExpenseItemService_Remove_FullMethodName     = "/expenseitem.v1.ExpenseItemService/Remove"
+	ExpenseItemService_Add_FullMethodName              = "/expenseitem.v1.ExpenseItemService/Add"
+	ExpenseItemService_GetDetails_FullMethodName       = "/expenseitem.v1.ExpenseItemService/GetDetails"
+	ExpenseItemService_Update_FullMethodName           = "/expenseitem.v1.ExpenseItemService/Update"
+	ExpenseItemService_Remove_FullMethodName           = "/expenseitem.v1.ExpenseItemService/Remove"
+	ExpenseItemService_SyncParticipants_FullMethodName = "/expenseitem.v1.ExpenseItemService/SyncParticipants"
 )
 
 // ExpenseItemServiceClient is the client API for ExpenseItemService service.
@@ -34,6 +35,7 @@ type ExpenseItemServiceClient interface {
 	GetDetails(ctx context.Context, in *GetDetailsRequest, opts ...grpc.CallOption) (*GetDetailsResponse, error)
 	Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*UpdateResponse, error)
 	Remove(ctx context.Context, in *RemoveRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	SyncParticipants(ctx context.Context, in *SyncParticipantsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type expenseItemServiceClient struct {
@@ -84,6 +86,16 @@ func (c *expenseItemServiceClient) Remove(ctx context.Context, in *RemoveRequest
 	return out, nil
 }
 
+func (c *expenseItemServiceClient) SyncParticipants(ctx context.Context, in *SyncParticipantsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(emptypb.Empty)
+	err := c.cc.Invoke(ctx, ExpenseItemService_SyncParticipants_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ExpenseItemServiceServer is the server API for ExpenseItemService service.
 // All implementations must embed UnimplementedExpenseItemServiceServer
 // for forward compatibility.
@@ -92,6 +104,7 @@ type ExpenseItemServiceServer interface {
 	GetDetails(context.Context, *GetDetailsRequest) (*GetDetailsResponse, error)
 	Update(context.Context, *UpdateRequest) (*UpdateResponse, error)
 	Remove(context.Context, *RemoveRequest) (*emptypb.Empty, error)
+	SyncParticipants(context.Context, *SyncParticipantsRequest) (*emptypb.Empty, error)
 	mustEmbedUnimplementedExpenseItemServiceServer()
 }
 
@@ -113,6 +126,9 @@ func (UnimplementedExpenseItemServiceServer) Update(context.Context, *UpdateRequ
 }
 func (UnimplementedExpenseItemServiceServer) Remove(context.Context, *RemoveRequest) (*emptypb.Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method Remove not implemented")
+}
+func (UnimplementedExpenseItemServiceServer) SyncParticipants(context.Context, *SyncParticipantsRequest) (*emptypb.Empty, error) {
+	return nil, status.Error(codes.Unimplemented, "method SyncParticipants not implemented")
 }
 func (UnimplementedExpenseItemServiceServer) mustEmbedUnimplementedExpenseItemServiceServer() {}
 func (UnimplementedExpenseItemServiceServer) testEmbeddedByValue()                            {}
@@ -207,6 +223,24 @@ func _ExpenseItemService_Remove_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ExpenseItemService_SyncParticipants_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SyncParticipantsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ExpenseItemServiceServer).SyncParticipants(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ExpenseItemService_SyncParticipants_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ExpenseItemServiceServer).SyncParticipants(ctx, req.(*SyncParticipantsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ExpenseItemService_ServiceDesc is the grpc.ServiceDesc for ExpenseItemService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -229,6 +263,10 @@ var ExpenseItemService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Remove",
 			Handler:    _ExpenseItemService_Remove_Handler,
+		},
+		{
+			MethodName: "SyncParticipants",
+			Handler:    _ExpenseItemService_SyncParticipants_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

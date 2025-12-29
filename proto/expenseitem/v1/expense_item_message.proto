@@ -41,3 +41,10 @@ message RemoveRequest {
   string id = 2;
   string group_expense_id = 3;
 }
+
+message SyncParticipantsRequest {
+  string profile_id = 1;
+  string item_id = 2;
+  string expense_id = 3;
+  repeated ItemParticipant participants = 4;
+}

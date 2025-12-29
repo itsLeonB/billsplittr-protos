@@ -393,6 +393,74 @@ func (x *RemoveRequest) GetGroupExpenseId() string {
 	return ""
 }
 
+type SyncParticipantsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ProfileId     string                 `protobuf:"bytes,1,opt,name=profile_id,json=profileId,proto3" json:"profile_id,omitempty"`
+	ItemId        string                 `protobuf:"bytes,2,opt,name=item_id,json=itemId,proto3" json:"item_id,omitempty"`
+	ExpenseId     string                 `protobuf:"bytes,3,opt,name=expense_id,json=expenseId,proto3" json:"expense_id,omitempty"`
+	Participants  []*ItemParticipant     `protobuf:"bytes,4,rep,name=participants,proto3" json:"participants,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SyncParticipantsRequest) Reset() {
+	*x = SyncParticipantsRequest{}
+	mi := &file_expenseitem_v1_expense_item_message_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SyncParticipantsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SyncParticipantsRequest) ProtoMessage() {}
+
+func (x *SyncParticipantsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_expenseitem_v1_expense_item_message_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SyncParticipantsRequest.ProtoReflect.Descriptor instead.
+func (*SyncParticipantsRequest) Descriptor() ([]byte, []int) {
+	return file_expenseitem_v1_expense_item_message_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *SyncParticipantsRequest) GetProfileId() string {
+	if x != nil {
+		return x.ProfileId
+	}
+	return ""
+}
+
+func (x *SyncParticipantsRequest) GetItemId() string {
+	if x != nil {
+		return x.ItemId
+	}
+	return ""
+}
+
+func (x *SyncParticipantsRequest) GetExpenseId() string {
+	if x != nil {
+		return x.ExpenseId
+	}
+	return ""
+}
+
+func (x *SyncParticipantsRequest) GetParticipants() []*ItemParticipant {
+	if x != nil {
+		return x.Participants
+	}
+	return nil
+}
+
 var File_expenseitem_v1_expense_item_message_proto protoreflect.FileDescriptor
 
 const file_expenseitem_v1_expense_item_message_proto_rawDesc = "" +
@@ -423,7 +491,14 @@ const file_expenseitem_v1_expense_item_message_proto_rawDesc = "" +
 	"\n" +
 	"profile_id\x18\x01 \x01(\tR\tprofileId\x12\x0e\n" +
 	"\x02id\x18\x02 \x01(\tR\x02id\x12(\n" +
-	"\x10group_expense_id\x18\x03 \x01(\tR\x0egroupExpenseIdBJZHgithub.com/itsLeonB/billsplittr-protos/gen/go/expenseitem/v1;expenseitemb\x06proto3"
+	"\x10group_expense_id\x18\x03 \x01(\tR\x0egroupExpenseId\"\xb5\x01\n" +
+	"\x17SyncParticipantsRequest\x12\x1d\n" +
+	"\n" +
+	"profile_id\x18\x01 \x01(\tR\tprofileId\x12\x17\n" +
+	"\aitem_id\x18\x02 \x01(\tR\x06itemId\x12\x1d\n" +
+	"\n" +
+	"expense_id\x18\x03 \x01(\tR\texpenseId\x12C\n" +
+	"\fparticipants\x18\x04 \x03(\v2\x1f.expenseitem.v1.ItemParticipantR\fparticipantsBJZHgithub.com/itsLeonB/billsplittr-protos/gen/go/expenseitem/v1;expenseitemb\x06proto3"
 
 var (
 	file_expenseitem_v1_expense_item_message_proto_rawDescOnce sync.Once
@@ -437,29 +512,32 @@ func file_expenseitem_v1_expense_item_message_proto_rawDescGZIP() []byte {
 	return file_expenseitem_v1_expense_item_message_proto_rawDescData
 }
 
-var file_expenseitem_v1_expense_item_message_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_expenseitem_v1_expense_item_message_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_expenseitem_v1_expense_item_message_proto_goTypes = []any{
-	(*AddRequest)(nil),          // 0: expenseitem.v1.AddRequest
-	(*AddResponse)(nil),         // 1: expenseitem.v1.AddResponse
-	(*GetDetailsRequest)(nil),   // 2: expenseitem.v1.GetDetailsRequest
-	(*GetDetailsResponse)(nil),  // 3: expenseitem.v1.GetDetailsResponse
-	(*UpdateRequest)(nil),       // 4: expenseitem.v1.UpdateRequest
-	(*UpdateResponse)(nil),      // 5: expenseitem.v1.UpdateResponse
-	(*RemoveRequest)(nil),       // 6: expenseitem.v1.RemoveRequest
-	(*ExpenseItem)(nil),         // 7: expenseitem.v1.ExpenseItem
-	(*ExpenseItemResponse)(nil), // 8: expenseitem.v1.ExpenseItemResponse
+	(*AddRequest)(nil),              // 0: expenseitem.v1.AddRequest
+	(*AddResponse)(nil),             // 1: expenseitem.v1.AddResponse
+	(*GetDetailsRequest)(nil),       // 2: expenseitem.v1.GetDetailsRequest
+	(*GetDetailsResponse)(nil),      // 3: expenseitem.v1.GetDetailsResponse
+	(*UpdateRequest)(nil),           // 4: expenseitem.v1.UpdateRequest
+	(*UpdateResponse)(nil),          // 5: expenseitem.v1.UpdateResponse
+	(*RemoveRequest)(nil),           // 6: expenseitem.v1.RemoveRequest
+	(*SyncParticipantsRequest)(nil), // 7: expenseitem.v1.SyncParticipantsRequest
+	(*ExpenseItem)(nil),             // 8: expenseitem.v1.ExpenseItem
+	(*ExpenseItemResponse)(nil),     // 9: expenseitem.v1.ExpenseItemResponse
+	(*ItemParticipant)(nil),         // 10: expenseitem.v1.ItemParticipant
 }
 var file_expenseitem_v1_expense_item_message_proto_depIdxs = []int32{
-	7, // 0: expenseitem.v1.AddRequest.expense_item:type_name -> expenseitem.v1.ExpenseItem
-	8, // 1: expenseitem.v1.AddResponse.expense_item:type_name -> expenseitem.v1.ExpenseItemResponse
-	8, // 2: expenseitem.v1.GetDetailsResponse.expense_item:type_name -> expenseitem.v1.ExpenseItemResponse
-	7, // 3: expenseitem.v1.UpdateRequest.expense_item:type_name -> expenseitem.v1.ExpenseItem
-	8, // 4: expenseitem.v1.UpdateResponse.expense_item:type_name -> expenseitem.v1.ExpenseItemResponse
-	5, // [5:5] is the sub-list for method output_type
-	5, // [5:5] is the sub-list for method input_type
-	5, // [5:5] is the sub-list for extension type_name
-	5, // [5:5] is the sub-list for extension extendee
-	0, // [0:5] is the sub-list for field type_name
+	8,  // 0: expenseitem.v1.AddRequest.expense_item:type_name -> expenseitem.v1.ExpenseItem
+	9,  // 1: expenseitem.v1.AddResponse.expense_item:type_name -> expenseitem.v1.ExpenseItemResponse
+	9,  // 2: expenseitem.v1.GetDetailsResponse.expense_item:type_name -> expenseitem.v1.ExpenseItemResponse
+	8,  // 3: expenseitem.v1.UpdateRequest.expense_item:type_name -> expenseitem.v1.ExpenseItem
+	9,  // 4: expenseitem.v1.UpdateResponse.expense_item:type_name -> expenseitem.v1.ExpenseItemResponse
+	10, // 5: expenseitem.v1.SyncParticipantsRequest.participants:type_name -> expenseitem.v1.ItemParticipant
+	6,  // [6:6] is the sub-list for method output_type
+	6,  // [6:6] is the sub-list for method input_type
+	6,  // [6:6] is the sub-list for extension type_name
+	6,  // [6:6] is the sub-list for extension extendee
+	0,  // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_expenseitem_v1_expense_item_message_proto_init() }
@@ -474,7 +552,7 @@ func file_expenseitem_v1_expense_item_message_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_expenseitem_v1_expense_item_message_proto_rawDesc), len(file_expenseitem_v1_expense_item_message_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
