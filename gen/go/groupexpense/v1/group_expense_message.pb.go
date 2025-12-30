@@ -163,6 +163,7 @@ func (x *CreateDraftResponse) GetGroupExpense() *GroupExpenseResponse {
 type GetAllCreatedRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ProfileId     string                 `protobuf:"bytes,1,opt,name=profile_id,json=profileId,proto3" json:"profile_id,omitempty"`
+	Status        ExpenseStatus          `protobuf:"varint,2,opt,name=status,proto3,enum=groupexpense.v1.ExpenseStatus" json:"status,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -202,6 +203,13 @@ func (x *GetAllCreatedRequest) GetProfileId() string {
 		return x.ProfileId
 	}
 	return ""
+}
+
+func (x *GetAllCreatedRequest) GetStatus() ExpenseStatus {
+	if x != nil {
+		return x.Status
+	}
+	return ExpenseStatus_EXPENSE_STATUS_UNSPECIFIED
 }
 
 type GetAllCreatedResponse struct {
@@ -575,10 +583,11 @@ const file_groupexpense_v1_group_expense_message_proto_rawDesc = "" +
 	"\n" +
 	"other_fees\x18\a \x03(\v2\x15.otherfee.v1.OtherFeeR\totherFees\"a\n" +
 	"\x13CreateDraftResponse\x12J\n" +
-	"\rgroup_expense\x18\x01 \x01(\v2%.groupexpense.v1.GroupExpenseResponseR\fgroupExpense\"5\n" +
+	"\rgroup_expense\x18\x01 \x01(\v2%.groupexpense.v1.GroupExpenseResponseR\fgroupExpense\"m\n" +
 	"\x14GetAllCreatedRequest\x12\x1d\n" +
 	"\n" +
-	"profile_id\x18\x01 \x01(\tR\tprofileId\"e\n" +
+	"profile_id\x18\x01 \x01(\tR\tprofileId\x126\n" +
+	"\x06status\x18\x02 \x01(\x0e2\x1e.groupexpense.v1.ExpenseStatusR\x06status\"e\n" +
 	"\x15GetAllCreatedResponse\x12L\n" +
 	"\x0egroup_expenses\x18\x01 \x03(\v2%.groupexpense.v1.GroupExpenseResponseR\rgroupExpenses\"#\n" +
 	"\x11GetDetailsRequest\x12\x0e\n" +
@@ -630,6 +639,7 @@ var file_groupexpense_v1_group_expense_message_proto_goTypes = []any{
 	(*v1.ExpenseItem)(nil),          // 11: expenseitem.v1.ExpenseItem
 	(*v11.OtherFee)(nil),            // 12: otherfee.v1.OtherFee
 	(*GroupExpenseResponse)(nil),    // 13: groupexpense.v1.GroupExpenseResponse
+	(ExpenseStatus)(0),              // 14: groupexpense.v1.ExpenseStatus
 }
 var file_groupexpense_v1_group_expense_message_proto_depIdxs = []int32{
 	10, // 0: groupexpense.v1.CreateDraftRequest.total_amount:type_name -> google.type.Money
@@ -637,14 +647,15 @@ var file_groupexpense_v1_group_expense_message_proto_depIdxs = []int32{
 	11, // 2: groupexpense.v1.CreateDraftRequest.items:type_name -> expenseitem.v1.ExpenseItem
 	12, // 3: groupexpense.v1.CreateDraftRequest.other_fees:type_name -> otherfee.v1.OtherFee
 	13, // 4: groupexpense.v1.CreateDraftResponse.group_expense:type_name -> groupexpense.v1.GroupExpenseResponse
-	13, // 5: groupexpense.v1.GetAllCreatedResponse.group_expenses:type_name -> groupexpense.v1.GroupExpenseResponse
-	13, // 6: groupexpense.v1.GetDetailsResponse.group_expense:type_name -> groupexpense.v1.GroupExpenseResponse
-	13, // 7: groupexpense.v1.ConfirmDraftResponse.group_expense:type_name -> groupexpense.v1.GroupExpenseResponse
-	8,  // [8:8] is the sub-list for method output_type
-	8,  // [8:8] is the sub-list for method input_type
-	8,  // [8:8] is the sub-list for extension type_name
-	8,  // [8:8] is the sub-list for extension extendee
-	0,  // [0:8] is the sub-list for field type_name
+	14, // 5: groupexpense.v1.GetAllCreatedRequest.status:type_name -> groupexpense.v1.ExpenseStatus
+	13, // 6: groupexpense.v1.GetAllCreatedResponse.group_expenses:type_name -> groupexpense.v1.GroupExpenseResponse
+	13, // 7: groupexpense.v1.GetDetailsResponse.group_expense:type_name -> groupexpense.v1.GroupExpenseResponse
+	13, // 8: groupexpense.v1.ConfirmDraftResponse.group_expense:type_name -> groupexpense.v1.GroupExpenseResponse
+	9,  // [9:9] is the sub-list for method output_type
+	9,  // [9:9] is the sub-list for method input_type
+	9,  // [9:9] is the sub-list for extension type_name
+	9,  // [9:9] is the sub-list for extension extendee
+	0,  // [0:9] is the sub-list for field type_name
 }
 
 func init() { file_groupexpense_v1_group_expense_message_proto_init() }

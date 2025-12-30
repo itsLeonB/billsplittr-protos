@@ -25,6 +25,7 @@ message CreateDraftResponse {
 
 message GetAllCreatedRequest {
   string profile_id = 1;
+  ExpenseStatus status = 2;
 }
 
 message GetAllCreatedResponse {
